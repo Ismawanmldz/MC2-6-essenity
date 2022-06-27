@@ -71,7 +71,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="K4Q-PT-OGA">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="2If-ir-ATr">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="mEL-jz-dNP">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="mEL-jz-dNP">
                                 <rect key="frame" x="302" y="5" width="92" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
@@ -93,6 +93,8 @@
         <!--Add Tags View Controller-->
         <scene sceneID="bcT-C5-rIc">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Xe-ko-NBO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="eVE-rN-ZYG" userLabel="Exit" sceneMemberID="exit"/>
                 <viewController id="hxb-MV-dXM" customClass="AddTagsViewController" customModule="MC2_Group6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Pp-xo-CUb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
@@ -104,7 +106,19 @@
                                     <constraint firstAttribute="height" constant="44" id="uAw-V5-Qft"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Add Tags" id="03d-7V-DvU"/>
+                                    <navigationItem title="Add Tags" id="03d-7V-DvU">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="ss4-9M-RZJ">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="1su-o0-n7y">
+                                                <rect key="frame" x="302" y="11" width="92" height="34.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Done"/>
+                                            </button>
+                                            <connections>
+                                                <action selector="unwindToTask:" destination="hxb-MV-dXM" id="7Tk-Sx-DiH"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kPE-YT-vcJ">
@@ -129,11 +143,19 @@
                     <navigationItem key="navigationItem" id="6OQ-zR-EcL"/>
                     <connections>
                         <outlet property="tagsTableView" destination="kPE-YT-vcJ" id="qwB-Nb-SUb"/>
+                        <segue destination="eVE-rN-ZYG" kind="unwind" identifier="unwindToAddTask" unwindAction="unwind:" id="fmR-gD-8bX"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Xe-ko-NBO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1679.7101449275362" y="77.678571428571431"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="raz-rS-nBZ">
+            <objects>
+                <viewControllerPlaceholder id="47x-Df-Vyp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="und-2g-eBE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2302" y="78"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bm2-1d-HHR">

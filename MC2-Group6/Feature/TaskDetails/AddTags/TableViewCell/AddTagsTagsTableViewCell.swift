@@ -38,7 +38,7 @@ class AddTagsTagsTableViewCell: UITableViewCell {
         collectionFlowLayout.scrollDirection = .vertical
         collectionFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         tagsCollectionView.collectionViewLayout = collectionFlowLayout
-        
+        tagsCollectionView.reloadData()
         
         
     }
@@ -47,6 +47,19 @@ class AddTagsTagsTableViewCell: UITableViewCell {
         
         
     }
+    
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+    }
+    
+    public func configure(with model: TaskTagsOption, tagsArray : [String]){
+        self.allTags = tagsArray
+        tagsCollectionView.reloadData()
+        
+    }
+    
 
     
 }
@@ -102,3 +115,4 @@ extension AddTagsTagsTableViewCell : UICollectionViewDelegate, UICollectionViewD
 
     
 }
+

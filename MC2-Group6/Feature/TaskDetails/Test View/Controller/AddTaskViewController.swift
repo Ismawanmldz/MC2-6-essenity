@@ -23,11 +23,16 @@ class AddTaskViewController: UIViewController {
     private var taskTitle : String?
     private var dueDate : Date? = Date()
     private var reminder : String = "None                                      "
-    private var moveTo : String = "None                                      "
-    private var reminderDate : Date? = Date()
-    private var moveToDate : Date? = Date()
-    private var taskTags : [String]?
+    private var moveTo : String = "None                                    "
+    private var reminderDate : Date?
+    private var moveToDate : Date?
+    var taskTags : [String] = []
     
+    private var reminderValue: Int?
+    private var reminderTimeValue : Int?
+    
+    private var moveToValue: Int?
+    private var moveToTimeValue : Int?
     
     func updatePriorites() {
         switch self.important {
@@ -72,15 +77,46 @@ class AddTaskViewController: UIViewController {
 //        task.title = "Do Now"
         
         let task1 = Task(context: self.taskRepository.context)
-        task1.title = "Dummy Task 21"
-        task1.status = false
-        task1.desc = "This is a dummy task"
-        task1.dueDate = Date()
-        task1.tags = self.tags
-        task1.moveTo = Date()
-        task1.reminder = Date()
         
+        let index = IndexPath(row: 0, section: 0)
+        let cell: TextFieldTaskDetailsTableViewCell = tableView.cellForRow(at: index) as! TextFieldTaskDetailsTableViewCell
+        let taskTitle = cell.cellTextField.text
+        
+        let index2 = IndexPath(row: 0, section: 1)
+        let cell2: TextViewTaskDetailsTableViewCell = tableView.cellForRow(at: index2) as! TextViewTaskDetailsTableViewCell
+        let taskDescription = cell2.cellTextView.text
+        
+        print(taskTitle)
+        print(taskDescription)
+        
+        task1.title = taskTitle
+        task1.desc = taskDescription
+        task1.status = false
+        
+        task1.tags = self.taskTags
+
+        if(self.priority == "Do Now"){
+            
+        } else if(self.priority == "Plan It"){
+            
+        } else if(self.priority == "Delegate"){
+            
+        } else if(self.priority == "Eliminate"){
+            
+        }
+        
+        if(dueDateOn == true){
+            task1.dueDate = self.dueDate
+            task1.moveTo = self.moveToDate
+            task1.reminder = self.reminderDate
+        }
+        
+//        task1.priorities = pri
         do {
+            let dateFormater = DateFormatter()
+            dateFormater.dateFormat = "MM-dd-yyyy HH:mm"
+            print(dateFormater.string(from: task1.reminder ?? Date()))
+            print(task1.tags)
             try self.taskRepository.context.save()
             print("Saved!")
         }
@@ -130,6 +166,32 @@ class AddTaskViewController: UIViewController {
     }
     
     var models = [Section]()
+    
+    func calculateTime(timeValue :Date,type: Int, no : Int) -> Date{
+        if type == 0 {
+            return timeValue
+//            print("none")
+        }
+        else if type == 1 {
+            if let date = Calendar.current.date(byAdding: .minute, value: -1*no, to: timeValue) {
+                return date
+//                self.moveToDate = date
+            }
+        }
+        else if type == 2 {
+            if let date = Calendar.current.date(byAdding: .hour, value: -1*no, to: timeValue) {
+                return date
+//                self.moveToDate = date
+            }
+        }
+        else if type == 3 {
+            if let date = Calendar.current.date(byAdding: .day, value: -1*no, to: timeValue) {
+                return date
+//                self.moveToDate = date
+            }
+        }
+        return timeValue
+    }
     
     func configure() {
         models.append(Section(title: "Task Title", options: [
@@ -194,6 +256,13 @@ class AddTaskViewController: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toAddTags" {
+            guard let destination = segue.destination as? AddTagsViewController else { return }
+                  destination.taskTags = self.tags
+        }
+    }
+    
 }
 
 extension AddTaskViewController : UITableViewDelegate, UITableViewDataSource {
@@ -210,6 +279,7 @@ extension AddTaskViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if dueDateOn == false {
+            self.dueDate = nil
             if section == 4 {
                 return 1
             }
@@ -318,11 +388,8 @@ extension AddTaskViewController : UITableViewDelegate, UITableViewDataSource {
             return cell
             
         }
-        
-        
     }
 
-    
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        tableView.deselectRow(at: indexPath, animated: true)
 //        let type = models[indexPath.section].options[indexPath.row]
@@ -398,6 +465,7 @@ extension AddTaskViewController : SwitchTaskDetailsTableViewCellDelegate {
 
 extension AddTaskViewController : TagsTaskDetailsCollectionViewCellDelegate {
     func addTagPage() {
+        
         performSegue(withIdentifier: "toAddTags", sender: self)
     }
 }
@@ -405,6 +473,9 @@ extension AddTaskViewController : TagsTaskDetailsCollectionViewCellDelegate {
 extension AddTaskViewController : PickerTaskDetailsTableViewCellDelegate {
     func setMoveTo(no: Int, type: Int, text: String) {
         self.moveTo = text
+        
+        self.moveToValue = no
+        self.moveToTimeValue = type
 //        let modifiedDate = self.dueDate?.addingTimeInterval(TimeInterval(86400*7 * -1))
 //        print(modifiedDate)
         if type == 0 {
@@ -431,6 +502,9 @@ extension AddTaskViewController : PickerTaskDetailsTableViewCellDelegate {
     }
     func setDate(no: Int, type: Int, text: String) {
         self.reminder = text
+        
+        self.reminderValue = no
+        self.reminderTimeValue = type
         
         if type == 0 {
             print("none")
@@ -465,6 +539,6 @@ extension AddTaskViewController : DatePickerTaskDetailsTableViewCellDelegate {
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "MM-dd-yyyy HH:mm"
         print(dateFormater.string(from: self.dueDate!))
-
+        
     }
 }

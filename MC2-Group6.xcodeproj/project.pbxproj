@@ -74,7 +74,6 @@
 		4C7B0CAF28671CE400A083CA /* PickerTaskDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C7B0CAD28671CE400A083CA /* PickerTaskDetailsTableViewCell.xib */; };
 		4C7B0CB12867286300A083CA /* PickerTableCellPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7B0CB02867286300A083CA /* PickerTableCellPicker.swift */; };
 		4C7B0CB4286795E700A083CA /* AddTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7B0CB2286795E700A083CA /* AddTagsViewController.swift */; };
-		4C7B0CB5286795E700A083CA /* AddTagsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C7B0CB3286795E700A083CA /* AddTagsViewController.xib */; };
 		4C7B0CB7286796DE00A083CA /* TaskOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7B0CB6286796DE00A083CA /* TaskOptions.swift */; };
 		4C7B0CBB2867985100A083CA /* AddTaskViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7B0CBA2867985100A083CA /* AddTaskViewController+Delegate.swift */; };
 /* End PBXBuildFile section */
@@ -149,7 +148,6 @@
 		4C7B0CAD28671CE400A083CA /* PickerTaskDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerTaskDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		4C7B0CB02867286300A083CA /* PickerTableCellPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTableCellPicker.swift; sourceTree = "<group>"; };
 		4C7B0CB2286795E700A083CA /* AddTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagsViewController.swift; sourceTree = "<group>"; };
-		4C7B0CB3286795E700A083CA /* AddTagsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTagsViewController.xib; sourceTree = "<group>"; };
 		4C7B0CB6286796DE00A083CA /* TaskOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOptions.swift; sourceTree = "<group>"; };
 		4C7B0CBA2867985100A083CA /* AddTaskViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddTaskViewController+Delegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -416,7 +414,6 @@
 			isa = PBXGroup;
 			children = (
 				4C7B0CB2286795E700A083CA /* AddTagsViewController.swift */,
-				4C7B0CB3286795E700A083CA /* AddTagsViewController.xib */,
 				4C530BF7286896C3000A61F0 /* TableViewCell */,
 				4C530BF428688ADA000A61F0 /* CollectionViewCell */,
 			);
@@ -632,7 +629,6 @@
 				4C081520285E5EB700740CF0 /* BlueTableViewCell.xib in Resources */,
 				4C081505285E133C00740CF0 /* DatePickerTableViewCell.xib in Resources */,
 				4C08150A285E143300740CF0 /* PriorityTableViewCell.xib in Resources */,
-				4C7B0CB5286795E700A083CA /* AddTagsViewController.xib in Resources */,
 				4C7B0C872862554300A083CA /* TagsAltTableViewCell.xib in Resources */,
 				4C0815452860FB4200740CF0 /* TagsCollectionViewCell.xib in Resources */,
 				4C7B0CAF28671CE400A083CA /* PickerTaskDetailsTableViewCell.xib in Resources */,

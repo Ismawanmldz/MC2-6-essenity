@@ -16,7 +16,7 @@ class TextFieldTaskDetailsTableViewCell: UITableViewCell {
     
     static let identifier = "TextFieldTaskDetailsTableViewCell"
 
-    private let cellTextField : UITextField = {
+    let cellTextField : UITextField = {
         let cellTextField = UITextField()
         let padding = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         
@@ -79,9 +79,9 @@ extension TextFieldTaskDetailsTableViewCell : UITextFieldDelegate {
         
         if self.noTag == 200 {
             print("this text works")
-            textField.text = ""
+            delegate?.reloadTags(word: textField.text ?? "")
             textField.resignFirstResponder()
-            delegate?.reloadTags()
+          
             return false
         }
         return true
