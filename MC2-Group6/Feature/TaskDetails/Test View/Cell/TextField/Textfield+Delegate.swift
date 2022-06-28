@@ -8,5 +8,5 @@
 import UIKit
 
 protocol TextFieldTaskDetailsTableViewCellDelegate {
-    func reloadTags()
+    func reloadTags(word : String)
 }

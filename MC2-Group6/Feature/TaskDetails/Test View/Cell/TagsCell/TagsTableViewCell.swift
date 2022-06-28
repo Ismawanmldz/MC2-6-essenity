@@ -9,7 +9,10 @@ import UIKit
 
 class TagsTableViewCell: UITableViewCell {
 
-    let arr : [String] = ["+ Add Tags","Assignment","Exam","Assignment","Project"]
+    var arr : [String] = ["+ Add Tags"]
+    var allTags : [String] = []
+    var tagsChosen : [String] = [""]
+    
     
     static let identifier = "TagsTableViewCell"
     
@@ -17,8 +20,19 @@ class TagsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var tagsCollectionView: UICollectionView!
 
+    
+                          
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        
+//        let collectionFlowLayout = UICollectionViewFlowLayout()
+////        collectionFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+//        collectionFlowLayout.itemSize.width = UICollectionViewFlowLayout.automaticSize.width
+//        collectionFlowLayout.itemSize.height = 20
+//        collectionFlowLayout.scrollDirection = .horizontal
+//        tagsCollectionView.collectionViewLayout = collectionFlowLayout
+        
         
         tagsCollectionView.delegate = self
         tagsCollectionView.dataSource = self
@@ -33,21 +47,33 @@ class TagsTableViewCell: UITableViewCell {
 //            collectionFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
 //            tagsCollectionView.collectionViewLayout = collectionFlowLayout
 //
-        let collectionFlowLayout = UICollectionViewFlowLayout()
-        collectionFlowLayout.scrollDirection = .horizontal
-              collectionFlowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-              tagsCollectionView.collectionViewLayout = collectionFlowLayout
+
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
         
+    }
+    
+    public func configure(with model: TaskTagsOption,tagsArray : [String]){
+        tagsChosen = tagsArray
+        self.tagsChosen.insert(contentsOf: arr, at: 0)
+        print("array equals")
+        print(tagsChosen)
+//        print(arr)
+        tagsCollectionView.reloadData()
+//
+//            self.arr.append(contentsOf: model.tagTitle)
         
         
     }
-
+    
     
 }
 
 extension TagsTableViewCell : UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return arr.count
+        return tagsChosen.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -56,14 +82,14 @@ extension TagsTableViewCell : UICollectionViewDelegate, UICollectionViewDataSour
             withReuseIdentifier: "TagsTaskDetailsCollectionViewCell",
             for: indexPath) as! TagsTaskDetailsCollectionViewCell
         
-        
-        cell.type = arr[indexPath.row]
+        cell.type = tagsChosen[indexPath.row]
         cell.backgroundColor = .systemBlue
         
         if(indexPath.row == 0){
             cell.backgroundColor = .systemGray5
             cell.tagLabel.textColor = .black
         }
+        
         
         return cell
     }

@@ -15,9 +15,13 @@ class TaskRepository {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    
     private init(coreDataStore: SeederCoreDataStore) {
         self.coreDataStore = coreDataStore
-        
+//        coreDataStore.seedTasks()
+        coreDataStore.seedTasks()
+        coreDataStore.seedPriotities()
+        coreDataStore.seedTags()
     }
     
 
