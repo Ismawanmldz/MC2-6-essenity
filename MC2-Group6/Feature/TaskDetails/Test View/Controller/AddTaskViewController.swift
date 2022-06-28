@@ -8,6 +8,7 @@
 import UIKit
 import CloudKit
 import CoreData
+import UserNotifications
 
 class AddTaskViewController: UIViewController {
     
@@ -65,14 +66,58 @@ class AddTaskViewController: UIViewController {
     }
     
     @IBAction func doneButton(_ sender: Any) {
-
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {success, error in
+            if success {
+                print("success")
+                self.setReminder()
+            }else if error != nil {
+                print("occured")
+            }
+        })
+        
+        let timer = Timer(fireAt: Date(), interval: 5, target: <#T##Any#>, selector: <#T##Selector#>, userInfo: <#T##Any?#>, repeats: <#T##Bool#>)
+        
         updateTask()
+        
     }
     
-//    func add(Task: task) {
-//        
-//    }
+    @IBAction func cancelButton(_ sender: Any){
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["id"])
+    }
+    
+    
+    func setReminder(){
+        let content = UNMutableNotificationContent()
+        content.title = "Reminder"
+        content.sound = .default
+        content.body = "Hello World"
+        
+//        guard let targetDate = self.reminderDate else { return }
+        let targetDate = Date().addingTimeInterval(5)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: targetDate), repeats: false)
+        let request = UNNotificationRequest(identifier: "id", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: {error in
+            if error != nil {
+                print("error occured")
+            }
+            print("set reminder")
+            
+        })
+    }
+    
 
+    func scheduleReminder(){
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {success, error in
+            if success {
+                print("success")
+                self.setReminder()
+            }else if let error = error {
+                print("occured")
+            }
+        })
+    }
+    
     func updateTask() {
         let task = Task(context: self.taskRepository.context)
         

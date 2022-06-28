@@ -71,6 +71,7 @@
 		4C7011AD286A03CF00D4F3D7 /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7011AB286A03CF00D4F3D7 /* EditTaskViewController.swift */; };
 		4C7011B0286A4B6800D4F3D7 /* EditAddTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7011AF286A4B6800D4F3D7 /* EditAddTagsViewController.swift */; };
 		4C7011B2286A521200D4F3D7 /* AddTagsTagCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7011B1286A521200D4F3D7 /* AddTagsTagCollectionViewDelegate.swift */; };
+		4C7011B4286B277C00D4F3D7 /* UpdatinTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7011B3286B277C00D4F3D7 /* UpdatinTime.swift */; };
 		4C7B0C5B2861EC3600A083CA /* TagsTaskDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7B0C5A2861EC3600A083CA /* TagsTaskDetailsTableViewCell.swift */; };
 		4C7B0C772862452700A083CA /* TagsWBCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C7B0C752862452700A083CA /* TagsWBCollectionViewCell.xib */; };
 		4C7B0C782862452700A083CA /* TagsWBCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7B0C762862452700A083CA /* TagsWBCollectionViewCell.swift */; };
@@ -181,6 +182,7 @@
 		4C7011AB286A03CF00D4F3D7 /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
 		4C7011AF286A4B6800D4F3D7 /* EditAddTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddTagsViewController.swift; sourceTree = "<group>"; };
 		4C7011B1286A521200D4F3D7 /* AddTagsTagCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagsTagCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		4C7011B3286B277C00D4F3D7 /* UpdatinTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatinTime.swift; sourceTree = "<group>"; };
 		4C7B0C5A2861EC3600A083CA /* TagsTaskDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsTaskDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		4C7B0C752862452700A083CA /* TagsWBCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagsWBCollectionViewCell.xib; sourceTree = "<group>"; };
 		4C7B0C762862452700A083CA /* TagsWBCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsWBCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				4C0815212860AA2800740CF0 /* Test View */,
 				4C0814F1285E0B7000740CF0 /* Controller */,
 				4C0814F0285E0B6700740CF0 /* View */,
+				4C7011B3286B277C00D4F3D7 /* UpdatinTime.swift */,
 			);
 			path = TaskDetails;
 			sourceTree = "<group>";
@@ -923,6 +926,7 @@
 				4C7B0C782862452700A083CA /* TagsWBCollectionViewCell.swift in Sources */,
 				4C3560A72859CCD100905E01 /* AppDelegate.swift in Sources */,
 				4C0814F3285E0BAF00740CF0 /* TaskDetailsViewController.swift in Sources */,
+				4C7011B4286B277C00D4F3D7 /* UpdatinTime.swift in Sources */,
 				A4A1DEE228695B0C00DA11DB /* PickerViewValue.swift in Sources */,
 				A4A1DEDD28695A2800DA11DB /* TimerSettingViewController.swift in Sources */,
 				4C7B0C902862680200A083CA /* TagsTaskDetailsCollectionViewCell.swift in Sources */,
@@ -1104,7 +1108,7 @@
 				INFOPLIST_FILE = "MC2-Group6/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Test;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1132,7 +1136,7 @@
 				INFOPLIST_FILE = "MC2-Group6/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Test;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
