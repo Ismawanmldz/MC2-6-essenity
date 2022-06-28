@@ -10,3 +10,4 @@ import UIKit
 protocol AddTagsCollectionViewDelegate {
     func reloadPageCV(tagTitle : String)
 }
+ 
