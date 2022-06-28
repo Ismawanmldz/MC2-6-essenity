@@ -126,4 +126,12 @@ class SwitchTaskDetailsTableViewCell: UITableViewCell {
         cellSwitch.isOn = dueDateOn
     }
     
+    public func configure(with model: TaskSwitchOption, important : Bool){
+        label.text = model.title
+        iconImageView.image = model.icon
+        self.noTag = model.noTag
+        cellSwitch.tag = self.noTag
+        cellSwitch.isOn = important
+    }
+    
 }

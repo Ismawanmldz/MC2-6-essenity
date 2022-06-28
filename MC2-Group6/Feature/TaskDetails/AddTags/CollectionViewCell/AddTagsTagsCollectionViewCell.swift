@@ -6,16 +6,46 @@
 //
 
 import UIKit
+import CoreData
 
 class AddTagsTagsCollectionViewCell: UICollectionViewCell {
 
+    
+    let taskRepository = TaskRepository.shared
+    
+    var delegate : AddTagsCollectionViewDelegate?
+    
         static let identifier = "AddTagsTagsCollectionViewCell"
         
+        var thisTag : String?
+    
         @IBOutlet var tagLabel: UILabel!
 
     @IBOutlet weak var xIcon: UIButton!
     
-        var type: String? {
+    @IBAction func deleteTag(_ sender: Any) {
+        do {
+            
+            let request = Tags.fetchRequest() as NSFetchRequest<Tags>
+            
+            let pred = NSPredicate(format: "tagTitle == %@", self.thisTag!)
+            request.predicate = pred
+            
+            let tags = try taskRepository.context.fetch(request)
+            
+            for tag in tags {
+                taskRepository.context.delete(tag)
+            }
+           try taskRepository.context.save()
+            delegate?.reloadPageCV(tagTitle: self.thisTag!)
+        }
+        catch {
+            
+        }
+        
+    }
+    
+    var type: String? {
             didSet {
                 setupView()
             }
@@ -35,6 +65,7 @@ class AddTagsTagsCollectionViewCell: UICollectionViewCell {
             self.backgroundColor = .systemBlue
             tagLabel.tintColor = .white
             tagLabel.text = type
+            thisTag = type
         }
             
         

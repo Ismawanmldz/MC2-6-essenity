@@ -9,6 +9,7 @@ import UIKit
 
 protocol TagsTaskDetailsCollectionViewCellDelegate {
     func addTagPage()
+    func addTagPage(tagArray : [String])
 }
 
 

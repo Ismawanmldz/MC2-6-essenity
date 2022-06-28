@@ -9,6 +9,8 @@ import UIKit
 
 class TextFieldTaskDetailsTableViewCell: UITableViewCell {
     
+    let taskRepository = TaskRepository.shared
+    
     private var cellHeight : Int = 40
     private var noTag : Int = 0
     
@@ -16,7 +18,7 @@ class TextFieldTaskDetailsTableViewCell: UITableViewCell {
     
     static let identifier = "TextFieldTaskDetailsTableViewCell"
 
-    private let cellTextField : UITextField = {
+    let cellTextField : UITextField = {
         let cellTextField = UITextField()
         let padding = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         
@@ -69,7 +71,12 @@ class TextFieldTaskDetailsTableViewCell: UITableViewCell {
         self.noTag = model.noTag!
     }
     
-
+    public func configure(with model: TaskTextFieldOption, title : String){
+        cellTextField.placeholder = model.placeholder
+        self.noTag = model.noTag!
+        self.cellTextField.text = title
+    }
+    
 
     
 }
@@ -79,11 +86,27 @@ extension TextFieldTaskDetailsTableViewCell : UITextFieldDelegate {
         
         if self.noTag == 200 {
             print("this text works")
+            
+            
+            
+
+            let newTag = Tags(context: taskRepository.context)
+            newTag.tagTitle = textField.text
+                
+            
+            do {
+                try taskRepository.context.save()
+                } catch  {
+                
+                }
+            
+            delegate?.reloadTags(word: textField.text ?? "")
             textField.text = ""
             textField.resignFirstResponder()
-            delegate?.reloadTags()
+   
             return false
         }
         return true
     }
+    
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddTagsViewController: UIViewController {
+class EditAddTagsViewController: UIViewController {
 
     
     let identifier = "AddTagsViewController"
@@ -54,8 +54,8 @@ class AddTagsViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "backToTask" {
-            guard let destination = segue.destination as? AddTaskViewController else { return }
+        if segue.identifier == "backToTaskEdit" {
+            guard let destination = segue.destination as? EditTaskViewController else { return }
             
             destination.tags = self.taskTags
             print(destination.tags)
@@ -63,8 +63,8 @@ class AddTagsViewController: UIViewController {
     }
     
     @IBAction func doneButton(_ sender: Any) {
-        self.performSegue(withIdentifier: "backToTask", sender: self)
-//        self.dismiss(animated: true)
+        self.performSegue(withIdentifier: "backToTaskEdit", sender: self)
+        self.dismiss(animated: true)
     }
     
 //    @IBAction func backToAAction(_ sender: Any) {
@@ -103,7 +103,7 @@ class AddTagsViewController: UIViewController {
     
 }
     
-extension AddTagsViewController : UITableViewDelegate, UITableViewDataSource {
+extension EditAddTagsViewController : UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -183,7 +183,7 @@ extension AddTagsViewController : UITableViewDelegate, UITableViewDataSource {
 //
 //}
 
-extension AddTagsViewController : TextFieldTaskDetailsTableViewCellDelegate {
+extension EditAddTagsViewController : TextFieldTaskDetailsTableViewCellDelegate {
     func reloadTags(word : String) {
         if (word != ""){
             if(tagsContainer.contains(word) == false){
@@ -193,19 +193,24 @@ extension AddTagsViewController : TextFieldTaskDetailsTableViewCellDelegate {
         }
        
 //        self.tagsTableView.reloadData()
-        self.tagsTableView.reloadSections([1], with: .fade)
+        self.tagsTableView.reloadSections([1], with: .automatic)
 }
 
 }
 
-extension AddTagsViewController : TagsAddTagsCollectionViewCellDelegate {
+extension EditAddTagsViewController : TagsAddTagsCollectionViewCellDelegate {
     func addTagPage(tagArray : [String]) {
         self.taskTags = tagArray
     }
     
     func reloadDataTable() {
+        
+        
         self.tagsTableView.reloadSections([1], with: .fade)
     }
+    
+    
 }
+
 
 
