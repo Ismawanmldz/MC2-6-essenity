@@ -76,7 +76,7 @@ class AddTaskViewController: UIViewController {
             }
         })
         
-        let timer = Timer(fireAt: Date(), interval: 5, target: <#T##Any#>, selector: <#T##Selector#>, userInfo: <#T##Any?#>, repeats: <#T##Bool#>)
+//        let timer = Timer(fireAt: Date(), interval: 5, target: <#T##Any#>, selector: <#T##Selector#>, userInfo: <#T##Any?#>, repeats: <#T##Bool#>)
         
         updateTask()
         
