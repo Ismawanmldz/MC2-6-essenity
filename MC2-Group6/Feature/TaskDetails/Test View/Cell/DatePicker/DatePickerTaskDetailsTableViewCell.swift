@@ -9,6 +9,8 @@ import UIKit
 
 class DatePickerTaskDetailsTableViewCell: UITableViewCell {
     
+    var minimumDate : Date?
+    
     static let identifier = "DatePickerTaskDetailsViewCell"
     
     private var dateUpdated : Date?
@@ -17,7 +19,7 @@ class DatePickerTaskDetailsTableViewCell: UITableViewCell {
     private let cellDatePicker: UIDatePicker = {
         let datePicker = UIDatePicker()
 //        datePicker.datePickerMode = UIDatePicker.Mode.date
-        datePicker.minimumDate = Date()
+//        datePicker.minimumDate = Date()
 //        datePicker.addTarget(DatePickerTaskDetailsTableViewCell.self, action: #selector(dateChanged), for: .valueChanged)
 
         datePicker.addTarget(self, action: #selector(handler(sender:)), for: UIControl.Event.valueChanged)
@@ -60,7 +62,9 @@ class DatePickerTaskDetailsTableViewCell: UITableViewCell {
         contentView.addSubview(iconImageView)
         contentView.addSubview(iconContainer)
         contentView.addSubview(label)
+
         contentView.addSubview(cellDatePicker)
+
         contentView.clipsToBounds = true
         accessoryType = .none
     }
@@ -102,5 +106,13 @@ class DatePickerTaskDetailsTableViewCell: UITableViewCell {
         iconImageView.image = model.icon
     }
     
+    public func configure(with model: TaskDatePickerOption, dateDue : Date){
+        label.text = model.title
+        iconImageView.image = model.icon
+        self.cellDatePicker.date = dateDue
+        self.minimumDate = dateDue
+        cellDatePicker.reloadInputViews()
+        cellDatePicker.minimumDate = self.minimumDate
+    }
     
 }

@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Priority" representedClassName="Priority" syncable="YES" codeGenerationType="class">
+        <attribute name="attribute" optional="YES"/>
+        <attribute name="attribute1" optional="YES"/>
+        <attribute name="attribute2" optional="YES"/>
+        <attribute name="attribute3" optional="YES"/>
         <attribute name="count" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="image" optional="YES" attributeType="Transformable"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="priorities" inverseEntity="Task"/>
         <fetchedProperty name="fetchedProperty" optional="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="Priority"/>
         </fetchedProperty>
+    </entity>
+    <entity name="ScheduledTimer" representedClassName="ScheduledTimer" syncable="YES" codeGenerationType="class">
+        <attribute name="moveToTimer" optional="YES" attributeType="Transformable"/>
+        <relationship name="task" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="scheduledTimer" inverseEntity="Task"/>
     </entity>
     <entity name="Tags" representedClassName="Tags" syncable="YES" codeGenerationType="class">
         <attribute name="tagTitle" optional="YES" attributeType="String"/>
@@ -16,15 +23,19 @@
         <attribute name="desc" optional="YES" attributeType="String"/>
         <attribute name="dueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="moveTo" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="moveToValue" optional="YES" attributeType="Transformable"/>
         <attribute name="reminder" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="reminderValue" optional="YES" attributeType="Transformable"/>
         <attribute name="status" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="tags" optional="YES" attributeType="Transformable" customClassName="[String]"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="priorities" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Priority" inverseName="tasks" inverseEntity="Priority"/>
+        <relationship name="scheduledTimer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ScheduledTimer" inverseName="task" inverseEntity="ScheduledTimer"/>
     </entity>
     <elements>
-        <element name="Priority" positionX="-18" positionY="72" width="128" height="110"/>
+        <element name="Priority" positionX="-18" positionY="72" width="128" height="155"/>
         <element name="Tags" positionX="-27" positionY="81" width="128" height="44"/>
-        <element name="Task" positionX="-45" positionY="0" width="128" height="149"/>
+        <element name="Task" positionX="-45" positionY="0" width="128" height="194"/>
+        <element name="ScheduledTimer" positionX="-18" positionY="108" width="128" height="59"/>
     </elements>
 </model>

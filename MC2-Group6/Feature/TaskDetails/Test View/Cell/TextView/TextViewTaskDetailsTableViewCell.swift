@@ -14,7 +14,7 @@ class TextViewTaskDetailsTableViewCell: UITableViewCell {
     
     static let identifier = "TextViewTaskDetailsTableViewCell"
 
-    private let cellTextView : UITextView = {
+    let cellTextView : UITextView = {
         let cellTextView = UITextView()
         let padding = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         
@@ -53,7 +53,13 @@ class TextViewTaskDetailsTableViewCell: UITableViewCell {
         cellTextView.text = ""
         customFunc = model.handler
     
+    
     }
     
+    public func configure(with model: TaskTextFieldOption, taskDescription : String){
+        cellTextView.text = taskDescription
+        customFunc = model.handler
+        
+    }
     
 }

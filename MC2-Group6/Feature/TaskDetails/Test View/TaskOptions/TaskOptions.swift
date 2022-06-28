@@ -63,6 +63,7 @@ struct TaskSwitchOption {
 }
 
 struct TaskTagsOption {
+    let title : String?
     let tagTitle : [String]
     let handler : (()->Void)
 }

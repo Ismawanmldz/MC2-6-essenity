@@ -11,7 +11,30 @@ import UIKit
 class SeederCoreDataStore {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    func seedPriotities() {
+        var priorities = [
+            (name: "Do Now",count : 0),
+            (name: "Plan It" , count : 0),
+            (name: "Delegate", count : 0),
+            (name: "Eliminate", count : 0),
+        ]
         
+        for priority in priorities{
+//            let newPriority = NSEntityDescription.insertNewObject(forEntityName: "Priority", into: context) as Priority
+            let newPriority = Priority(context: self.context)
+            newPriority.title = priority.name
+            newPriority.count = Int32(priority.count)
+        }
+        do {
+                print("saved")
+               try context.save()
+            } catch _ {
+               }
+        
+    }
+
+    
     func seedTasks() {
         
 //        let tasks = [
@@ -40,6 +63,25 @@ class SeederCoreDataStore {
     }
     
     init() {
+        
+    }
+    
+    func seedTags() {
+        let newTags = [ "Assignment", "Task", "Exam", "Project"
+        ]
+        
+        
+        for noTag in newTags {
+
+            let newTag = Tags(context: self.context)
+            newTag.tagTitle = noTag
+            
+        }
+        do {
+               try context.save()
+            } catch  {
+            
+               }
         
     }
     
