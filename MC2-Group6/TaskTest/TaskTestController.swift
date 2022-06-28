@@ -10,6 +10,16 @@ import UIKit
 
 class TaskTestController: UIViewController {
 
+//    @IBOutlet weak var TaskCell: UICollectionView!
+//    @IBOutlet weak var TaskTableCell: UITableView!
+//
+//    @IBOutlet weak var BackGroundViewWhite: UIView!
+    
+    @IBOutlet weak var TaskCell: UICollectionView!
+    @IBOutlet weak var TaskTableCell: UITableView!
+//    @IBOutlet weak var BackgroundViewWhite: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
