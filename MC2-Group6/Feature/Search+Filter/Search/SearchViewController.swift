@@ -24,6 +24,13 @@ class SearchViewController: UIViewController {
     var searchActive : Bool = true
     var checkIndex = 0
     
+    //MARK: tambahin coding
+    var filteredSeg = [TaskSearch]()
+    var filteredText = [TaskSearch]()
+    var filteredTag = [TaskSearch]()
+    //tambahin coding
+    
+    
     //Receive Array
     var myIncomeArray = [String]()
     var mySeguedArray = [String]() {
@@ -31,12 +38,16 @@ class SearchViewController: UIViewController {
                  
                  myIncomeArray = mySeguedArray //no need to call viewDidLoad
                  filterButton.setImage(UIImage(named: "line.3.horizontal.decrease.circle.fill"), for: .normal)
-                 print(myIncomeArray[0])
-                 print("Array dari SVC")
+                 print("Array dari SVC1")
                  print(myIncomeArray)
+                 print("Array dari SVC2")
+                 print(mySeguedArray)
+                 //edit coding
+                 
+                 // edit coding
+                 
              }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,9 +62,8 @@ class SearchViewController: UIViewController {
             updateSearchResults(for: searchBar)
         }
         initSegmentedControl()
+        
     }
-    
-    
     
     //MARK: Table View Cell
     func initList()
@@ -103,8 +113,6 @@ class SearchViewController: UIViewController {
 
 
         filteredForSearchTextAndScopeButton(searchText: searchText!, scopeButton: scopeButton!)
-        
-//        filteredForSearchTextAndScopeButton(scopeButton: scopeButton, scopeTag: )
     }
 
     func filteredForSearchTextAndScopeButton(searchText: String, scopeButton: String)
@@ -119,9 +127,28 @@ class SearchViewController: UIViewController {
         }
         print(scopeButton)
         
+        
+        
         taskTableView.reloadData()
         
+        //tambahin coding
+//        filteredArrayAndTag()
+        //tambahin coding
+        
     }
+    
+    //MARK: ADD FILTER BY TAG //tambahin coding
+    func filteredArrayAndTag() {
+        if myIncomeArray.count == 1 {
+            filteredTag = filteredTask.filter { $0.tags.contains(where: { myIncomeArray.contains($0) }) }
+        } else {
+            filteredTag = filteredTask.filter { $0.tags == myIncomeArray }
+        }
+        filteredTask = filteredTag
+        print(filteredTag)
+        taskTableView.reloadData()
+    }
+    //tambahin coding
     
     // Set the spacing between sections
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -248,22 +275,40 @@ extension SearchViewController: UISearchBarDelegate {
     
     //To search by text in search bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTask = filteredTask.filter({ (anArray) -> Bool in
-            guard let firstString = (anArray.title)
-            else{
-                return false
-            }
-            let tmp: NSString = firstString as NSString
-            let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
-            print (tmp)
-            return range.location != NSNotFound
-        })
-//        if(filteredTask.count == 0){
-//            searchActive = true
-//        } else {
-//            searchActive = true
-//        }
-        searchActive = true
+//        filteredTask = filteredTask.filter({ (anArray) -> Bool in
+//            guard let firstString = (anArray.title)
+//            else{
+//                return false
+//            }
+//            let tmp: NSString = firstString as NSString
+//            let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
+//            print (tmp)
+//            return range.location != NSNotFound
+//        })
+////        if(filteredTask.count == 0){
+////            searchActive = true
+////        } else {
+////            searchActive = true
+////        }
+//        searchActive = true
+//        self.taskTableView.reloadData()
+//
+        
+        //MARK: tambah coding
+        if searchText != "" {
+            filteredText = filteredTask.filter{ $0.title.contains(searchText)}
+            searchActive = true
+        } else {
+            filteredText = filteredTask
+            searchActive = false
+        }
+        filteredTask = filteredText
         self.taskTableView.reloadData()
+        //tambah coding
+
     }
+    
+    //tambah coding
+
+    
 }
