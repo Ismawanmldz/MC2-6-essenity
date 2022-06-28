@@ -55,6 +55,12 @@
 		4C530BF228688AD7000A61F0 /* AddTagsTagsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C530BF028688AD7000A61F0 /* AddTagsTagsCollectionViewCell.swift */; };
 		4C530BF328688AD7000A61F0 /* AddTagsTagsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C530BF128688AD7000A61F0 /* AddTagsTagsCollectionViewCell.xib */; };
 		4C530BF628689548000A61F0 /* Textfield+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C530BF528689548000A61F0 /* Textfield+Delegate.swift */; };
+		4C7011A52869D60F00D4F3D7 /* TagsAddTagsCollectionViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7011A42869D60F00D4F3D7 /* TagsAddTagsCollectionViewCellDelegate.swift */; };
+		4C7011A72869E59600D4F3D7 /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7011A62869E59600D4F3D7 /* DataHelper.swift */; };
+		4C7011A92869FA6700D4F3D7 /* TagsTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7011A82869FA6700D4F3D7 /* TagsTableViewCellDelegate.swift */; };
+		4C7011AD286A03CF00D4F3D7 /* EditTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7011AB286A03CF00D4F3D7 /* EditTaskViewController.swift */; };
+		4C7011B0286A4B6800D4F3D7 /* EditAddTagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7011AF286A4B6800D4F3D7 /* EditAddTagsViewController.swift */; };
+		4C7011B2286A521200D4F3D7 /* AddTagsTagCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7011B1286A521200D4F3D7 /* AddTagsTagCollectionViewDelegate.swift */; };
 		4C7B0C5B2861EC3600A083CA /* TagsTaskDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7B0C5A2861EC3600A083CA /* TagsTaskDetailsTableViewCell.swift */; };
 		4C7B0C772862452700A083CA /* TagsWBCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C7B0C752862452700A083CA /* TagsWBCollectionViewCell.xib */; };
 		4C7B0C782862452700A083CA /* TagsWBCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7B0C762862452700A083CA /* TagsWBCollectionViewCell.swift */; };
@@ -129,6 +135,12 @@
 		4C530BF028688AD7000A61F0 /* AddTagsTagsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagsTagsCollectionViewCell.swift; sourceTree = "<group>"; };
 		4C530BF128688AD7000A61F0 /* AddTagsTagsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTagsTagsCollectionViewCell.xib; sourceTree = "<group>"; };
 		4C530BF528689548000A61F0 /* Textfield+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Textfield+Delegate.swift"; sourceTree = "<group>"; };
+		4C7011A42869D60F00D4F3D7 /* TagsAddTagsCollectionViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsAddTagsCollectionViewCellDelegate.swift; sourceTree = "<group>"; };
+		4C7011A62869E59600D4F3D7 /* DataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
+		4C7011A82869FA6700D4F3D7 /* TagsTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsTableViewCellDelegate.swift; sourceTree = "<group>"; };
+		4C7011AB286A03CF00D4F3D7 /* EditTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewController.swift; sourceTree = "<group>"; };
+		4C7011AF286A4B6800D4F3D7 /* EditAddTagsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddTagsViewController.swift; sourceTree = "<group>"; };
+		4C7011B1286A521200D4F3D7 /* AddTagsTagCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTagsTagCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		4C7B0C5A2861EC3600A083CA /* TagsTaskDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsTaskDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		4C7B0C752862452700A083CA /* TagsWBCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagsWBCollectionViewCell.xib; sourceTree = "<group>"; };
 		4C7B0C762862452700A083CA /* TagsWBCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsWBCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -166,6 +178,7 @@
 		4C0814EB285E0B0C00740CF0 /* TaskDetails */ = {
 			isa = PBXGroup;
 			children = (
+				4C7011AA286A03AF00D4F3D7 /* Edit Task */,
 				4C530BE52868034C000A61F0 /* AddTags */,
 				4C0815212860AA2800740CF0 /* Test View */,
 				4C0814F1285E0B7000740CF0 /* Controller */,
@@ -406,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				4C3560D1285C965500905E01 /* SeederCoreDataStore.swift */,
+				4C7011A62869E59600D4F3D7 /* DataHelper.swift */,
 			);
 			path = DataStore;
 			sourceTree = "<group>";
@@ -425,6 +439,7 @@
 			children = (
 				4C530BF028688AD7000A61F0 /* AddTagsTagsCollectionViewCell.swift */,
 				4C530BF128688AD7000A61F0 /* AddTagsTagsCollectionViewCell.xib */,
+				4C7011B1286A521200D4F3D7 /* AddTagsTagCollectionViewDelegate.swift */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -434,8 +449,18 @@
 			children = (
 				4C530BE628680360000A61F0 /* AddTagsTagsTableViewCell.swift */,
 				4C530BE728680360000A61F0 /* AddTagsTagsTableViewCell.xib */,
+				4C7011A42869D60F00D4F3D7 /* TagsAddTagsCollectionViewCellDelegate.swift */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		4C7011AA286A03AF00D4F3D7 /* Edit Task */ = {
+			isa = PBXGroup;
+			children = (
+				4C7011AF286A4B6800D4F3D7 /* EditAddTagsViewController.swift */,
+				4C7011AB286A03CF00D4F3D7 /* EditTaskViewController.swift */,
+			);
+			path = "Edit Task";
 			sourceTree = "<group>";
 		};
 		4C7B0C7D286246E800A083CA /* Wb */ = {
@@ -509,6 +534,7 @@
 			children = (
 				4C7B0C8D286267C800A083CA /* TagsCollectionView */,
 				4C7B0C962862698700A083CA /* TagsTableViewCell.swift */,
+				4C7011A82869FA6700D4F3D7 /* TagsTableViewCellDelegate.swift */,
 				4C7B0C972862698700A083CA /* TagsTableViewCell.xib */,
 			);
 			path = TagsCell;
@@ -665,6 +691,7 @@
 				4C081510285E209A00740CF0 /* TaskDetailsViewController+Delegate.swift in Sources */,
 				4C0815442860FB4200740CF0 /* TagsCollectionViewCell.swift in Sources */,
 				4C7B0CB7286796DE00A083CA /* TaskOptions.swift in Sources */,
+				4C7011A52869D60F00D4F3D7 /* TagsAddTagsCollectionViewCellDelegate.swift in Sources */,
 				4C7B0C862862554300A083CA /* TagsAltTableViewCell.swift in Sources */,
 				4C530BE42867A2B7000A61F0 /* TagsTaskDetailsCollectionViewCellDelegate.swift in Sources */,
 				4C530BF628689548000A61F0 /* Textfield+Delegate.swift in Sources */,
@@ -687,16 +714,21 @@
 				4C7B0C5B2861EC3600A083CA /* TagsTaskDetailsTableViewCell.swift in Sources */,
 				4C7B0CB12867286300A083CA /* PickerTableCellPicker.swift in Sources */,
 				4C3560B12859CCD100905E01 /* MC2_Group6.xcdatamodeld in Sources */,
+				4C7011A92869FA6700D4F3D7 /* TagsTableViewCellDelegate.swift in Sources */,
 				4C0815362860CED900740CF0 /* SwitchTaskDetailsTableViewCell.swift in Sources */,
 				4C08153D2860E2D300740CF0 /* TextFieldTaskDetailsTableViewCell.swift in Sources */,
 				4C530BED2868582E000A61F0 /* DatePickerTaskDetailsTableViewCellDelegate.swift in Sources */,
+				4C7011B2286A521200D4F3D7 /* AddTagsTagCollectionViewDelegate.swift in Sources */,
 				4C7B0CAE28671CE400A083CA /* PickerTaskDetailsTableViewCell.swift in Sources */,
 				4C0814FB285E109100740CF0 /* SwitchTableViewCellDelegate.swift in Sources */,
 				4C081504285E133C00740CF0 /* DatePickerTableViewCell.swift in Sources */,
 				4C3560CF285C95AB00905E01 /* TaskRepository.swift in Sources */,
+				4C7011AD286A03CF00D4F3D7 /* EditTaskViewController.swift in Sources */,
 				4C08152C2860AE0000740CF0 /* TaskDetailsTableViewCell.swift in Sources */,
 				4C7B0C982862698700A083CA /* TagsTableViewCell.swift in Sources */,
+				4C7011B0286A4B6800D4F3D7 /* EditAddTagsViewController.swift in Sources */,
 				4C0815382860DA5000740CF0 /* DatePickerTaskDetailsTableViewCell.swift in Sources */,
+				4C7011A72869E59600D4F3D7 /* DataHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

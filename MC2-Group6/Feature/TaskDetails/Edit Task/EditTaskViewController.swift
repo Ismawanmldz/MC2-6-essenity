@@ -9,27 +9,28 @@ import UIKit
 import CloudKit
 import CoreData
 
-class AddTaskViewController: UIViewController {
+class EditTaskViewController: UIViewController {
     
     let taskRepository = TaskRepository.shared
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    
     private var dueDateOn : Bool = true
     private var currentTask : Task?
 
-    private var priority : String = "Do Now"
-    private var important : Bool = true
-    private var urgent : Bool = true
-    var tags : [String] = []
-    private var taskDescription : String?
     private var taskTitle : String?
+    private var taskDescription : String?
+    var taskTags : [String] = []
+    private var priority : String = "Do Now"
+    var tags : [String] = []
     private var dueDate : Date? = Date()
-    private var reminder : String = "None                                      "
-    private var moveTo : String = "None                                    "
     private var reminderDate : Date?
     private var moveToDate : Date?
-    var taskTags : [String] = []
+    
+    private var important : Bool = true
+    private var urgent : Bool = false
+
+    private var reminder : String = "None                                      "
+    private var moveTo : String = "None                                    "
     
     private var reminderValue: Int = 0
     private var reminderTimeValue : Int = 0
@@ -70,9 +71,125 @@ class AddTaskViewController: UIViewController {
     }
     
 //    func add(Task: task) {
-//        
+//
 //    }
 
+    func fetchTask() {
+         do {
+             let task = try context.fetch(Task.fetchRequest())[0]
+             self.currentTask = task
+             configureTask(task: self.currentTask!)
+             
+             DispatchQueue.main.async {
+                 self.tableView.reloadData()
+             }
+         } catch{
+             
+         }
+     }
+     
+    func configureTask(task : Task){
+        self.taskTitle = "Dummy"
+        self.taskDescription = "Description"
+        self.taskTags = task.tags!
+        if(task.dueDate != nil) {
+            self.dueDateOn = true
+            self.dueDate = task.dueDate
+            self.reminderDate = task.reminder
+            self.moveToDate = task.moveTo
+        }
+        else {
+            self.dueDateOn = false
+        }
+        print("DUEDATE")
+        print(self.dueDateOn)
+        
+                let dateFormater = DateFormatter()
+                dateFormater.dateFormat = "MM-dd-yyyy HH:mm"
+        
+                
+        self.priority = (task.priorities?.title)!
+
+        if priority == "Do Now"{
+            self.important = true
+            self.urgent = true
+        } else if priority == "Plan It"{
+            self.urgent = false
+            self.important = true
+        }else if priority == "Delegate"{
+            self.urgent = true
+            self.important = false
+        }else if priority == "Eliminate"{
+            self.urgent = false
+            self.important = false
+        }
+        
+        
+        setPickerReminder(no: 1, type: 1)
+        setPickerMoveTo(no: 2, type: 2)
+    }
+    
+    func setPickerReminder(no: Int, type: Int) {
+        self.reminderValue = no
+        self.reminderTimeValue = type
+        
+        if type == 0 {
+            self.reminderDate = dueDate
+            self.reminder = "None"
+        }
+        else if type == 1 {
+            if let date = Calendar.current.date(byAdding: .minute, value: -1*no, to: dueDate!) {
+                self.reminderDate = date
+                self.reminder = "\(no)"+" minutes before"
+                
+            }
+        }
+        else if type == 2 {
+            if let date = Calendar.current.date(byAdding: .hour, value: -1*no, to: dueDate!) {
+                self.reminderDate = date
+                self.reminder = "\(no)"+" hours before"
+            }
+        }
+        else if type == 3 {
+            if let date = Calendar.current.date(byAdding: .day, value: -1*no, to: dueDate!) {
+                self.reminderDate = date
+                self.reminder = "\(no)"+" days before"
+                
+            }
+        }
+    }
+    
+    func setPickerMoveTo(no: Int, type: Int) {
+        self.moveToValue = no
+        self.moveToTimeValue = type
+        
+        if type == 0 {
+            self.moveToDate = dueDate
+            self.moveTo = "None"
+        }
+        else if type == 1 {
+            if let date = Calendar.current.date(byAdding: .minute, value: -1*no, to: dueDate!) {
+                self.moveToDate = date
+                self.moveTo = "\(no)"+" minutes before"
+                
+            }
+        }
+        else if type == 2 {
+            if let date = Calendar.current.date(byAdding: .hour, value: -1*no, to: dueDate!) {
+                self.moveToDate = date
+                self.moveTo = "\(no)"+" hours before"
+            }
+        }
+        else if type == 3 {
+            if let date = Calendar.current.date(byAdding: .day, value: -1*no, to: dueDate!) {
+                self.moveToDate = date
+                self.moveTo = "\(no)"+" days before"
+                
+            }
+        }
+    }
+    
+    
     func updateTask() {
         let task = Task(context: self.taskRepository.context)
         
@@ -88,7 +205,7 @@ class AddTaskViewController: UIViewController {
         task.tags = self.taskTags
         task.desc = taskDescription
         task.status = false
-
+    
 //        var priorityIndex : Int?
 //
 //        if(self.priority == "Do Now"){
@@ -139,7 +256,7 @@ class AddTaskViewController: UIViewController {
 
         
 //        models[4].options.insert(    .switchCell(model: SettingsSwitchOption(title: "Due Date", icon: UIImage(systemName: "calendar"), handler: {
-//            
+//
 //        }, isOn: self.dueDateOn, noTag: 41)), at: 0)
             
         self.tableView.reloadSections([4], with: .none)
@@ -161,6 +278,7 @@ class AddTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchTask()
         configure()
         
         title = "Task Details"
@@ -250,21 +368,21 @@ class AddTaskViewController: UIViewController {
         ]))
         
         
-//        models.append(Section(title: "", options: [
-//            .buttonCell(model: TaskButtonOption(title: "Delete Task", icon: UIImage(systemName: "trash"), handler: {
-//
-//            }))
-//
-//
-//
-//        ]))
+        models.append(Section(title: "", options: [
+            .buttonCell(model: TaskButtonOption(title: "Delete Task", icon: UIImage(systemName: "trash"), handler: {
+
+            }))
+
+
+
+        ]))
         
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toAddTags" {
-            guard let destination = segue.destination as? AddTagsViewController else { return }
+        if segue.identifier == "toAddTagsFromEdit" {
+            guard let destination = segue.destination as? EditAddTagsViewController else { return }
             print("this doesnt work")
             print(self.tags)
             destination.taskTags = self.tags
@@ -281,7 +399,7 @@ class AddTaskViewController: UIViewController {
     
 }
 
-extension AddTaskViewController : UITableViewDelegate, UITableViewDataSource {
+extension EditTaskViewController : UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return models.count
@@ -329,8 +447,16 @@ extension AddTaskViewController : UITableViewDelegate, UITableViewDataSource {
                 cell.delegate = self
                 cell.configure(with: model, dueDateOn: self.dueDateOn)
             } else {
-                cell.delegate = self
-                cell.configure(with: model)
+                if indexPath.section == 3 {
+                    if indexPath.row == 0 {
+                        cell.delegate = self
+                        cell.configure(with: model,important : self.urgent)
+                    } else {
+                        cell.delegate = self
+                        cell.configure(with: model,important: self.important)
+                    }
+                }
+          
             }
           
             
@@ -344,7 +470,7 @@ extension AddTaskViewController : UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.delegate = self
-            cell.configure(with: model)
+            cell.configure(with: model,dateDue: self.dueDate!)
             return cell
         case .textFieldCell(let model) :
             guard let cell = tableView.dequeueReusableCell(
@@ -354,7 +480,7 @@ extension AddTaskViewController : UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            cell.configure(with: model)
+            cell.configure(with: model, title : self.taskTitle!)
             return cell
         case .tagsCell(let model) :
             guard let cell = tableView.dequeueReusableCell(
@@ -364,6 +490,7 @@ extension AddTaskViewController : UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.delegate = self
+        
             cell.configure(with: model,tagsArray : self.tags)
 //            cell.configure(with: model)
         
@@ -376,6 +503,7 @@ extension AddTaskViewController : UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.configure(with: model)
+            cell.configure(with: model, taskDescription: self.taskDescription!)
             return cell
         case .buttonCell(let model) :
             guard let cell = tableView.dequeueReusableCell(
@@ -433,6 +561,12 @@ extension AddTaskViewController : UITableViewDelegate, UITableViewDataSource {
 //    }
 //
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 5 {
+            print("delete")
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
 
@@ -448,7 +582,7 @@ extension AddTaskViewController : UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension AddTaskViewController : SwitchTaskDetailsTableViewCellDelegate {
+extension EditTaskViewController : SwitchTaskDetailsTableViewCellDelegate {
     func dueDateTapped() {
         let dueDate = self.dueDateOn
         self.dueDateOn = !dueDate
@@ -476,7 +610,7 @@ extension AddTaskViewController : SwitchTaskDetailsTableViewCellDelegate {
 }
 
 
-extension AddTaskViewController : TagsTaskDetailsCollectionViewCellDelegate {
+extension EditTaskViewController : TagsTaskDetailsCollectionViewCellDelegate {
     func addTagPage(tagArray: [String]) {
 //        self.tags = tagArray
 //        print(tags)
@@ -485,11 +619,11 @@ extension AddTaskViewController : TagsTaskDetailsCollectionViewCellDelegate {
     
     func addTagPage() {
         
-        performSegue(withIdentifier: "toAddTags", sender: self)
+        performSegue(withIdentifier: "toAddTagsFromEdit", sender: self)
     }
 }
 
-extension AddTaskViewController : PickerTaskDetailsTableViewCellDelegate {
+extension EditTaskViewController : PickerTaskDetailsTableViewCellDelegate {
     func setMoveTo(no: Int, type: Int, text: String) {
         self.moveTo = text
         
@@ -552,7 +686,7 @@ extension AddTaskViewController : PickerTaskDetailsTableViewCellDelegate {
     }
 }
 
-extension AddTaskViewController : DatePickerTaskDetailsTableViewCellDelegate {
+extension EditTaskViewController : DatePickerTaskDetailsTableViewCellDelegate {
     func updateDueDate(date: Date) {
         self.dueDate = date
 //        let dateFormater = DateFormatter()

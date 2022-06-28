@@ -53,7 +53,13 @@ class TextViewTaskDetailsTableViewCell: UITableViewCell {
         cellTextView.text = ""
         customFunc = model.handler
     
+    
     }
     
+    public func configure(with model: TaskTextFieldOption, taskDescription : String){
+        cellTextView.text = taskDescription
+        customFunc = model.handler
+        
+    }
     
 }
