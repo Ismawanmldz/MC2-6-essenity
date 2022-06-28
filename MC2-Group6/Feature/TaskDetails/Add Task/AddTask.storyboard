@@ -71,12 +71,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="K4Q-PT-OGA">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="305-9S-MRR">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="YY4-PK-T06">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="YY4-PK-T06">
                                 <rect key="frame" x="20" y="5" width="92" height="34.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system"/>
                                 <connections>
+                                    <action selector="backButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="YQ2-Gq-cqz"/>
                                     <action selector="cancelButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Tjo-Ia-zM7"/>
                                 </connections>
                             </button>
@@ -121,7 +122,10 @@
                                                 <rect key="frame" x="20" y="11" width="92" height="34.5"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="X"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system"/>
+                                                <connections>
+                                                    <action selector="backButtonPressed:" destination="hxb-MV-dXM" eventType="touchUpInside" id="V9M-Bz-RtR"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="plain" id="ss4-9M-RZJ">
@@ -140,11 +144,11 @@
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kPE-YT-vcJ">
                                 <rect key="frame" x="0.0" y="100" width="414" height="697"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HbO-df-bCi"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="rU3-Gj-X2p" firstAttribute="top" secondItem="HbO-df-bCi" secondAttribute="top" id="0AP-L7-oMp"/>
                             <constraint firstItem="rU3-Gj-X2p" firstAttribute="top" secondItem="HbO-df-bCi" secondAttribute="top" id="0X1-PF-VxX"/>
@@ -210,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OZX-Sb-A2E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="955" y="-643"/>
+            <point key="canvasLocation" x="910" y="-867"/>
         </scene>
         <!--Edit Add Tags View Controller-->
         <scene sceneID="r3v-we-Gua">
@@ -251,11 +255,11 @@
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="E8G-va-3hG">
                                 <rect key="frame" x="0.0" y="100" width="414" height="697"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="u3e-qu-FsF"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
                         <constraints>
                             <constraint firstItem="E8G-va-3hG" firstAttribute="top" secondItem="0BJ-DU-1V6" secondAttribute="bottom" constant="12" id="2f0-lB-AXS"/>
                             <constraint firstItem="0BJ-DU-1V6" firstAttribute="leading" secondItem="u3e-qu-FsF" secondAttribute="leading" id="4pM-a2-W3b"/>
@@ -278,10 +282,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Cv-gL-Vbw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="3qm-Uh-RN7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1680" y="-644"/>
+            <point key="canvasLocation" x="1680" y="-937"/>
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

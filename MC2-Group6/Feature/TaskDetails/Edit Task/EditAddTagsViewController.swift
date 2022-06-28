@@ -23,6 +23,10 @@ class EditAddTagsViewController: UIViewController {
     
     @IBOutlet weak var tagsCollectionView: UICollectionView!
     
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

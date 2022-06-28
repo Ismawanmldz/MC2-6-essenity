@@ -26,9 +26,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PaF-mM-MqO">
-                                <rect key="frame" x="51" y="1" width="17" height="14"/>
+                                <rect key="frame" x="51" y="1" width="17" height="16"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title=""/>
+                                <buttonConfiguration key="configuration" style="plain" image="x.circle.fill" catalog="system" title="">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="10"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="deleteTag:" destination="gTV-IL-0wX" eventType="touchUpInside" id="9ra-Jd-dzT"/>
                                 </connections>
@@ -36,14 +38,16 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="PaF-mM-MqO" firstAttribute="leading" secondItem="7lJ-F2-LXJ" secondAttribute="trailing" constant="3.5" id="2WL-G6-202"/>
                             <constraint firstItem="PaF-mM-MqO" firstAttribute="leading" secondItem="7lJ-F2-LXJ" secondAttribute="trailing" constant="3.5" id="9qM-pB-T0Z"/>
                             <constraint firstItem="PaF-mM-MqO" firstAttribute="leading" secondItem="7lJ-F2-LXJ" secondAttribute="trailing" constant="3.5" id="EgJ-ua-jy5"/>
-                            <constraint firstAttribute="bottom" secondItem="PaF-mM-MqO" secondAttribute="bottom" constant="4" id="KO2-0A-KW9"/>
                             <constraint firstItem="PaF-mM-MqO" firstAttribute="top" secondItem="MgH-zz-2bf" secondAttribute="top" constant="1" id="Xw3-Iy-aTy"/>
                             <constraint firstAttribute="bottom" secondItem="7lJ-F2-LXJ" secondAttribute="bottom" constant="1" id="cLo-Y1-Ozx"/>
+                            <constraint firstAttribute="trailing" secondItem="PaF-mM-MqO" secondAttribute="trailing" constant="11" id="dPj-ty-Q42"/>
                             <constraint firstAttribute="trailing" secondItem="PaF-mM-MqO" secondAttribute="trailing" constant="11" id="gmT-at-PYx"/>
                             <constraint firstItem="7lJ-F2-LXJ" firstAttribute="top" secondItem="MgH-zz-2bf" secondAttribute="top" id="iYa-CG-P7s"/>
                             <constraint firstItem="7lJ-F2-LXJ" firstAttribute="leading" secondItem="MgH-zz-2bf" secondAttribute="leading" constant="12" id="lVh-gG-LLJ"/>
+                            <constraint firstAttribute="bottom" secondItem="PaF-mM-MqO" secondAttribute="bottom" constant="2" id="mi1-dI-Uv8"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -63,4 +67,7 @@
             <point key="canvasLocation" x="142.75362318840581" y="60.602678571428569"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="x.circle.fill" catalog="system" width="128" height="121"/>
+    </resources>
 </document>

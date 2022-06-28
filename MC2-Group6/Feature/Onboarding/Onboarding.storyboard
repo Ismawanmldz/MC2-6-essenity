@@ -89,6 +89,9 @@
                                 <state key="normal" title="Get Started">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="startButtonPressed:" destination="dVH-op-Hh6" eventType="touchUpInside" id="aqo-TF-0cY"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqg-tc-9pv" userLabel="Previous Button">
                                 <rect key="frame" x="28" y="747" width="66" height="50"/>
@@ -159,15 +162,17 @@
                         <outlet property="previousButton" destination="sqg-tc-9pv" id="NLm-Ns-W1h"/>
                         <outlet property="skipButton" destination="A3K-gC-mDQ" id="TLE-Ma-ZMA"/>
                         <outlet property="startButton" destination="pY8-bX-o7F" id="yCC-AX-FVm"/>
+                        <segue destination="B2X-9D-jWK" kind="unwind" identifier="unwindToInitial" unwindAction="unwind:" id="6H7-Dz-LIb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NRT-ZU-qK0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="B2X-9D-jWK" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="7570.7692307692305" y="3051.8957345971562"/>
         </scene>
     </scenes>
     <resources>
-        <image name="onBoarding0" width="3400" height="3250"/>
+        <image name="onBoarding0" width="6800" height="6500"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

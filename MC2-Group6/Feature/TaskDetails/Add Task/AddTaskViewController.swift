@@ -65,6 +65,11 @@ class AddTaskViewController: UIViewController {
         
     }
     
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
+    
+    
     @IBAction func doneButton(_ sender: Any) {
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {success, error in

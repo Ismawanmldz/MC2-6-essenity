@@ -14,6 +14,11 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var taskTableView: UITableView!
    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        
+        self.dismiss(animated: true)
+    }
+    
     var taskList = [TaskSearch]()
     var filteredTask = [TaskSearch]()
     var searchActive : Bool = true

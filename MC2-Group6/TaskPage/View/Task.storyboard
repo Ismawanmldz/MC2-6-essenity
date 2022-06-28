@@ -9,20 +9,30 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Storyboard Reference-->
-        <scene sceneID="FdA-Mj-3zL">
+        <!--SearchFilter-->
+        <scene sceneID="3tK-i6-V2D">
             <objects>
-                <viewControllerPlaceholder id="cVb-O7-giH" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="oOp-YN-bmU"/>
+                <viewControllerPlaceholder storyboardName="SearchFilter" id="UAj-qG-roK" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="B4G-Ao-2OA"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Atf-kx-c9B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UFO-c5-owx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="673" y="84"/>
+            <point key="canvasLocation" x="742" y="-54"/>
+        </scene>
+        <!--AddTask-->
+        <scene sceneID="raR-la-Dkn">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddTask" id="3xS-qL-q5e" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gaP-ax-KJQ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lg6-ZP-XFB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="783" y="210"/>
         </scene>
         <!--Task-->
         <scene sceneID="Ehb-se-hv4">
             <objects>
-                <viewController id="fdG-aV-fcG" customClass="ViewControllerTask" customModule="MC2_Group6" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fdG-aV-fcG" customClass="MainViewController" customModule="MC2_Group6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ua7-T9-Lzj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -122,10 +132,13 @@
                                     <rect key="frame" x="343" y="0.0" width="51" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system">
+                                    <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system" title="">
                                         <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
+                                    <connections>
+                                        <action selector="addTaskButtonPressed:" destination="fdG-aV-fcG" eventType="touchUpInside" id="kH7-XF-8xh"/>
+                                    </connections>
                                 </button>
                             </barButtonItem>
                             <barButtonItem style="plain" id="JIA-8Q-Lqi">
@@ -138,10 +151,10 @@
                                         <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20" scale="default"/>
                                         <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </buttonConfiguration>
+                                    <connections>
+                                        <action selector="searchButtonPressed:" destination="fdG-aV-fcG" eventType="touchUpInside" id="HeZ-fi-UaH"/>
+                                    </connections>
                                 </button>
-                                <connections>
-                                    <segue destination="cVb-O7-giH" kind="show" id="W1u-sw-Sab"/>
-                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
@@ -150,6 +163,8 @@
                         <outlet property="BackGroundViewWhite" destination="rcl-sa-Fpa" id="AgP-gO-H9B"/>
                         <outlet property="TaskCell" destination="gbx-ph-oIM" id="iom-gx-3xR"/>
                         <outlet property="TaskTableCell" destination="Ma9-uF-rJz" id="YTN-72-HLk"/>
+                        <segue destination="UAj-qG-roK" kind="presentation" identifier="toSearchPage" modalPresentationStyle="fullScreen" id="LYY-JW-MPf"/>
+                        <segue destination="3xS-qL-q5e" kind="presentation" identifier="toAddTaskPage" modalPresentationStyle="fullScreen" id="BAW-UU-fuB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZNp-zf-FRa" sceneMemberID="firstResponder"/>

@@ -9,6 +9,7 @@ import UIKit
 
 class TaskRepository {
     
+    var initialLoad : Bool = false
     var coreDataStore : SeederCoreDataStore?
     
     static let shared = TaskRepository(coreDataStore: SeederCoreDataStore())

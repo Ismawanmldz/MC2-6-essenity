@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewControllerTask: UIViewController {
+class MainViewController: UIViewController {
     
     @IBOutlet weak var TaskCell: UICollectionView!
     @IBOutlet weak var TaskTableCell: UITableView!
@@ -19,7 +19,13 @@ class ViewControllerTask: UIViewController {
     
     var filterTask = [TaskMainPage]()
     
+    @IBAction func searchButtonPressed(_ sender: UIButton){
+        performSegue(withIdentifier: "toSearchPage", sender: self)
+    }
     
+    @IBAction func addTaskButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "toAddTaskPage", sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +79,7 @@ class ViewControllerTask: UIViewController {
 
 // collection view My priorities
 
-extension ViewControllerTask: UICollectionViewDelegate, UICollectionViewDataSource{
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     
 
 func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -136,7 +142,7 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
 
 //Table view My Task
 
-extension ViewControllerTask: UITableViewDelegate, UITableViewDataSource {
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

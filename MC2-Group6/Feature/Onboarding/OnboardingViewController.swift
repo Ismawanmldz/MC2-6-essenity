@@ -9,6 +9,8 @@ import UIKit
 
 class OnboardingViewController: UIViewController {
 
+    let taskRepository = TaskRepository.shared
+    
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var previousButton: UIButton!
@@ -37,8 +39,23 @@ class OnboardingViewController: UIViewController {
         initList()
         collectionView.contentInsetAdjustmentBehavior = .never
         pageControl.numberOfPages = slides.count
+        createNewUser()
         currentPage == 0 ? hidePreviousButton() : showPreviousButton()
     }
+    
+    
+    func createNewUser() {
+        let newUser = User(context: taskRepository.context)
+        newUser.exist = true
+        do {
+            try taskRepository.context.save()
+        }
+        catch {
+            
+        }
+    }
+    
+    
     
     func initList(){
         pageControl.currentPageIndicatorTintColor = .darkBlue
@@ -52,6 +69,13 @@ class OnboardingViewController: UIViewController {
         startButton.layer.cornerRadius = 10
     }
         
+    @IBAction func startButtonPressed(_ sender : UIButton){
+        taskRepository.initialLoad = true
+        
+        performSegue(withIdentifier: "unwindToInitial", sender: self)
+        
+    }
+    
     @IBAction func prevButtonPressed(_ sender: UIButton) {
         if currentPage != 0 {
             currentPage -= 1

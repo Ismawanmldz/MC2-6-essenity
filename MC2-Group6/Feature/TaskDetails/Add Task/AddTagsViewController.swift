@@ -23,12 +23,17 @@ class AddTagsViewController: UIViewController {
     
     @IBOutlet weak var tagsCollectionView: UICollectionView!
     
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tagsTableView.register(TextFieldTaskDetailsTableViewCell.self, forCellReuseIdentifier: TextFieldTaskDetailsTableViewCell.identifier)
         tagsTableView.registerCell(type: AddTagsTagsTableViewCell.self, identifier: AddTagsTagsTableViewCell.identifier)
         configure()
+        
         title = "Add Tags"
         tagsTableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         tagsTableView.delegate = self
