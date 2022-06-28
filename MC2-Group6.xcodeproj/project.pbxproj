@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3875D3792869B48F00B7CE8E /* MainTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3875D3782869B48F00B7CE8E /* MainTask.storyboard */; };
+		3875D37B2869B4A500B7CE8E /* ViewControllerTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875D37A2869B4A500B7CE8E /* ViewControllerTask.swift */; };
+		3875D37F2869B6AB00B7CE8E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875D37E2869B6AB00B7CE8E /* Model.swift */; };
+		3875D3822869B85A00B7CE8E /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875D3802869B85A00B7CE8E /* CollectionViewCell.swift */; };
+		3875D3832869B85A00B7CE8E /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3875D3812869B85A00B7CE8E /* CollectionViewCell.xib */; };
+		3875D3862869B8E800B7CE8E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875D3842869B8E800B7CE8E /* TableViewCell.swift */; };
+		3875D3872869B8E800B7CE8E /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3875D3852869B8E800B7CE8E /* TableViewCell.xib */; };
+		3890443C2869EA0F00F16BEC /* TaskMainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3890443B2869EA0F00F16BEC /* TaskMainPage.swift */; };
+		3890443F2869F80600F16BEC /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3890443E2869F80600F16BEC /* Storyboard.storyboard */; };
+		38904441286A044A00F16BEC /* MainTaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38904440286A044A00F16BEC /* MainTaskDelegate.swift */; };
 		4C0814ED285E0B1900740CF0 /* TaskDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C0814EC285E0B1900740CF0 /* TaskDetails.storyboard */; };
 		4C0814EF285E0B5E00740CF0 /* TaskDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0814EE285E0B5E00740CF0 /* TaskDetailsView.swift */; };
 		4C0814F3285E0BAF00740CF0 /* TaskDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0814F2285E0BAF00740CF0 /* TaskDetailsViewController.swift */; };
@@ -106,6 +116,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3875D3782869B48F00B7CE8E /* MainTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTask.storyboard; sourceTree = "<group>"; };
+		3875D37A2869B4A500B7CE8E /* ViewControllerTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTask.swift; sourceTree = "<group>"; };
+		3875D37E2869B6AB00B7CE8E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		3875D3802869B85A00B7CE8E /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		3875D3812869B85A00B7CE8E /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		3875D3842869B8E800B7CE8E /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		3875D3852869B8E800B7CE8E /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		3890443B2869EA0F00F16BEC /* TaskMainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskMainPage.swift; sourceTree = "<group>"; };
+		3890443E2869F80600F16BEC /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		38904440286A044A00F16BEC /* MainTaskDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTaskDelegate.swift; sourceTree = "<group>"; };
 		4C0814EC285E0B1900740CF0 /* TaskDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskDetails.storyboard; sourceTree = "<group>"; };
 		4C0814EE285E0B5E00740CF0 /* TaskDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsView.swift; sourceTree = "<group>"; };
 		4C0814F2285E0BAF00740CF0 /* TaskDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailsViewController.swift; sourceTree = "<group>"; };
@@ -217,6 +237,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3875D3772869B40000B7CE8E /* TaskPage */ = {
+			isa = PBXGroup;
+			children = (
+				3875D37C2869B4B100B7CE8E /* view */,
+				3875D37D2869B4C300B7CE8E /* controller */,
+			);
+			path = TaskPage;
+			sourceTree = "<group>";
+		};
+		3875D37C2869B4B100B7CE8E /* view */ = {
+			isa = PBXGroup;
+			children = (
+				3875D3782869B48F00B7CE8E /* MainTask.storyboard */,
+				3875D3812869B85A00B7CE8E /* CollectionViewCell.xib */,
+				3875D3852869B8E800B7CE8E /* TableViewCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		3875D37D2869B4C300B7CE8E /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				3875D37A2869B4A500B7CE8E /* ViewControllerTask.swift */,
+				3875D3802869B85A00B7CE8E /* CollectionViewCell.swift */,
+				3875D3842869B8E800B7CE8E /* TableViewCell.swift */,
+				38904440286A044A00F16BEC /* MainTaskDelegate.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		3890443D2869F7EF00F16BEC /* InfoPage */ = {
+			isa = PBXGroup;
+			children = (
+				3890443E2869F80600F16BEC /* Storyboard.storyboard */,
+			);
+			path = InfoPage;
+			sourceTree = "<group>";
+		};
 		4C0814EB285E0B0C00740CF0 /* TaskDetails */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,6 +452,7 @@
 		4C3560A52859CCD100905E01 /* MC2-Group6 */ = {
 			isa = PBXGroup;
 			children = (
+				3890443D2869F7EF00F16BEC /* InfoPage */,
 				4C3560C5285C930E00905E01 /* Feature */,
 				4C3560CC285C93F200905E01 /* Themes */,
 				4C3560C8285C935300905E01 /* Utilities */,
@@ -401,6 +460,7 @@
 				A4A1DEF92869613F00DA11DB /* TaskTest */,
 				A4A1DECF286954FC00DA11DB /* TimerPage */,
 				A4A1DED82869597300DA11DB /* TimerSettingPage */,
+				3875D3772869B40000B7CE8E /* TaskPage */,
 				4C3560C7285C934E00905E01 /* Helper */,
 				4C3560A62859CCD100905E01 /* AppDelegate.swift */,
 				4C3560A82859CCD100905E01 /* SceneDelegate.swift */,
@@ -458,7 +518,9 @@
 			isa = PBXGroup;
 			children = (
 				4C3560D0285C963E00905E01 /* DataStore */,
+				3890443B2869EA0F00F16BEC /* TaskMainPage.swift */,
 				4C3560CE285C95AB00905E01 /* TaskRepository.swift */,
+				3875D37E2869B6AB00B7CE8E /* Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -788,6 +850,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C530BE928680360000A61F0 /* AddTagsTagsTableViewCell.xib in Resources */,
+				3875D3792869B48F00B7CE8E /* MainTask.storyboard in Resources */,
 				A4A1DEF3286960B500DA11DB /* Main.storyboard in Resources */,
 				4C7B0C912862680200A083CA /* TagsTaskDetailsCollectionViewCell.xib in Resources */,
 				4C081500285E125D00740CF0 /* PickerTableViewCell.xib in Resources */,
@@ -802,16 +865,19 @@
 				4C081505285E133C00740CF0 /* DatePickerTableViewCell.xib in Resources */,
 				4C08150A285E143300740CF0 /* PriorityTableViewCell.xib in Resources */,
 				4C7B0C872862554300A083CA /* TagsAltTableViewCell.xib in Resources */,
+				3875D3872869B8E800B7CE8E /* TableViewCell.xib in Resources */,
 				4C0815452860FB4200740CF0 /* TagsCollectionViewCell.xib in Resources */,
 				4C7B0CAF28671CE400A083CA /* PickerTaskDetailsTableViewCell.xib in Resources */,
 				4C0814ED285E0B1900740CF0 /* TaskDetails.storyboard in Resources */,
 				4C08151A285E573200740CF0 /* ButtonTableViewCell.xib in Resources */,
 				4C0814F9285E101D00740CF0 /* SwitchTableViewCell.xib in Resources */,
+				3875D3832869B85A00B7CE8E /* CollectionViewCell.xib in Resources */,
 				A4A1DECE286953FA00DA11DB /* Timer.storyboard in Resources */,
 				4C7B0C772862452700A083CA /* TagsWBCollectionViewCell.xib in Resources */,
 				4C3560B62859CCD200905E01 /* LaunchScreen.storyboard in Resources */,
 				4C081515285E563200740CF0 /* TextTableViewCell.xib in Resources */,
 				4C3560B32859CCD200905E01 /* Assets.xcassets in Resources */,
+				3890443F2869F80600F16BEC /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -844,13 +910,16 @@
 				A4A1DED52869554500DA11DB /* TimerDefaultValue.swift in Sources */,
 				4C0815442860FB4200740CF0 /* TagsCollectionViewCell.swift in Sources */,
 				4C7B0CB7286796DE00A083CA /* TaskOptions.swift in Sources */,
+				38904441286A044A00F16BEC /* MainTaskDelegate.swift in Sources */,
 				4C7011A52869D60F00D4F3D7 /* TagsAddTagsCollectionViewCellDelegate.swift in Sources */,
 				A4A1DEEC28695C7F00DA11DB /* TextFieldExtDD.swift in Sources */,
+				3875D37B2869B4A500B7CE8E /* ViewControllerTask.swift in Sources */,
 				4C7B0C862862554300A083CA /* TagsAltTableViewCell.swift in Sources */,
 				A4A1DEF128695D6800DA11DB /* PickerViewExtDD.swift in Sources */,
 				4C530BE42867A2B7000A61F0 /* TagsTaskDetailsCollectionViewCellDelegate.swift in Sources */,
 				4C530BF628689548000A61F0 /* Textfield+Delegate.swift in Sources */,
 				A4A1DEE828695BEC00DA11DB /* LBreakSetTextFieldPickerViewCell.swift in Sources */,
+				3890443C2869EA0F00F16BEC /* TaskMainPage.swift in Sources */,
 				A4A1DEF82869613B00DA11DB /* TaskTestController.swift in Sources */,
 				4C081509285E143300740CF0 /* PriorityTableViewCell.swift in Sources */,
 				4C08151F285E5EB700740CF0 /* BlueTableViewCell.swift in Sources */,
@@ -878,6 +947,7 @@
 				4C3560B12859CCD100905E01 /* MC2_Group6.xcdatamodeld in Sources */,
 				4C7011A92869FA6700D4F3D7 /* TagsTableViewCellDelegate.swift in Sources */,
 				4C0815362860CED900740CF0 /* SwitchTaskDetailsTableViewCell.swift in Sources */,
+				3875D3822869B85A00B7CE8E /* CollectionViewCell.swift in Sources */,
 				A4A1DEEA28695C3500DA11DB /* LBAfterSetTextFieldPickerViewCell.swift in Sources */,
 				4C08153D2860E2D300740CF0 /* TextFieldTaskDetailsTableViewCell.swift in Sources */,
 				4C530BED2868582E000A61F0 /* DatePickerTaskDetailsTableViewCellDelegate.swift in Sources */,
@@ -889,6 +959,8 @@
 				4C7011AD286A03CF00D4F3D7 /* EditTaskViewController.swift in Sources */,
 				4C08152C2860AE0000740CF0 /* TaskDetailsTableViewCell.swift in Sources */,
 				A4A1DEDB286959B900DA11DB /* SwitchCell.swift in Sources */,
+				3875D37F2869B6AB00B7CE8E /* Model.swift in Sources */,
+				3875D3862869B8E800B7CE8E /* TableViewCell.swift in Sources */,
 				4C7B0C982862698700A083CA /* TagsTableViewCell.swift in Sources */,
 				4C7011B0286A4B6800D4F3D7 /* EditAddTagsViewController.swift in Sources */,
 				4C0815382860DA5000740CF0 /* DatePickerTaskDetailsTableViewCell.swift in Sources */,
