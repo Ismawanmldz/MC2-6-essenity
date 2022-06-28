@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3875D3792869B48F00B7CE8E /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3875D3782869B48F00B7CE8E /* Task.storyboard */; };
-		3875D37B2869B4A500B7CE8E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875D37A2869B4A500B7CE8E /* MainViewController.swift */; };
+		3875D3792869B48F00B7CE8E /* TaskPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3875D3782869B48F00B7CE8E /* TaskPage.storyboard */; };
+		3875D37B2869B4A500B7CE8E /* TaskPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875D37A2869B4A500B7CE8E /* TaskPageController.swift */; };
 		3875D37F2869B6AB00B7CE8E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875D37E2869B6AB00B7CE8E /* Model.swift */; };
 		3875D3822869B85A00B7CE8E /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3875D3802869B85A00B7CE8E /* CollectionViewCell.swift */; };
 		3875D3832869B85A00B7CE8E /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3875D3812869B85A00B7CE8E /* CollectionViewCell.xib */; };
@@ -109,8 +109,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3875D3782869B48F00B7CE8E /* Task.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Task.storyboard; sourceTree = "<group>"; };
-		3875D37A2869B4A500B7CE8E /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		3875D3782869B48F00B7CE8E /* TaskPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskPage.storyboard; sourceTree = "<group>"; };
+		3875D37A2869B4A500B7CE8E /* TaskPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPageController.swift; sourceTree = "<group>"; };
 		3875D37E2869B6AB00B7CE8E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		3875D3802869B85A00B7CE8E /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		3875D3812869B85A00B7CE8E /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
@@ -235,7 +235,7 @@
 		3875D37C2869B4B100B7CE8E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				3875D3782869B48F00B7CE8E /* Task.storyboard */,
+				3875D3782869B48F00B7CE8E /* TaskPage.storyboard */,
 				3875D3812869B85A00B7CE8E /* CollectionViewCell.xib */,
 				3875D3852869B8E800B7CE8E /* TableViewCell.xib */,
 			);
@@ -245,7 +245,7 @@
 		3875D37D2869B4C300B7CE8E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				3875D37A2869B4A500B7CE8E /* MainViewController.swift */,
+				3875D37A2869B4A500B7CE8E /* TaskPageController.swift */,
 				3875D3802869B85A00B7CE8E /* CollectionViewCell.swift */,
 				3875D3842869B8E800B7CE8E /* TableViewCell.swift */,
 				38904440286A044A00F16BEC /* MainTaskDelegate.swift */,
@@ -815,7 +815,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C530BE928680360000A61F0 /* AddTagsTagsTableViewCell.xib in Resources */,
-				3875D3792869B48F00B7CE8E /* Task.storyboard in Resources */,
+				3875D3792869B48F00B7CE8E /* TaskPage.storyboard in Resources */,
 				A4A1DEF3286960B500DA11DB /* TabBar.storyboard in Resources */,
 				4C7B0C912862680200A083CA /* TagsTaskDetailsCollectionViewCell.xib in Resources */,
 				4C0815322860B3C600740CF0 /* TaskDetailsCell.xib in Resources */,
@@ -873,7 +873,7 @@
 				38904441286A044A00F16BEC /* MainTaskDelegate.swift in Sources */,
 				4C7011A52869D60F00D4F3D7 /* TagsAddTagsCollectionViewCellDelegate.swift in Sources */,
 				A4A1DEEC28695C7F00DA11DB /* TextFieldExtDD.swift in Sources */,
-				3875D37B2869B4A500B7CE8E /* MainViewController.swift in Sources */,
+				3875D37B2869B4A500B7CE8E /* TaskPageController.swift in Sources */,
 				4C7B0C862862554300A083CA /* TagsAltTableViewCell.swift in Sources */,
 				A4A1DEF128695D6800DA11DB /* PickerViewExtDD.swift in Sources */,
 				4C7011D8286B481E00D4F3D7 /* InitialLoadViewController.swift in Sources */,

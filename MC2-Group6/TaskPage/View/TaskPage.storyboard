@@ -32,7 +32,7 @@
         <!--Task-->
         <scene sceneID="Ehb-se-hv4">
             <objects>
-                <viewController id="fdG-aV-fcG" customClass="MainViewController" customModule="MC2_Group6" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fdG-aV-fcG" customClass="TaskPageController" customModule="MC2_Group6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ua7-T9-Lzj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,7 +162,7 @@
                     <connections>
                         <outlet property="BackGroundViewWhite" destination="rcl-sa-Fpa" id="AgP-gO-H9B"/>
                         <outlet property="TaskCell" destination="gbx-ph-oIM" id="iom-gx-3xR"/>
-                        <outlet property="TaskTableCell" destination="Ma9-uF-rJz" id="YTN-72-HLk"/>
+                        <outlet property="TaskTable" destination="Ma9-uF-rJz" id="YTN-72-HLk"/>
                         <segue destination="UAj-qG-roK" kind="presentation" identifier="toSearchPage" modalPresentationStyle="fullScreen" id="LYY-JW-MPf"/>
                         <segue destination="3xS-qL-q5e" kind="presentation" identifier="toAddTaskPage" modalPresentationStyle="fullScreen" id="BAW-UU-fuB"/>
                     </connections>

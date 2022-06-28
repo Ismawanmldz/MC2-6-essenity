@@ -95,10 +95,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButtonView" destination="2If-ir-ATr" id="4iS-oq-8Kg"/>
                         <segue destination="hxb-MV-dXM" kind="presentation" identifier="toAddTags" id="wzX-ex-53f"/>
+                        <segue destination="GIH-gH-oI3" kind="unwind" identifier="backToMain" unwindAction="unwindToSegue:" id="LNt-g5-XSi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="GIH-gH-oI3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="955.07246376811599" y="78.348214285714278"/>
         </scene>
@@ -165,6 +168,7 @@
                     <connections>
                         <outlet property="tagsTableView" destination="kPE-YT-vcJ" id="qwB-Nb-SUb"/>
                         <segue destination="eVE-rN-ZYG" kind="unwind" identifier="backToTask" unwindAction="unwindToSegue:" id="ExL-ew-RdI"/>
+                        <segue destination="eVE-rN-ZYG" kind="unwind" identifier="backToTask" unwindAction="unwind:" id="hL1-PH-n0T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Xe-ko-NBO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

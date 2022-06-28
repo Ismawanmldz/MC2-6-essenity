@@ -7,10 +7,10 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class TaskPageController: UIViewController {
     
     @IBOutlet weak var TaskCell: UICollectionView!
-    @IBOutlet weak var TaskTableCell: UITableView!
+    @IBOutlet weak var TaskTable: UITableView!
     
     @IBOutlet weak var BackGroundViewWhite: UIView!
     
@@ -38,7 +38,7 @@ class MainViewController: UIViewController {
         
         
         let nibCell2 = UINib(nibName: "TableViewCell", bundle: nil)
-        TaskTableCell.register(nibCell2, forCellReuseIdentifier: "TaskTableCell")
+        TaskTable.register(nibCell2, forCellReuseIdentifier: "TaskTableCell")
         
         BackGroundViewWhite.layer.cornerRadius = 30
         
@@ -46,7 +46,11 @@ class MainViewController: UIViewController {
     
     //
     
-    
+    @IBAction func unwindTo(segue: UIStoryboardSegue) {
+//        tableView.reloadData()
+        self.TaskTable.reloadData()
+        
+      }
     
     
     func initList()
@@ -79,7 +83,7 @@ class MainViewController: UIViewController {
 
 // collection view My priorities
 
-extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+extension TaskPageController: UICollectionViewDelegate, UICollectionViewDataSource{
     
 
 func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -91,11 +95,11 @@ func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPat
     if(indexPath.row == 0){
 //        print("hello")
         self.filterTask = TaskList2
-        self.TaskTableCell.reloadData()
+        self.TaskTable.reloadData()
     }
     else if (indexPath.row == 1){
         self.filterTask = TaskList2
-        self.TaskTableCell.reloadData()
+        self.TaskTable.reloadData()
     }
         
 }
@@ -142,7 +146,7 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
 
 //Table view My Task
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+extension TaskPageController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -151,7 +155,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = TaskTableCell.dequeueReusableCell(withIdentifier: "TaskTableCell", for: indexPath)
+        let cell = TaskTable.dequeueReusableCell(withIdentifier: "TaskTableCell", for: indexPath)
             as! TableViewCell
         
         let thisTask = filterTask[indexPath.row]

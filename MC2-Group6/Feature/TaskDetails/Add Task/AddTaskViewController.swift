@@ -65,25 +65,34 @@ class AddTaskViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var backButtonView: UIBarButtonItem!
+    
     @IBAction func backButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true)
     }
     
     
     @IBAction func doneButton(_ sender: Any) {
+    
         
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {success, error in
-            if success {
-                print("success")
-                self.setReminder()
-            }else if error != nil {
-                print("occured")
-            }
-        })
+         
+    //        self.dismiss(animated: true)
+//        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {success, error in
+//            if success {
+//                print("success")
+//                self.setReminder()
+//            }else if error != nil {
+//                print("occured")
+//            }
+//
+//
+//        })
         
 //        let timer = Timer(fireAt: Date(), interval: 5, target: <#T##Any#>, selector: <#T##Selector#>, userInfo: <#T##Any?#>, repeats: <#T##Bool#>)
         
         updateTask()
+        
+        self.performSegue(withIdentifier: "backToMain", sender: self)
         
     }
     
@@ -126,9 +135,15 @@ class AddTaskViewController: UIViewController {
     func updateTask() {
         let task = Task(context: self.taskRepository.context)
         
+        
+        
         let index = IndexPath(row: 0, section: 0)
         let cell: TextFieldTaskDetailsTableViewCell = tableView.cellForRow(at: index) as! TextFieldTaskDetailsTableViewCell
         let taskTitle = cell.cellTextField.text
+        
+        if taskTitle == "" {
+            print("empty String")
+        }
         
         let index2 = IndexPath(row: 0, section: 1)
         let cell2: TextViewTaskDetailsTableViewCell = tableView.cellForRow(at: index2) as! TextViewTaskDetailsTableViewCell
@@ -211,6 +226,7 @@ class AddTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        backButtonView.isEnabled = false
         configure()
         
         title = "Task Details"
@@ -324,7 +340,7 @@ class AddTaskViewController: UIViewController {
     }
     
     @IBAction func unwindTo(segue: UIStoryboardSegue) {
-        tableView.reloadData()
+//        tableView.reloadData()
         self.tableView.reloadSections([2], with: .none)
         
       }
