@@ -77,6 +77,18 @@
 		4C7B0CB5286795E700A083CA /* AddTagsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C7B0CB3286795E700A083CA /* AddTagsViewController.xib */; };
 		4C7B0CB7286796DE00A083CA /* TaskOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7B0CB6286796DE00A083CA /* TaskOptions.swift */; };
 		4C7B0CBB2867985100A083CA /* AddTaskViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7B0CBA2867985100A083CA /* AddTaskViewController+Delegate.swift */; };
+		C504E60F286976DE0065B3D5 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C504E60E286976DE0065B3D5 /* TaskTableViewCell.swift */; };
+		C504E611286976F80065B3D5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C504E610286976F80065B3D5 /* SearchViewController.swift */; };
+		C504E61328697E980065B3D5 /* TaskSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C504E61228697E980065B3D5 /* TaskSearch.swift */; };
+		C504E6162869A1400065B3D5 /* TagFilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C504E6152869A1400065B3D5 /* TagFilterCollectionViewCell.swift */; };
+		C504E6182869A16F0065B3D5 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C504E6172869A16F0065B3D5 /* FilterViewController.swift */; };
+		C504E61A2869A36E0065B3D5 /* TagFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C504E6192869A36E0065B3D5 /* TagFilter.swift */; };
+		C504E61C286A21A70065B3D5 /* myOnboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C504E61B286A21A70065B3D5 /* myOnboarding.storyboard */; };
+		C504E61E286A221A0065B3D5 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C504E61D286A221A0065B3D5 /* OnboardingViewController.swift */; };
+		C504E620286A222D0065B3D5 /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C504E61F286A222D0065B3D5 /* OnboardingCollectionViewCell.swift */; };
+		C504E622286A44710065B3D5 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C504E621286A44710065B3D5 /* Color.swift */; };
+		C515A29D2868E18200D9F43B /* SearchFilter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C515A29C2868E18200D9F43B /* SearchFilter.storyboard */; };
+		C515A2A52868E6B900D9F43B /* OnboardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = C515A2A42868E6B900D9F43B /* OnboardingSlide.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,6 +164,18 @@
 		4C7B0CB3286795E700A083CA /* AddTagsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTagsViewController.xib; sourceTree = "<group>"; };
 		4C7B0CB6286796DE00A083CA /* TaskOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOptions.swift; sourceTree = "<group>"; };
 		4C7B0CBA2867985100A083CA /* AddTaskViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AddTaskViewController+Delegate.swift"; sourceTree = "<group>"; };
+		C504E60E286976DE0065B3D5 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		C504E610286976F80065B3D5 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		C504E61228697E980065B3D5 /* TaskSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSearch.swift; sourceTree = "<group>"; };
+		C504E6152869A1400065B3D5 /* TagFilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagFilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		C504E6172869A16F0065B3D5 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		C504E6192869A36E0065B3D5 /* TagFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagFilter.swift; sourceTree = "<group>"; };
+		C504E61B286A21A70065B3D5 /* myOnboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = myOnboarding.storyboard; sourceTree = "<group>"; };
+		C504E61D286A221A0065B3D5 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		C504E61F286A222D0065B3D5 /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		C504E621286A44710065B3D5 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		C515A29C2868E18200D9F43B /* SearchFilter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchFilter.storyboard; sourceTree = "<group>"; };
+		C515A2A42868E6B900D9F43B /* OnboardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSlide.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,6 +381,9 @@
 		4C3560C5285C930E00905E01 /* Feature */ = {
 			isa = PBXGroup;
 			children = (
+				C515A29B2868E15D00D9F43B /* Onboarding */,
+				C504E6142869A10F0065B3D5 /* Search+Filter */,
+				C504E621286A44710065B3D5 /* Color.swift */,
 				4C0814EB285E0B0C00740CF0 /* TaskDetails */,
 				4C3560CD285C958A00905E01 /* Model */,
 			);
@@ -408,6 +435,9 @@
 			isa = PBXGroup;
 			children = (
 				4C3560D1285C965500905E01 /* SeederCoreDataStore.swift */,
+				C515A2A42868E6B900D9F43B /* OnboardingSlide.swift */,
+				C504E61228697E980065B3D5 /* TaskSearch.swift */,
+				C504E6192869A36E0065B3D5 /* TagFilter.swift */,
 			);
 			path = DataStore;
 			sourceTree = "<group>";
@@ -563,6 +593,44 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		C504E6142869A10F0065B3D5 /* Search+Filter */ = {
+			isa = PBXGroup;
+			children = (
+				C515A29A2868E15600D9F43B /* Search */,
+				C515A2992868E14F00D9F43B /* Filter */,
+				C515A29C2868E18200D9F43B /* SearchFilter.storyboard */,
+			);
+			path = "Search+Filter";
+			sourceTree = "<group>";
+		};
+		C515A2992868E14F00D9F43B /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				C504E6152869A1400065B3D5 /* TagFilterCollectionViewCell.swift */,
+				C504E6172869A16F0065B3D5 /* FilterViewController.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		C515A29A2868E15600D9F43B /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				C504E60E286976DE0065B3D5 /* TaskTableViewCell.swift */,
+				C504E610286976F80065B3D5 /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		C515A29B2868E15D00D9F43B /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				C504E61B286A21A70065B3D5 /* myOnboarding.storyboard */,
+				C504E61D286A221A0065B3D5 /* OnboardingViewController.swift */,
+				C504E61F286A222D0065B3D5 /* OnboardingCollectionViewCell.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -626,6 +694,7 @@
 				4C081500285E125D00740CF0 /* PickerTableViewCell.xib in Resources */,
 				4C0815322860B3C600740CF0 /* TaskDetailsCell.xib in Resources */,
 				4C530BF328688AD7000A61F0 /* AddTagsTagsCollectionViewCell.xib in Resources */,
+				C515A29D2868E18200D9F43B /* SearchFilter.storyboard in Resources */,
 				4C08153E2860E2D300740CF0 /* TextFieldTaskDetailsTableViewCell.xib in Resources */,
 				4C7B0C992862698700A083CA /* TagsTableViewCell.xib in Resources */,
 				4C0815272860AA6C00740CF0 /* Test.storyboard in Resources */,
@@ -637,6 +706,7 @@
 				4C0815452860FB4200740CF0 /* TagsCollectionViewCell.xib in Resources */,
 				4C7B0CAF28671CE400A083CA /* PickerTaskDetailsTableViewCell.xib in Resources */,
 				4C0814ED285E0B1900740CF0 /* TaskDetails.storyboard in Resources */,
+				C504E61C286A21A70065B3D5 /* myOnboarding.storyboard in Resources */,
 				4C08151A285E573200740CF0 /* ButtonTableViewCell.xib in Resources */,
 				4C0814F9285E101D00740CF0 /* SwitchTableViewCell.xib in Resources */,
 				4C7B0C772862452700A083CA /* TagsWBCollectionViewCell.xib in Resources */,
@@ -667,18 +737,23 @@
 				4C3560D2285C965500905E01 /* SeederCoreDataStore.swift in Sources */,
 				4C0815292860AA8100740CF0 /* AddTaskViewController.swift in Sources */,
 				4C081510285E209A00740CF0 /* TaskDetailsViewController+Delegate.swift in Sources */,
+				C504E6162869A1400065B3D5 /* TagFilterCollectionViewCell.swift in Sources */,
 				4C0815442860FB4200740CF0 /* TagsCollectionViewCell.swift in Sources */,
 				4C7B0CB7286796DE00A083CA /* TaskOptions.swift in Sources */,
 				4C7B0C862862554300A083CA /* TagsAltTableViewCell.swift in Sources */,
 				4C530BE42867A2B7000A61F0 /* TagsTaskDetailsCollectionViewCellDelegate.swift in Sources */,
 				4C530BF628689548000A61F0 /* Textfield+Delegate.swift in Sources */,
+				C515A2A52868E6B900D9F43B /* OnboardingSlide.swift in Sources */,
 				4C081509285E143300740CF0 /* PriorityTableViewCell.swift in Sources */,
 				4C08151F285E5EB700740CF0 /* BlueTableViewCell.swift in Sources */,
+				C504E61A2869A36E0065B3D5 /* TagFilter.swift in Sources */,
+				C504E622286A44710065B3D5 /* Color.swift in Sources */,
 				4C7B0C782862452700A083CA /* TagsWBCollectionViewCell.swift in Sources */,
 				4C3560A72859CCD100905E01 /* AppDelegate.swift in Sources */,
 				4C0814F3285E0BAF00740CF0 /* TaskDetailsViewController.swift in Sources */,
 				4C7B0C902862680200A083CA /* TagsTaskDetailsCollectionViewCell.swift in Sources */,
 				4C7B0CB4286795E700A083CA /* AddTagsViewController.swift in Sources */,
+				C504E61E286A221A0065B3D5 /* OnboardingViewController.swift in Sources */,
 				4C7B0CA92863A06800A083CA /* SwitchDelegate.swift in Sources */,
 				4C7B0C8328624FBF00A083CA /* TestTagCell.swift in Sources */,
 				4C530BEB286844A0000A61F0 /* PickerTaskDetailsTableViewCell + Delegate.swift in Sources */,
@@ -689,7 +764,10 @@
 				4C08150E285E1C7900740CF0 /* TaskDetailsViewController+TableViewDataSource+TableViewDelegate.swift in Sources */,
 				4C3560A92859CCD100905E01 /* SceneDelegate.swift in Sources */,
 				4C7B0C5B2861EC3600A083CA /* TagsTaskDetailsTableViewCell.swift in Sources */,
+				C504E611286976F80065B3D5 /* SearchViewController.swift in Sources */,
 				4C7B0CB12867286300A083CA /* PickerTableCellPicker.swift in Sources */,
+				C504E6182869A16F0065B3D5 /* FilterViewController.swift in Sources */,
+				C504E60F286976DE0065B3D5 /* TaskTableViewCell.swift in Sources */,
 				4C3560B12859CCD100905E01 /* MC2_Group6.xcdatamodeld in Sources */,
 				4C0815362860CED900740CF0 /* SwitchTaskDetailsTableViewCell.swift in Sources */,
 				4C08153D2860E2D300740CF0 /* TextFieldTaskDetailsTableViewCell.swift in Sources */,
@@ -697,9 +775,11 @@
 				4C7B0CAE28671CE400A083CA /* PickerTaskDetailsTableViewCell.swift in Sources */,
 				4C0814FB285E109100740CF0 /* SwitchTableViewCellDelegate.swift in Sources */,
 				4C081504285E133C00740CF0 /* DatePickerTableViewCell.swift in Sources */,
+				C504E620286A222D0065B3D5 /* OnboardingCollectionViewCell.swift in Sources */,
 				4C3560CF285C95AB00905E01 /* TaskRepository.swift in Sources */,
 				4C08152C2860AE0000740CF0 /* TaskDetailsTableViewCell.swift in Sources */,
 				4C7B0C982862698700A083CA /* TagsTableViewCell.swift in Sources */,
+				C504E61328697E980065B3D5 /* TaskSearch.swift in Sources */,
 				4C0815382860DA5000740CF0 /* DatePickerTaskDetailsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -839,12 +919,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3RXGWUTBRR;
+				DEVELOPMENT_TEAM = Y8686RJS9V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC2-Group6/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Test;
+				INFOPLIST_KEY_UIMainStoryboardFile = myOnboarding;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -867,12 +947,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3RXGWUTBRR;
+				DEVELOPMENT_TEAM = Y8686RJS9V;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC2-Group6/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Test;
+				INFOPLIST_KEY_UIMainStoryboardFile = myOnboarding;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
