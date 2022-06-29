@@ -248,22 +248,14 @@ extension SearchViewController: UISearchBarDelegate {
     
     //To search by text in search bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTask = filteredTask.filter({ (anArray) -> Bool in
-            guard let firstString = (anArray.title)
-            else{
-                return false
+    if searchText != "" {
+                filteredTask = filteredTask.filter{ $0.title.contains(searchText)}
+                searchActive = true
+                self.taskTableView.reloadData()
+            } else {
+//                filteredTask = filteredTask
+                searchActive = false
+                self.taskTableView.reloadData()
             }
-            let tmp: NSString = firstString as NSString
-            let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
-            print (tmp)
-            return range.location != NSNotFound
-        })
-//        if(filteredTask.count == 0){
-//            searchActive = true
-//        } else {
-//            searchActive = true
-//        }
-        searchActive = true
-        self.taskTableView.reloadData()
     }
 }

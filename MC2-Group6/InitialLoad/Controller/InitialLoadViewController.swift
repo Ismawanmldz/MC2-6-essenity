@@ -31,6 +31,7 @@ class InitialLoadViewController: UIViewController {
         
         do {
             self.users = try context.fetch(User.fetchRequest())
+
             if self.users.isEmpty {
                 performSegue(withIdentifier: "toOnboarding", sender: self)
             }

@@ -115,4 +115,14 @@ class DatePickerTaskDetailsTableViewCell: UITableViewCell {
         cellDatePicker.minimumDate = self.minimumDate
     }
     
+    
+    public func configure(with model: TaskDatePickerOption, dateDue : Date, dueDateOn : Bool){
+        label.text = model.title
+        iconImageView.image = model.icon
+        self.cellDatePicker.date = Date()
+        self.minimumDate = dateDue
+        cellDatePicker.reloadInputViews()
+        cellDatePicker.minimumDate = self.minimumDate
+    }
+    
 }

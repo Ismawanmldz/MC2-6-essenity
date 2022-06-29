@@ -11,12 +11,16 @@ import CoreData
 
 class EditTaskViewController: UIViewController {
     
+    var hasEdit = false
+    
     let taskRepository = TaskRepository.shared
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     private var dueDateOn : Bool = true
-    private var currentTask : Task?
-
+    var currentTask : Task?
+    var currentPriority : String?
+    var currentIndex : Int?
+    
     private var taskTitle : String?
     private var taskDescription : String?
     var taskTags : [String] = []
@@ -65,20 +69,156 @@ class EditTaskViewController: UIViewController {
         
     }
     
+    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        
+        let index = IndexPath(row: 0, section: 0)
+        let cell: TextFieldTaskDetailsTableViewCell = tableView.cellForRow(at: index) as! TextFieldTaskDetailsTableViewCell
+        let taskTitle = cell.cellTextField.text
+        
+        let index2 = IndexPath(row: 0, section: 1)
+        let cell2: TextViewTaskDetailsTableViewCell = tableView.cellForRow(at: index2) as! TextViewTaskDetailsTableViewCell
+        let taskDescription = cell2.cellTextView.text
+        
+        if (taskTitle != self.taskTitle || taskDescription != self.taskDescription || self.hasEdit == true) {
+            
+            let alert = UIAlertController(title: "Delete ", message: "Are you sure you want to to back. All progress will be lost!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
+                self.dismiss(animated: true)
+    //            self.performSegue(withIdentifier: "unwind", sender: self)
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.dismiss(animated: true)
+        }
+    }
+
+    
     @IBAction func doneButton(_ sender: Any) {
 
-        updateTask()
+        if (taskTitle == "" || ((taskTitle?.isEmpty) == true)){
+            let alert = UIAlertController(title: "Add Title ", message: "The Task needs a title", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.updateTask()
+            scheduleReminder()
+            self.dismiss(animated: true)
+        }
+
+    }
+
+    func scheduleReminder(){
+        
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {success, error in
+            if success {
+                print("successSetReminder")
+                self.setReminder()
+            }else if let error = error {
+                print("occured")
+            }
+        })
+    }
+    func setReminder(){
+        let content = UNMutableNotificationContent()
+        content.title = "You have unfinished tasks"
+        content.sound = .default
+        content.body = "Your task \(self.taskTitle) is due to be finished "
+        
+        guard let targetDate = self.reminderDate else { return }
+        let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: targetDate), repeats: false)
+        let request = UNNotificationRequest(identifier: "id_\(self.taskTitle)", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: {error in
+            if error != nil {
+                print("error occured")
+            }
+            print("set reminder")
+            
+        })
     }
     
-//    func add(Task: task) {
-//
-//    }
+    
+        func updateTask() {
+            UNUserNotificationCenter.current().removeDeliveredNotifications(withIdentifiers: ["id_\(self.taskTitle)"])
+            
+            let task = currentTask
+            
+            let index = IndexPath(row: 0, section: 0)
+            let cell: TextFieldTaskDetailsTableViewCell = tableView.cellForRow(at: index) as! TextFieldTaskDetailsTableViewCell
+            let taskTitle = cell.cellTextField.text
+            
+            let index2 = IndexPath(row: 0, section: 1)
+            let cell2: TextViewTaskDetailsTableViewCell = tableView.cellForRow(at: index2) as! TextViewTaskDetailsTableViewCell
+            let taskDescription = cell2.cellTextView.text
+            
+            task!.title = taskTitle
+            task!.tags = []
+            task!.tags? = self.taskTags
+            
+        
+            task!.desc = taskDescription
+            task!.status = false
+            
+            do {
+                let request = Priority.fetchRequest() as NSFetchRequest<Priority>
 
+                let pred = NSPredicate(format: "title == %@", self.priority)
+                request.predicate = pred
+
+                let priority = try context.fetch(request)
+
+
+                task!.priorities = priority[0]
+            }
+            catch {
+
+            }
+            
+            if(dueDateOn == true){
+                task!.dueDate = self.dueDate
+                task!.moveTo = self.moveToDate
+                task!.reminder = self.reminderDate
+                task!.reminderValue = Int16(self.reminderValue)
+                task!.reminderTimeValue = Int16(self.reminderTimeValue)
+                task!.moveToValue = Int16(self.moveToValue)
+                task!.moveToTimeValue = Int16(self.moveToTimeValue)
+
+            } else {
+                task!.dueDate = nil
+                task!.moveTo = nil
+                task!.reminder = nil
+            }
+            
+            
+            do {
+                try self.taskRepository.context.save()
+                print("Saved!")
+            }
+            catch {
+                print("Data not saved")
+            }
+        
+        }
+
+        
     func fetchTask() {
+        
+        
          do {
-             let task = try context.fetch(Task.fetchRequest())[0]
-             self.currentTask = task
-             configureTask(task: self.currentTask!)
+             let request = Priority.fetchRequest() as NSFetchRequest<Priority>
+             let pred = NSPredicate(format: "title == %@", self.priority)
+             request.predicate = pred
+             
+             let priority = try context.fetch(request)
+             
+             
+//             let task.priorities = priority[0]
+             
+//             let task = try context.fetch(Task.fetchRequest())[0]
+//             self.currentTask = task
+//             configureTask(task: self.currentTask!)
              
              DispatchQueue.main.async {
                  self.tableView.reloadData()
@@ -89,24 +229,33 @@ class EditTaskViewController: UIViewController {
      }
      
     func configureTask(task : Task){
-        self.taskTitle = "Dummy"
-        self.taskDescription = "Description"
+        print("This task has")
+        print(task.tags)
+        
+        
+        self.taskTitle = task.title
+        self.taskDescription = task.desc
         self.taskTags = task.tags!
+        self.priority = (task.priorities?.title)!
         if(task.dueDate != nil) {
             self.dueDateOn = true
             self.dueDate = task.dueDate
             self.reminderDate = task.reminder
             self.moveToDate = task.moveTo
+            self.reminderValue = Int(task.reminderValue)
+            self.reminderTimeValue = Int(task.reminderTimeValue)
+            self.moveToValue = Int(task.moveToValue)
+            self.moveToTimeValue = Int(task.moveToTimeValue)
         }
         else {
             self.dueDateOn = false
         }
-        print("DUEDATE")
         print(self.dueDateOn)
         
                 let dateFormater = DateFormatter()
                 dateFormater.dateFormat = "MM-dd-yyyy HH:mm"
         
+        print(dateFormater.string(from: self.dueDate!))
                 
         self.priority = (task.priorities?.title)!
 
@@ -125,8 +274,8 @@ class EditTaskViewController: UIViewController {
         }
         
         
-        setPickerReminder(no: 1, type: 1)
-        setPickerMoveTo(no: 2, type: 2)
+        setPickerReminder(no: self.reminderValue, type: self.reminderTimeValue)
+        setPickerMoveTo(no: self.moveToValue, type: self.moveToTimeValue)
     }
     
     func setPickerReminder(no: Int, type: Int) {
@@ -189,66 +338,6 @@ class EditTaskViewController: UIViewController {
         }
     }
     
-    
-    func updateTask() {
-        let task = Task(context: self.taskRepository.context)
-        
-        let index = IndexPath(row: 0, section: 0)
-        let cell: TextFieldTaskDetailsTableViewCell = tableView.cellForRow(at: index) as! TextFieldTaskDetailsTableViewCell
-        let taskTitle = cell.cellTextField.text
-        
-        let index2 = IndexPath(row: 0, section: 1)
-        let cell2: TextViewTaskDetailsTableViewCell = tableView.cellForRow(at: index2) as! TextViewTaskDetailsTableViewCell
-        let taskDescription = cell2.cellTextView.text
-        
-        task.title = taskTitle
-        task.tags = self.taskTags
-        task.desc = taskDescription
-        task.status = false
-    
-//        var priorityIndex : Int?
-//
-//        if(self.priority == "Do Now"){
-//            priorityIndex = 0
-//        } else if(self.priority == "Plan It"){
-//            priorityIndex = 1
-//        } else if(self.priority == "Delegate"){
-//            priorityIndex = 2
-//        } else if(self.priority == "Eliminate"){
-//            priorityIndex = 3
-//        }
-        
-        do {
-            let request = Priority.fetchRequest() as NSFetchRequest<Priority>
-            
-            let pred = NSPredicate(format: "title == %@", self.priority)
-            request.predicate = pred
-            
-            let priority = try context.fetch(request)
-            
-            
-            task.priorities = priority[0]
-        }
-        catch {
-            
-        }
-        
-        if(dueDateOn == true){
-            task.dueDate = self.dueDate
-            task.moveTo = self.moveToDate
-            task.reminder = self.reminderDate
-        }
-        
-        do {
-            try self.taskRepository.context.save()
-            print("Saved!")
-        }
-        catch {
-            print("Data not saved")
-        }
-        print(self.tags)
-    }
-    
     func updateDueDate() {
 //        tableView.reloadData()
 //        let allButFirst = (self.tableView.indexPathsForVisibleRows ?? []).filter { $0.section != 0 || $0.row != 0 }
@@ -278,10 +367,14 @@ class EditTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchTask()
-        configure()
         
-        title = "Task Details"
+        configureTask(task: self.currentTask!)
+        print("configrue")
+        print(self.taskTags)
+        configure()
+        fetchTask()
+
+        title = "Edit Tasks"
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
@@ -383,10 +476,8 @@ class EditTaskViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toAddTagsFromEdit" {
             guard let destination = segue.destination as? EditAddTagsViewController else { return }
-            print("this doesnt work")
             print(self.tags)
-            destination.taskTags = self.tags
-            print(destination.taskTags)
+            destination.taskTags = self.taskTags
             
         }
     }
@@ -445,6 +536,7 @@ extension EditTaskViewController : UITableViewDelegate, UITableViewDataSource {
             }
             if indexPath.section == 4 {
                 cell.delegate = self
+                
                 cell.configure(with: model, dueDateOn: self.dueDateOn)
             } else {
                 if indexPath.section == 3 {
@@ -470,7 +562,12 @@ extension EditTaskViewController : UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.delegate = self
-            cell.configure(with: model,dateDue: self.dueDate!)
+            if self.dueDateOn == false {
+                cell.configure(with: model,dateDue: self.dueDate!, dueDateOn : self.dueDateOn)
+            }else {
+                cell.configure(with: model,dateDue: self.dueDate ?? Date())
+            }
+            
             return cell
         case .textFieldCell(let model) :
             guard let cell = tableView.dequeueReusableCell(
@@ -490,8 +587,9 @@ extension EditTaskViewController : UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.delegate = self
-        
-            cell.configure(with: model,tagsArray : self.tags)
+            print("self.tags")
+            print(self.taskTags)
+            cell.configure(with: model,tagsArray : self.taskTags)
 //            cell.configure(with: model)
         
             return cell
@@ -534,6 +632,8 @@ extension EditTaskViewController : UITableViewDelegate, UITableViewDataSource {
         }
     }
 
+
+    
 //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        tableView.deselectRow(at: indexPath, animated: true)
 //        let type = models[indexPath.section].options[indexPath.row]
@@ -560,11 +660,32 @@ extension EditTaskViewController : UITableViewDelegate, UITableViewDataSource {
 //
 //    }
 //
+   
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 5 {
-            print("delete")
+            
+            let alert = UIAlertController(title: "Delete ", message: "Are you sure you want to to back. All progress will be lost!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
+                let taskToDelete = self.currentTask
+                self.taskRepository.context.delete(taskToDelete!)
+                
+                do {
+                    try self.taskRepository.context.save()
+                    self.dismiss(animated: true)
+                }
+                catch {
+                    
+                }
+            
+    //            self.performSegue(withIdentifier: "unwind", sender: self)
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.dismiss(animated: true)
         }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -572,6 +693,9 @@ extension EditTaskViewController : UITableViewDelegate, UITableViewDataSource {
 
         if  indexPath.section == 1 {
             return 88
+        }
+        if indexPath.section == 2 {
+            return 66
         }
         
         return 44
@@ -689,17 +813,9 @@ extension EditTaskViewController : PickerTaskDetailsTableViewCellDelegate {
 extension EditTaskViewController : DatePickerTaskDetailsTableViewCellDelegate {
     func updateDueDate(date: Date) {
         self.dueDate = date
-//        let dateFormater = DateFormatter()
-//        dateFormater.dateFormat = "MM-dd-yyyy HH:mm"
-//        print(dateFormater.string(from: self.dueDate!))
-        
+
         setDate(no: self.reminderValue, type: self.reminderValue, text: self.reminder)
         setMoveTo(no: self.moveToValue, type: self.moveToTimeValue, text: self.moveTo)
-//
-//        print(dateFormater.string(from: self.reminderDate!))
-//        print(dateFormater.string(from: self.moveToDate!))
-//
-//
-        
+
     }
 }

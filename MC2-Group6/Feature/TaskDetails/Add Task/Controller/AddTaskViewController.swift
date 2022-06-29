@@ -12,9 +12,13 @@ import UserNotifications
 
 class AddTaskViewController: UIViewController {
     
+    var delegate : AddTaskViewControllerDelegate?
+    
     let taskRepository = TaskRepository.shared
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    var tagsContainer : [Tags]?
+    var tagsContainerString : [String] = []
     
     private var dueDateOn : Bool = true
     private var currentTask : Task?
@@ -68,33 +72,53 @@ class AddTaskViewController: UIViewController {
     @IBOutlet weak var backButtonView: UIBarButtonItem!
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
-        self.dismiss(animated: true)
+        
+        let index = IndexPath(row: 0, section: 0)
+        let cell: TextFieldTaskDetailsTableViewCell = tableView.cellForRow(at: index) as! TextFieldTaskDetailsTableViewCell
+        let taskTitle = cell.cellTextField.text
+        
+        let index2 = IndexPath(row: 0, section: 1)
+        let cell2: TextViewTaskDetailsTableViewCell = tableView.cellForRow(at: index2) as! TextViewTaskDetailsTableViewCell
+        let taskDescription = cell2.cellTextView.text
+        
+        if (taskTitle != "" || taskDescription != "") {
+            
+            let alert = UIAlertController(title: "Delete ", message: "Are you sure you want to to back. All progress will be lost!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { action in
+                self.dismiss(animated: true)
+    //            self.performSegue(withIdentifier: "unwind", sender: self)
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.dismiss(animated: true)
+        }
+        
     }
     
     
     @IBAction func doneButton(_ sender: Any) {
-    
-        
-         
-    //        self.dismiss(animated: true)
-//        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {success, error in
-//            if success {
-//                print("success")
-//                self.setReminder()
-//            }else if error != nil {
-//                print("occured")
-//            }
-//
-//
-//        })
         
 //        let timer = Timer(fireAt: Date(), interval: 5, target: <#T##Any#>, selector: <#T##Selector#>, userInfo: <#T##Any?#>, repeats: <#T##Bool#>)
         
-        updateTask()
+        let index = IndexPath(row: 0, section: 0)
+        let cell: TextFieldTaskDetailsTableViewCell = tableView.cellForRow(at: index) as! TextFieldTaskDetailsTableViewCell
+        let taskTitle = cell.cellTextField.text
         
-        self.performSegue(withIdentifier: "backToMain", sender: self)
         
+        
+        if (taskTitle == "" || ((taskTitle?.isEmpty) == true)){
+            let alert = UIAlertController(title: "Add Title ", message: "The Task needs a title", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            updateTask()
+            scheduleReminder()
+
+            self.dismiss(animated: true)
+
     }
+}
     
     @IBAction func cancelButton(_ sender: Any){
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["id"])
@@ -103,12 +127,11 @@ class AddTaskViewController: UIViewController {
     
     func setReminder(){
         let content = UNMutableNotificationContent()
-        content.title = "Reminder"
+        content.title = "You have unfinished tasks"
         content.sound = .default
-        content.body = "Hello World"
+        content.body = "Your task \(self.taskTitle) is due to be finished "
         
-//        guard let targetDate = self.reminderDate else { return }
-        let targetDate = Date().addingTimeInterval(5)
+        guard let targetDate = self.reminderDate else { return }
         let trigger = UNCalendarNotificationTrigger(dateMatching: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: targetDate), repeats: false)
         let request = UNNotificationRequest(identifier: "id", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: {error in
@@ -124,7 +147,7 @@ class AddTaskViewController: UIViewController {
     func scheduleReminder(){
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {success, error in
             if success {
-                print("success")
+                print("successSetReminder")
                 self.setReminder()
             }else if let error = error {
                 print("occured")
@@ -141,19 +164,35 @@ class AddTaskViewController: UIViewController {
         let cell: TextFieldTaskDetailsTableViewCell = tableView.cellForRow(at: index) as! TextFieldTaskDetailsTableViewCell
         let taskTitle = cell.cellTextField.text
         
-        if taskTitle == "" {
-            print("empty String")
-        }
-        
         let index2 = IndexPath(row: 0, section: 1)
         let cell2: TextViewTaskDetailsTableViewCell = tableView.cellForRow(at: index2) as! TextViewTaskDetailsTableViewCell
         let taskDescription = cell2.cellTextView.text
         
         task.title = taskTitle
-        task.tags = self.taskTags
+        task.tags = []
+        task.tags? = self.tags
         task.desc = taskDescription
         task.status = false
-
+        
+//        for tag in self.tagsContainer {
+//            let request = Priority.fetchRequest() as NSFetchRequest<Priority>
+//
+//            let pred = NSPredicate(format: "title == %@", noTags.tagti)
+//            request.predicate = pred
+//
+//            let priority = try context.fetch(request)
+//
+//
+//            task.priorities = priority[0]
+//        }
+        
+//        
+//        if let tagsHere = self.tagsContainer {
+//            for noTags in tagsHere {
+//                task.setValue(noTags, forKey: "tags")
+//            }
+//        }
+       
 //        var priorityIndex : Int?
 //
 //        if(self.priority == "Do Now"){
@@ -165,27 +204,48 @@ class AddTaskViewController: UIViewController {
 //        } else if(self.priority == "Eliminate"){
 //            priorityIndex = 3
 //        }
-        
+
         do {
             let request = Priority.fetchRequest() as NSFetchRequest<Priority>
-            
+
             let pred = NSPredicate(format: "title == %@", self.priority)
             request.predicate = pred
-            
+
             let priority = try context.fetch(request)
-            
-            
+
+
             task.priorities = priority[0]
         }
         catch {
-            
+
         }
         
         if(dueDateOn == true){
             task.dueDate = self.dueDate
             task.moveTo = self.moveToDate
             task.reminder = self.reminderDate
+            task.reminderValue = Int16(self.reminderValue)
+            task.reminderTimeValue = Int16(self.reminderTimeValue)
+            task.moveToValue = Int16(self.moveToValue)
+            task.moveToTimeValue = Int16(self.moveToTimeValue)
+
+            let dateFormater = DateFormatter()
+//            dateFormater.dateFormat = "MM-dd-yyyy HH:mm"
+//    print("dueDate")
+//    print(dateFormater.string(from: self.dueDate!))
+        } else {
+            task.dueDate = nil
+            task.moveTo = nil
+            task.reminder = nil
         }
+        
+//        if let tagsContain = self.tagsContainer,
+//           let noTags = tagsContain as? [Tags]
+//        {
+//            for tag in noTags {
+//                
+//            }
+//        }
         
         do {
             try self.taskRepository.context.save()
@@ -194,7 +254,7 @@ class AddTaskViewController: UIViewController {
         catch {
             print("Data not saved")
         }
-        print(self.tags)
+        print(task.tags)
     }
     
     func updateDueDate() {
@@ -430,7 +490,7 @@ extension AddTaskViewController : UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             cell.delegate = self
-            cell.configure(with: model,tagsArray : self.tags)
+            cell.configure(with: model,tagsArray : self.taskTags)
 //            cell.configure(with: model)
         
             return cell
@@ -504,6 +564,9 @@ extension AddTaskViewController : UITableViewDelegate, UITableViewDataSource {
 
         if  indexPath.section == 1 {
             return 88
+        }
+        if  indexPath.section == 2 {
+            return 66
         }
         
         return 44

@@ -10,7 +10,13 @@ import UIKit
 class DeleteTableViewCell: UITableViewCell {
 
         static let identifier = "DeleteTableViewCell"
-        
+    
+    private let allButton : UIButton = {
+       let button = UIButton()
+        button.backgroundColor = .clear
+        return button
+    }()
+    
         private let allContainer: UIView = {
             let view = UIView()
             view.clipsToBounds = true
@@ -42,6 +48,7 @@ class DeleteTableViewCell: UITableViewCell {
             super.init(style: style, reuseIdentifier: reuseIdentifier)
             contentView.addSubview(iconImageView)
             contentView.addSubview(cellLabel)
+            contentView.addSubview(allButton)
             contentView.clipsToBounds = true
             accessoryType = .none
         }
@@ -52,7 +59,7 @@ class DeleteTableViewCell: UITableViewCell {
         
         override func layoutSubviews() {
             super.layoutSubviews()
-            contentView.backgroundColor = .systemRed
+            contentView.backgroundColor = UIColor.softPink
             
             iconImageView.sizeToFit()
             iconImageView.frame = CGRect(x: 0,
@@ -70,8 +77,8 @@ class DeleteTableViewCell: UITableViewCell {
             
             iconImageView.center = CGPoint(x: ((self.frame.size.width  / 2) + (cellLabel.frame.size.width)/2) + 2.5,
                                            y: self.frame.size.height / 2)
-            cellLabel.textColor = .white
-            iconImageView.tintColor =  .white
+            cellLabel.textColor = .systemRed
+            iconImageView.tintColor =  .systemRed
 
             
         }

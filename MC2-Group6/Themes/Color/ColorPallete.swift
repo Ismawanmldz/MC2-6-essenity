@@ -14,8 +14,7 @@ extension UIColor {
     static var orangeFocus = UIColor(red: 1.00, green: 0.64, blue: 0.00, alpha: 1.00)
     static var blueBreak = UIColor(red: 0.40, green: 0.83, blue: 1.00, alpha: 1.00)
     static var softBlue = UIColor(red: 0.29, green: 0.54, blue: 0.69, alpha: 1.00)
-    
-    
+    static var softPink = UIColor(red: 0.97, green: 0.90, blue: 0.91, alpha: 1.00)
     //My Priorotiies COllection view Color Background
     static var red1 = UIColor(red: 0.83, green: 0.29, blue: 0.15, alpha: 1.00)
     static var red2 = UIColor(red: 0.94, green: 0.45, blue: 0.22, alpha: 1.00)

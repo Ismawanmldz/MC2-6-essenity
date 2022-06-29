@@ -57,6 +57,8 @@ class TagsTableViewCell: UITableViewCell {
     
     public func configure(with model: TaskTagsOption,tagsArray : [String]){
         tagsChosen = tagsArray
+        print("tags arrau")
+        print(tagsArray)
         self.tagsChosen.insert(contentsOf: arr, at: 0)
         print("array equals")
         print(tagsChosen)

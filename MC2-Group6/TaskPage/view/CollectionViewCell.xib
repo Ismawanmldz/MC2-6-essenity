@@ -38,6 +38,9 @@
                         <buttonConfiguration key="configuration" style="plain" image="info.circle" catalog="system">
                             <color key="baseForegroundColor" red="0.94901960780000005" green="0.95686274510000002" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </buttonConfiguration>
+                        <connections>
+                            <action selector="infoButtonPressed:" destination="27D-PJ-cjo" eventType="touchUpInside" id="wKL-Rh-cqT"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>

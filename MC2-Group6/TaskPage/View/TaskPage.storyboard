@@ -9,6 +9,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--EditTask-->
+        <scene sceneID="vRe-EZ-C7G">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EditTask" id="IcD-KS-5qJ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qXe-xb-sE9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1245" y="-237"/>
+        </scene>
         <!--SearchFilter-->
         <scene sceneID="3tK-i6-V2D">
             <objects>
@@ -17,7 +25,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UFO-c5-owx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="742" y="-54"/>
+            <point key="canvasLocation" x="1299" y="-177"/>
         </scene>
         <!--AddTask-->
         <scene sceneID="raR-la-Dkn">
@@ -32,7 +40,7 @@
         <!--Task-->
         <scene sceneID="Ehb-se-hv4">
             <objects>
-                <viewController id="fdG-aV-fcG" customClass="TaskPageController" customModule="MC2_Group6" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fdG-aV-fcG" customClass="TaskPageViewController" customModule="MC2_Group6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ua7-T9-Lzj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -64,8 +72,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mon, 06/06/22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLf-wl-pzm">
-                                                <rect key="frame" x="245" y="22" width="108" height="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mon, 06/06/22" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLf-wl-pzm">
+                                                <rect key="frame" x="221" y="22" width="132" height="18"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -163,8 +171,10 @@
                         <outlet property="BackGroundViewWhite" destination="rcl-sa-Fpa" id="AgP-gO-H9B"/>
                         <outlet property="TaskCell" destination="gbx-ph-oIM" id="iom-gx-3xR"/>
                         <outlet property="TaskTable" destination="Ma9-uF-rJz" id="YTN-72-HLk"/>
+                        <outlet property="todaysDate" destination="fLf-wl-pzm" id="DDU-dK-bC3"/>
                         <segue destination="UAj-qG-roK" kind="presentation" identifier="toSearchPage" modalPresentationStyle="fullScreen" id="LYY-JW-MPf"/>
                         <segue destination="3xS-qL-q5e" kind="presentation" identifier="toAddTaskPage" modalPresentationStyle="fullScreen" id="BAW-UU-fuB"/>
+                        <segue destination="IcD-KS-5qJ" kind="presentation" identifier="toEditTask" modalPresentationStyle="fullScreen" id="7Sn-k4-TDq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZNp-zf-FRa" sceneMemberID="firstResponder"/>

@@ -18,9 +18,22 @@ class OnboardingViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
     
-    
-    
     var programmedScroll: Bool = false
+    
+    private var onboardingInfo = [
+        (infoTitle: "Set Your Priority",
+         infoDesc: "Manage your tasks easier with 4 category of priorities that helps you keep track of which is important and urgent",
+         infoImage : "onBoarding0"
+        ),
+        (infoTitle: "Get Reminded",
+         infoDesc: "You will be reminded of your tasks deadline by the time of your choice",
+         infoImage :"onBoarding1"
+        ),
+        (infoTitle: "Focus with Pomodoro",
+         infoDesc: "Have a better quality of task time with customizable Pomodoro timer",
+         infoImage :"onBoarding2"
+        ),
+    ]
     
     private var currentPage = 0 {
         didSet {
@@ -41,8 +54,13 @@ class OnboardingViewController: UIViewController {
         pageControl.numberOfPages = slides.count
         createNewUser()
         currentPage == 0 ? hidePreviousButton() : showPreviousButton()
+        taskRepository.coreDataStore?.seedTags()
+        taskRepository.coreDataStore?.seedPriotities()
     }
     
+    func seedData() {
+        
+    }
     
     func createNewUser() {
         let newUser = User(context: taskRepository.context)

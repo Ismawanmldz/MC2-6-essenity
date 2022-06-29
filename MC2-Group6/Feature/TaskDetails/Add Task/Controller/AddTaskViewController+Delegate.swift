@@ -7,4 +7,6 @@
 
 import UIKit
 
-
+protocol AddTaskViewControllerDelegate {
+    func reloadData()
+}

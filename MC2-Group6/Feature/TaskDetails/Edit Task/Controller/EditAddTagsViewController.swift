@@ -10,7 +10,7 @@ import UIKit
 class EditAddTagsViewController: UIViewController {
 
     
-    let identifier = "AddTagsViewController"
+    let identifier = "EditAddTagsViewController"
     
     
     var arr : [String] = ["Assignment","Exam","Assignment","Project","String","Apple","Bed","duck"]
@@ -61,14 +61,17 @@ class EditAddTagsViewController: UIViewController {
         if segue.identifier == "backToTaskEdit" {
             guard let destination = segue.destination as? EditTaskViewController else { return }
             
-            destination.tags = self.taskTags
+            destination.taskTags = self.taskTags
+            destination.hasEdit = true
+            print("destination")
             print(destination.tags)
         }
     }
     
     @IBAction func doneButton(_ sender: Any) {
+        
         self.performSegue(withIdentifier: "backToTaskEdit", sender: self)
-        self.dismiss(animated: true)
+//        self.dismiss(animated: true)
     }
     
 //    @IBAction func backToAAction(_ sender: Any) {

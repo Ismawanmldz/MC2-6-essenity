@@ -19,10 +19,7 @@ class TaskRepository {
     
     private init(coreDataStore: SeederCoreDataStore) {
         self.coreDataStore = coreDataStore
-//        coreDataStore.seedTasks()
-        coreDataStore.seedTasks()
-        coreDataStore.seedPriotities()
-        coreDataStore.seedTags()
+
     }
     
 
