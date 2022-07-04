@@ -16,16 +16,17 @@ class LBreakSetTextFieldPickerViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
          super.init(style: style, reuseIdentifier: reuseIdentifier)
-         contentView.addSubview(longBreakTextField)
-        longBreakTextField.addDoneButtonOnKeyboard()
-        
-        longBreakToolBar.sizeToFit()
-        longBreakTextField.inputAccessoryView = longBreakToolBar
-        longBreakToolBar.setItems([longBreakDoneBtn], animated: true)
-        longBreakToolBar.isUserInteractionEnabled = true
-        
-        longBreakTextField.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        longBreakTextField.rightAnchor.constraint(equalTo: rightAnchor, constant: -12).isActive = true
+        contentView.addSubview(longBreakTextField)
+        let items = [flexibleSpace, longBreakDoneBtn]
+       
+       longBreakToolBar.setItems(items, animated: true)
+       longBreakToolBar.sizeToFit()
+       longBreakTextField.inputAccessoryView = longBreakToolBar
+       
+       longBreakToolBar.isUserInteractionEnabled = true
+       
+       longBreakTextField.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+       longBreakTextField.rightAnchor.constraint(equalTo: rightAnchor, constant: -12).isActive = true
     }
 
     required init?(coder: NSCoder) {
@@ -35,6 +36,9 @@ class LBreakSetTextFieldPickerViewCell: UITableViewCell {
     @objc func longBreakDonePicker() {
        longBreakTextField.resignFirstResponder()
        defaultLongBreakTime = Int(longBreakSelectedTxt)!*60
+        
+        let lrow = longBreakPickerView.selectedRow(inComponent: 0)
+        longBreakPickerView.selectRow(lrow, inComponent: 0, animated: true)
     }
     
 }

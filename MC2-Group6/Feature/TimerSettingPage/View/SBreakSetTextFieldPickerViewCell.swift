@@ -16,15 +16,17 @@ class SBreakSetTextFieldPickerViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
          super.init(style: style, reuseIdentifier: reuseIdentifier)
          contentView.addSubview(shortBreakTextField)
+         let items = [flexibleSpace, shortBreakDoneBtn]
         
+        shortBreakToolBar.setItems(items, animated: true)
         shortBreakToolBar.sizeToFit()
         shortBreakTextField.inputAccessoryView = shortBreakToolBar
-        shortBreakToolBar.setItems([shortBreakDoneBtn], animated: true)
+        
         shortBreakToolBar.isUserInteractionEnabled = true
         
-        shortBreakTextField.addDoneButtonOnKeyboard()
         shortBreakTextField.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         shortBreakTextField.rightAnchor.constraint(equalTo: rightAnchor, constant: -12).isActive = true
+        
     }
 
     required init?(coder: NSCoder) {
@@ -34,6 +36,10 @@ class SBreakSetTextFieldPickerViewCell: UITableViewCell {
     @objc func shortBreakDonePicker() {
         shortBreakTextField.resignFirstResponder()
         defaultShortBreakTime = Int(shortBreakSelectedTxt)!*60
+        
+        //MARK: TAMBAHAN UTK SET STATE ROW PICKER VIEW
+        let srow = shortBreakPickerView.selectedRow(inComponent: 0)
+        shortBreakPickerView.selectRow(srow, inComponent: 0, animated: true)
     }
 
 }

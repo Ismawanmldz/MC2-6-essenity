@@ -72,14 +72,16 @@ class TimerSettingViewController: UIViewController {
         longBreakTextField.delegate = self
         longBreakAfterTextField.delegate = self
         
-        focusPickerView.selectRow(3, inComponent: 0, animated: true)
-        shortBreakPickerView.selectRow(0, inComponent: 0, animated: true)
-        longBreakPickerView.selectRow(0, inComponent: 0, animated: true)
-        longBreakAfterPickerView.selectRow(0, inComponent: 0, animated: true)
+//        focusPickerView.selectRow(3, inComponent: 0, animated: true)
+//        shortBreakPickerView.selectRow(0, inComponent: 0, animated: true)
+//        longBreakPickerView.selectRow(0, inComponent: 0, animated: true)
+//        longBreakAfterPickerView.selectRow(0, inComponent: 0, animated: true)
     
     }
     
     override func viewDidAppear(_ animated: Bool) {
+
+      
         
     }
     
