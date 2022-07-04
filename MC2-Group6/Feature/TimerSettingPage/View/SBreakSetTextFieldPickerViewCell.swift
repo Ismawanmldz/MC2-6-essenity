@@ -12,6 +12,7 @@ class SBreakSetTextFieldPickerViewCell: UITableViewCell {
     static let identifier = "shortBreakPickerCell"
     
     let shortBreakDoneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(shortBreakDonePicker))
+    var selectRow : Int = 0
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
          super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -37,6 +38,10 @@ class SBreakSetTextFieldPickerViewCell: UITableViewCell {
         shortBreakTextField.resignFirstResponder()
         defaultShortBreakTime = Int(shortBreakSelectedTxt)!*60
         
+        let srow = shortBreakPickerView.selectedRow(inComponent: 0)
+        shortBreakPickerView.selectRow(srow, inComponent: 0, animated: true)
+        selectRow = srow
+        defaults.setValue(selectRow, forKey: sPick)
     }
 
 }

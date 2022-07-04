@@ -81,21 +81,19 @@ class TimerSettingViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        //MARK: NGAKALIN supaya set state picker di awal bener:
-        if defaultFocusTime == defaults.integer(forKey: focus){
+        if defaultFocusTime == 1500 && defaultShortBreakTime == 60 && defaultLongBreakTime == 1200{
             focusPickerView.selectRow(3, inComponent: 0, animated: true)
-
-        }else{
-            let row = focusPickerView.selectedRow(inComponent: 0)
-            focusPickerView.selectRow(row, inComponent: 0, animated: true)
-            let srow = shortBreakPickerView.selectedRow(inComponent: 0)
-            shortBreakPickerView.selectRow(srow, inComponent: 0, animated: true)
-            let lrow = shortBreakPickerView.selectedRow(inComponent: 0)
-            longBreakPickerView.selectRow(lrow, inComponent: 0, animated: true)
-            let larow = longBreakPickerView.selectedRow(inComponent: 0)
-            longBreakAfterPickerView.selectRow(larow, inComponent: 0, animated: true)
+            shortBreakPickerView.selectRow(0, inComponent: 0, animated: true)
+            longBreakPickerView.selectRow(0, inComponent: 0, animated: true)
+            longBreakAfterPickerView.selectRow(0, inComponent: 0, animated: true)
         }
+            else{
+                focusPickerView.selectRow(defaults.integer(forKey: fPick), inComponent: 0, animated: true)
+                shortBreakPickerView.selectRow(defaults.integer(forKey: sPick), inComponent: 0, animated: true)
+                longBreakPickerView.selectRow(defaults.integer(forKey: lPick), inComponent: 0, animated: true)
+                longBreakAfterPickerView.selectRow(defaults.integer(forKey: laPick), inComponent: 0, animated: true)
         
+      }
     }
     
     

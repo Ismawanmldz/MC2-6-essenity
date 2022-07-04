@@ -12,6 +12,7 @@ class LBreakSetTextFieldPickerViewCell: UITableViewCell {
     static let identifier = "longBreakPickerCell"
     
     let longBreakDoneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(longBreakDonePicker))
+    var selectRow : Int = 0
 
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
@@ -37,6 +38,11 @@ class LBreakSetTextFieldPickerViewCell: UITableViewCell {
         longBreakTextField.resignFirstResponder()
         defaultLongBreakTime = Int(longBreakSelectedTxt)!*60
         
+        let lrow = longBreakPickerView.selectedRow(inComponent: 0)
+        longBreakPickerView.selectRow(lrow, inComponent: 0, animated: true)
+
+        selectRow = lrow
+        defaults.setValue(selectRow, forKey: lPick)
 
     }
     

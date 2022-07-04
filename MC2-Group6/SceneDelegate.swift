@@ -33,10 +33,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         //MARK: USER DEFAULT Retrieve default value from user default and assing to variable
          defaultFocusTime = defaults.integer(forKey: focus)
-        defaultShortBreakTime = defaults.integer(forKey: short)
-        defaultLongBreakTime = defaults.integer(forKey: long)
+         defaultShortBreakTime = defaults.integer(forKey: short)
+         defaultLongBreakTime = defaults.integer(forKey: long)
          defaultLongBreakAfter =  defaults.integer(forKey: longAf)
-        defaultNotifSound =  defaults.string(forKey: notifS)!
+         defaultNotifSound =  defaults.string(forKey: notifS)!
+        
+       
+        focusPickerView.selectRow(defaults.integer(forKey: fPick), inComponent: 0, animated: true)
+        shortBreakPickerView.selectRow(defaults.integer(forKey: sPick), inComponent: 0, animated: true)
+        longBreakPickerView.selectRow(defaults.integer(forKey: lPick), inComponent: 0, animated: true)
+        longBreakAfterPickerView.selectRow(defaults.integer(forKey: laPick), inComponent: 0, animated: true)
 
     }
 
@@ -45,6 +51,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This may occur due to temporary interruptions (ex. an incoming phone call).
         
         //MARK: SAVE DEFAULT VALUE DRI USER
+        defaults.setValue(defaultFocusTime, forKey: focus)
+        defaults.setValue(defaultShortBreakTime, forKey: short)
+        defaults.setValue(defaultLongBreakTime, forKey: long)
+        defaults.setValue(defaultLongBreakAfter, forKey: longAf)
+        defaults.setValue(defaultNotifSound, forKey: notifS)
         
     }
 

@@ -12,7 +12,8 @@ class LBAfterSetTextFieldPickerViewCell: UITableViewCell {
     static let identifier = "longBreakAfterPickerCell"
     
     let longBreakAfterDoneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(longBreakAfterDonePicker))
-
+    var selectRow : Int = 0
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(longBreakAfterTextField)
@@ -35,6 +36,12 @@ class LBAfterSetTextFieldPickerViewCell: UITableViewCell {
     @objc func longBreakAfterDonePicker() {
         longBreakAfterTextField.resignFirstResponder()
         defaultLongBreakAfter = Int(longBreakAfterSelectedTxt)!
+        
+        let larow = longBreakAfterPickerView.selectedRow(inComponent: 0)
+        longBreakAfterPickerView.selectRow(larow, inComponent: 0, animated: true)
+
+        selectRow = larow
+        defaults.setValue(selectRow, forKey: laPick)
     }
 
 }

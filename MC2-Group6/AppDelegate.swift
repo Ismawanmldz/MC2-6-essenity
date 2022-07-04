@@ -15,6 +15,11 @@ var long = "UDLongBreak"
 var longAf = "UDLongBreakAft"
 var notifS = "UDNotifSound"
 
+var fPick = "FPicker"
+var sPick = "SPicker"
+var lPick = "LPicker"
+var laPick = "LAPicker"
+
 let defaults = UserDefaults.standard
 
 @main
@@ -36,10 +41,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
               short: 60,
               long: 1200,
               longAf: 2,
-              notifS: "ON"
+              notifS: "ON",
+              fPick: 3,
+              sPick: 0,
+              lPick: 0,
+              laPick: 0
               ])
-
-        
         return true
     }
 
