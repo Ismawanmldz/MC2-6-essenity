@@ -7,7 +7,15 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
+var focus = "UDFocusTime"
+var short = "UDShortBreak"
+var long = "UDLongBreak"
+var longAf = "UDLongBreakAft"
+var notifS = "UDNotifSound"
+
+let defaults = UserDefaults.standard
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,6 +29,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
+        //MARK: Give default values to your UserDefault keys
+          UserDefaults.standard.register(defaults: [
+              focus: 1500,
+              short: 60,
+              long: 1200,
+              longAf: 2,
+              notifS: "ON"
+              ])
+
+        
         return true
     }
 

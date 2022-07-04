@@ -33,11 +33,8 @@ class LBAfterSetTextFieldPickerViewCell: UITableViewCell {
     }
     
     @objc func longBreakAfterDonePicker() {
-       longBreakAfterTextField.resignFirstResponder()
-       defaultLongBreakAfter = Int(longBreakAfterSelectedTxt)!
-        
-        let larow = longBreakAfterPickerView.selectedRow(inComponent: 0)
-        longBreakAfterPickerView.selectRow(larow, inComponent: 0, animated: true)
+        longBreakAfterTextField.resignFirstResponder()
+        defaultLongBreakAfter = Int(longBreakAfterSelectedTxt)!
     }
 
 }

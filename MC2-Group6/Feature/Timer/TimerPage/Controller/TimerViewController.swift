@@ -82,6 +82,7 @@ class TimerViewController: UIViewController {
         
         askForPermission()
         
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

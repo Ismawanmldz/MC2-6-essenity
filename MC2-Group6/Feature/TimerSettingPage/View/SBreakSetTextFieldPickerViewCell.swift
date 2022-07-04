@@ -37,9 +37,6 @@ class SBreakSetTextFieldPickerViewCell: UITableViewCell {
         shortBreakTextField.resignFirstResponder()
         defaultShortBreakTime = Int(shortBreakSelectedTxt)!*60
         
-        //MARK: TAMBAHAN UTK SET STATE ROW PICKER VIEW
-        let srow = shortBreakPickerView.selectedRow(inComponent: 0)
-        shortBreakPickerView.selectRow(srow, inComponent: 0, animated: true)
     }
 
 }

@@ -15,7 +15,7 @@ class LBreakSetTextFieldPickerViewCell: UITableViewCell {
 
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?){
-         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(longBreakTextField)
         let items = [flexibleSpace, longBreakDoneBtn]
        
@@ -34,11 +34,10 @@ class LBreakSetTextFieldPickerViewCell: UITableViewCell {
     }
     
     @objc func longBreakDonePicker() {
-       longBreakTextField.resignFirstResponder()
-       defaultLongBreakTime = Int(longBreakSelectedTxt)!*60
+        longBreakTextField.resignFirstResponder()
+        defaultLongBreakTime = Int(longBreakSelectedTxt)!*60
         
-        let lrow = longBreakPickerView.selectedRow(inComponent: 0)
-        longBreakPickerView.selectRow(lrow, inComponent: 0, animated: true)
+
     }
     
 }

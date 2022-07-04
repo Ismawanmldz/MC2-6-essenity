@@ -35,13 +35,9 @@ class FocusSetTextFieldPickerViewCell: UITableViewCell {
     }
     
     @objc func focusDonePicker() {
-
         focusTextField.resignFirstResponder()
         defaultFocusTime = Int(focusSelectedTxt)!*60
         
-        //MARK: TAMBAHAN UTK SET STATE ROW PICKER VIEW
-        let row = focusPickerView.selectedRow(inComponent: 0)
-        focusPickerView.selectRow(row, inComponent: 0, animated: true)
     }
 
 }
