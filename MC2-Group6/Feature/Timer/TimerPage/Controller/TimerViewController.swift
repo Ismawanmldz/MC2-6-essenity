@@ -95,6 +95,11 @@ class TimerViewController: UIViewController {
         focusTimeList()
         stopBtnAction(stopButton)
         
+        imageIcon.image = focusIcon
+        timeSubtitle.text = "Focus Time"
+        timeDesc.text = "Do your task now"
+        pomodoroInterval = 0
+        
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
 
