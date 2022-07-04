@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yHt-Dl-8SP">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Edit Add Tags View Controller-->
+        <scene sceneID="AvF-Y6-pju">
+            <objects>
+                <viewController id="Sl2-eM-Chj" customClass="EditAddTagsViewController" customModule="MC2_Group6" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="80C-am-ysK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYn-rp-TdG">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="b9E-mv-GfU"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="Add Tags" id="nWJ-Wt-cba">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="HOP-Mt-25H">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="BSh-TM-SZu">
+                                                <rect key="frame" x="20" y="11" width="92" height="34.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system"/>
+                                                <connections>
+                                                    <action selector="backButtonPressed:" destination="Sl2-eM-Chj" eventType="touchUpInside" id="Me2-Pg-MsI"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="vag-h5-FCS">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="0h0-jp-15D">
+                                                <rect key="frame" x="302" y="11" width="92" height="34.5"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Done"/>
+                                                <connections>
+                                                    <action selector="doneButton:" destination="Sl2-eM-Chj" eventType="touchUpInside" id="X7s-xU-1RW"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ACD-dc-t6b">
+                                <rect key="frame" x="0.0" y="100" width="414" height="697"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="tcO-eS-vfU"/>
+                        <color key="backgroundColor" systemColor="systemGray5Color"/>
+                        <constraints>
+                            <constraint firstItem="ACD-dc-t6b" firstAttribute="leading" secondItem="tcO-eS-vfU" secondAttribute="leading" id="0Qb-1j-aNB"/>
+                            <constraint firstItem="HYn-rp-TdG" firstAttribute="trailing" secondItem="tcO-eS-vfU" secondAttribute="trailing" id="2en-EZ-2OZ"/>
+                            <constraint firstItem="HYn-rp-TdG" firstAttribute="leading" secondItem="tcO-eS-vfU" secondAttribute="leading" id="6iv-2V-CKd"/>
+                            <constraint firstItem="ACD-dc-t6b" firstAttribute="trailing" secondItem="tcO-eS-vfU" secondAttribute="trailing" id="O3f-my-LDc"/>
+                            <constraint firstItem="tcO-eS-vfU" firstAttribute="bottom" secondItem="ACD-dc-t6b" secondAttribute="bottom" constant="45" id="Tib-G4-BDD"/>
+                            <constraint firstItem="HYn-rp-TdG" firstAttribute="top" secondItem="tcO-eS-vfU" secondAttribute="top" id="Wxk-fc-IaL"/>
+                            <constraint firstItem="HYn-rp-TdG" firstAttribute="top" secondItem="tcO-eS-vfU" secondAttribute="top" id="XWw-VM-eIu"/>
+                            <constraint firstItem="ACD-dc-t6b" firstAttribute="top" secondItem="HYn-rp-TdG" secondAttribute="bottom" constant="12" id="dwk-PP-ECS"/>
+                            <constraint firstItem="ACD-dc-t6b" firstAttribute="top" secondItem="HYn-rp-TdG" secondAttribute="bottom" constant="12" id="jV4-hW-PTa"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bgN-Rs-7Jp"/>
+                    <connections>
+                        <outlet property="tagsTableView" destination="ACD-dc-t6b" id="i3p-Md-YvB"/>
+                        <segue destination="RtA-g7-iDf" kind="unwind" identifier="backToTaskEdit" unwindAction="unwindToSegue:" id="Os3-Zn-b6U"/>
+                        <segue destination="RtA-g7-iDf" kind="unwind" unwindAction="unwindToSegue:" id="s2c-wc-2pk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="51n-Ba-1NZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="RtA-g7-iDf" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1680" y="-937"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="WAR-SO-jmb">
+            <objects>
+                <navigationController id="yHt-Dl-8SP" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KfR-0K-QAd">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="HZY-uu-yLG" kind="relationship" relationship="rootViewController" id="Eom-mQ-wbd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Ur-SZ-LHC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-104" y="-908"/>
+        </scene>
+        <!--Edit Task-->
+        <scene sceneID="bKA-Dt-BpL">
+            <objects>
+                <viewController storyboardIdentifier="TaskPageViewController" id="HZY-uu-yLG" customClass="EditTaskViewController" customModule="MC2_Group6" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gEg-ut-a4c">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="wza-vi-upi"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Edit Task" id="2Ie-X8-eXb">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="HVr-Ak-s0W">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="wgL-GY-GZo">
+                                <rect key="frame" x="20" y="5" width="92" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="HZY-uu-yLG" eventType="touchUpInside" id="EWr-Ez-J3s"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="jIn-Qc-8yZ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="Y1B-d7-hci">
+                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Done"/>
+                                <connections>
+                                    <action selector="doneButton:" destination="HZY-uu-yLG" eventType="touchUpInside" id="taQ-hO-IfU"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="Sl2-eM-Chj" kind="presentation" identifier="toAddTagsFromEdit" id="RJa-LT-RCp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SaJ-hO-kKp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="874" y="-908"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

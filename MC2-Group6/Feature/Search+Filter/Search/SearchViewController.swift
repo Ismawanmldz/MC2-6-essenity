@@ -14,16 +14,25 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var taskTableView: UITableView!
    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
+    
+    private let taskRepository = TaskRepository.shared
+    
+    var taskContainer : [Task]?
+    var searchedTask : [Task] = []
+    
     var taskList = [TaskSearch]()
     var filteredTask = [TaskSearch]()
-    var searchActive : Bool = true
+    
+    var searchActive : Bool = false
     var checkIndex = 0
     
     //Receive Array
     var myIncomeArray = [String]()
     var mySeguedArray = [String]() {
              didSet{
-                 
                  myIncomeArray = mySeguedArray //no need to call viewDidLoad
                  filterButton.setImage(UIImage(named: "line.3.horizontal.decrease.circle.fill"), for: .normal)
                  print(myIncomeArray[0])
@@ -32,10 +41,23 @@ class SearchViewController: UIViewController {
              }
     }
     
+    func fetchTasks() {
+        do {
+            self.taskContainer = try taskRepository.context.fetch(Task.fetchRequest())
+            DispatchQueue.main.async {
+                self.taskTableView.reloadData()
+            }
+        }
+        catch {
+            
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        fetchTasks()
         initList()
         initSearchController()
         segmentedControl.selectedSegmentIndex = 0
@@ -47,8 +69,6 @@ class SearchViewController: UIViewController {
         }
         initSegmentedControl()
     }
-    
-    
     
     //MARK: Table View Cell
     func initList()
@@ -104,15 +124,30 @@ class SearchViewController: UIViewController {
 
     func filteredForSearchTextAndScopeButton(searchText: String, scopeButton: String)
     {
-//        var scopeFilter = taskList.filter({ myIncomeArray.contains($0.tags) })
+//        var scopeFilter = taskContainer.filter({ myIncomeArray.contains($0.tags) })
 //        print(scopeFilter)
-        filteredTask = taskList.filter
-        {
-            task in
-            let scopeMatch = (scopeButton == "All" || task.status!.lowercased().contains(scopeButton.lowercased()))
-            return scopeMatch
+//        filteredTask = taskList.filter
+        print(scopeButton.lowercased())
+        
+        if scopeButton.lowercased() == "completed" {
+            print(scopeButton.lowercased())
+            searchedTask = (taskContainer?.filter{$0.status == true })!
+        } else if (scopeButton.lowercased() == "uncomplete"){
+            searchedTask = (taskContainer?.filter{$0.status == false })!
         }
-        print(scopeButton)
+    
+//        searchedTask = taskContainer!.filter
+//        {
+//            task in
+//            if scopeButton.lowercased() == "uncomplete".lowercased() {
+//                let scopeMatch = (task.status == false )
+//                return scopeMatch
+//            }
+//            else {
+//                let scopeMatch = (task.status == true)
+//                return scopeMatch
+//            }
+//        }
         
         taskTableView.reloadData()
         
@@ -154,55 +189,57 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     //MARK: Table View
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
+       
         if(searchActive) {
-            return filteredTask.count
+            return searchedTask.count
         }
-        return taskList.count
+        return taskContainer!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let taskTableViewCell = tableView.dequeueReusableCell(withIdentifier: "taskTableViewCellID") as! TaskTableViewCell
         
-        let thisTask : TaskSearch!
+        let thisTask : Task?
         
 //        searchActive = true
         if(searchActive){
-            thisTask = filteredTask[indexPath.row]
+            thisTask = searchedTask[indexPath.row]
         } else {
-            thisTask = taskList[indexPath.row];
+            thisTask = taskContainer![indexPath.row]
+//            thisTask = taskContainer[indexp]
         }
         
-        taskTableViewCell.taskTitle.text = thisTask.title
-        taskTableViewCell.taskTags.text = thisTask.tags[0]
-        taskTableViewCell.taskDueDate.text = thisTask.dueDate
-        
-        taskTableViewCell.taskPriority.backgroundColor = UIColor(red: 1.00, green: 0, blue: 0, alpha: 1.00)
-        taskTableViewCell.taskView.layer.cornerRadius = 8
-        
-        // Make Priority Color in Table View Cell have corner edge
-        taskTableViewCell.taskPriority.layer.cornerRadius = 8
-        taskTableViewCell.taskPriority.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
-    
-        
-        taskTableViewCell.checkButton.setImage(UIImage(systemName: thisTask.check), for: .normal)
-        
-        
-        if(taskTableViewCell.checkButton.currentImage == UIImage(systemName: "circle.fill")){
-            taskTableViewCell.checkButton.isSelected = true
-        }
-        
-        //To click check button and change the button image
-        taskTableViewCell.checkButton.isSelected = thisTask.isFavorite
-        taskTableViewCell.callback = {
-            thisTask.isFavorite = !thisTask.isFavorite
-            taskTableViewCell.checkButton.isSelected = thisTask.isFavorite
-            if(taskTableViewCell.checkButton.isSelected){
-                taskTableViewCell.checkButton.setImage(UIImage(systemName: "circle.fill"), for: .selected)
-            } else {
-                taskTableViewCell.checkButton.setImage(UIImage(systemName: "circle"), for: .normal)
-            }
-
-        }
+        taskTableViewCell.taskTitle.text = thisTask!.title
+//        taskTableViewCell.taskTags.text = thisTask.tags[0]
+//        taskTableViewCell.taskDueDate.text = thisTask.dueDate
+//
+//        taskTableViewCell.taskPriority.backgroundColor = UIColor(red: 1.00, green: 0, blue: 0, alpha: 1.00)
+//        taskTableViewCell.taskView.layer.cornerRadius = 8
+//
+//        // Make Priority Color in Table View Cell have corner edge
+//        taskTableViewCell.taskPriority.layer.cornerRadius = 8
+//        taskTableViewCell.taskPriority.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+//
+//
+//        taskTableViewCell.checkButton.setImage(UIImage(systemName: thisTask.check), for: .normal)
+//
+//
+//        if(taskTableViewCell.checkButton.currentImage == UIImage(systemName: "circle.fill")){
+//            taskTableViewCell.checkButton.isSelected = true
+//        }
+//
+//        //To click check button and change the button image
+//        taskTableViewCell.checkButton.isSelected = thisTask.isFavorite
+//        taskTableViewCell.callback = {
+//            thisTask.isFavorite = !thisTask.isFavorite
+//            taskTableViewCell.checkButton.isSelected = thisTask.isFavorite
+//            if(taskTableViewCell.checkButton.isSelected){
+//                taskTableViewCell.checkButton.setImage(UIImage(systemName: "circle.fill"), for: .selected)
+//            } else {
+//                taskTableViewCell.checkButton.setImage(UIImage(systemName: "circle"), for: .normal)
+//            }
+//
+//        }
 
         return taskTableViewCell
     }
@@ -243,22 +280,17 @@ extension SearchViewController: UISearchBarDelegate {
     
     //To search by text in search bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteredTask = filteredTask.filter({ (anArray) -> Bool in
-            guard let firstString = (anArray.title)
-            else{
-                return false
-            }
-            let tmp: NSString = firstString as NSString
-            let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
-            print (tmp)
-            return range.location != NSNotFound
-        })
-//        if(filteredTask.count == 0){
-//            searchActive = true
-//        } else {
-//            searchActive = true
-//        }
-        searchActive = true
-        self.taskTableView.reloadData()
+        if searchText != "" {
+//            filteredTask = filteredTask.filter{ $0.title.contains(searchText)}
+            searchedTask = (taskContainer?.filter{$0.title!.contains(searchText)})!
+            
+            searchActive = true
+            self.taskTableView.reloadData()
+        } else {
+            searchedTask = taskContainer!
+            //                filteredTask = filteredTask
+            searchActive = false
+            self.taskTableView.reloadData()
+        }
     }
 }

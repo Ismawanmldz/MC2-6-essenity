@@ -18,6 +18,7 @@ class SeederCoreDataStore {
             (name: "Plan It" , count : 0),
             (name: "Delegate", count : 0),
             (name: "Eliminate", count : 0),
+            (name: "Complete", count : 0),
         ]
         
         for priority in priorities{

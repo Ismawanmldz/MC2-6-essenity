@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FvU-WS-dJY">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Eleminate View Controller-->
+        <scene sceneID="fh7-p7-9Ig">
+            <objects>
+                <viewController id="FvU-WS-dJY" customClass="eleminateViewController" customModule="MC2_Group6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rEP-Pm-G7S">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Eliminate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WiM-9K-C0s">
+                                <rect key="frame" x="41" y="90" width="333" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Not Important and Not Urgent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4j-gc-CXs">
+                                <rect key="frame" x="42" y="121" width="332" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Time-wasting activities that should be cut out. Can be done only in moderation." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMV-9T-u91">
+                                <rect key="frame" x="41" y="150" width="333" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Type of tasks:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyv-Mz-6ak">
+                                <rect key="frame" x="41" y="199" width="333" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Eisenhower_Matrix" translatesAutoresizingMaskIntoConstraints="NO" id="eQD-yg-ACc">
+                                <rect key="frame" x="41" y="320" width="333" height="300"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ry-HF-0PW">
+                                <rect key="frame" x="41" y="228" width="333" height="61"/>
+                                <string key="text">- Trivia
+- Distractions
+- Fun and play</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9ov-oA-MEB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xyv-Mz-6ak" firstAttribute="leading" secondItem="9ov-oA-MEB" secondAttribute="leading" constant="41" id="01T-GM-H8c"/>
+                            <constraint firstItem="WiM-9K-C0s" firstAttribute="top" secondItem="9ov-oA-MEB" secondAttribute="top" constant="46" id="1Rc-At-DPv"/>
+                            <constraint firstItem="WiM-9K-C0s" firstAttribute="leading" secondItem="9ov-oA-MEB" secondAttribute="leading" constant="41" id="1pc-5f-jDn"/>
+                            <constraint firstItem="5ry-HF-0PW" firstAttribute="top" secondItem="xyv-Mz-6ak" secondAttribute="bottom" constant="8" symbolic="YES" id="2T7-Vk-1aS"/>
+                            <constraint firstItem="9ov-oA-MEB" firstAttribute="trailing" secondItem="WiM-9K-C0s" secondAttribute="trailing" constant="40" id="3rm-fU-akb"/>
+                            <constraint firstItem="xyv-Mz-6ak" firstAttribute="top" secondItem="IMV-9T-u91" secondAttribute="bottom" constant="8" symbolic="YES" id="Af3-yS-Ro2"/>
+                            <constraint firstItem="9ov-oA-MEB" firstAttribute="trailing" secondItem="D4j-gc-CXs" secondAttribute="trailing" constant="40" id="AhQ-Et-q2J"/>
+                            <constraint firstItem="IMV-9T-u91" firstAttribute="top" secondItem="D4j-gc-CXs" secondAttribute="bottom" constant="8" symbolic="YES" id="Fua-x1-csp"/>
+                            <constraint firstItem="9ov-oA-MEB" firstAttribute="trailing" secondItem="IMV-9T-u91" secondAttribute="trailing" constant="40" id="G2B-Fc-zXm"/>
+                            <constraint firstItem="5ry-HF-0PW" firstAttribute="top" secondItem="xyv-Mz-6ak" secondAttribute="bottom" constant="8" symbolic="YES" id="GGt-33-WBd"/>
+                            <constraint firstItem="IMV-9T-u91" firstAttribute="top" secondItem="D4j-gc-CXs" secondAttribute="bottom" constant="8" symbolic="YES" id="Ltm-5f-liE"/>
+                            <constraint firstItem="D4j-gc-CXs" firstAttribute="top" secondItem="WiM-9K-C0s" secondAttribute="bottom" constant="1" id="To5-L8-zo6"/>
+                            <constraint firstItem="9ov-oA-MEB" firstAttribute="trailing" secondItem="5ry-HF-0PW" secondAttribute="trailing" constant="40" id="Xno-45-BY6"/>
+                            <constraint firstItem="9ov-oA-MEB" firstAttribute="trailing" secondItem="eQD-yg-ACc" secondAttribute="trailing" constant="40" id="fut-GD-Ria"/>
+                            <constraint firstItem="9ov-oA-MEB" firstAttribute="bottom" secondItem="eQD-yg-ACc" secondAttribute="bottom" constant="222" id="kaW-Rh-X2o"/>
+                            <constraint firstItem="D4j-gc-CXs" firstAttribute="leading" secondItem="9ov-oA-MEB" secondAttribute="leading" constant="42" id="mT2-Fo-W8m"/>
+                            <constraint firstItem="D4j-gc-CXs" firstAttribute="top" secondItem="WiM-9K-C0s" secondAttribute="bottom" constant="1" id="nOX-ts-yhV"/>
+                            <constraint firstItem="eQD-yg-ACc" firstAttribute="leading" secondItem="9ov-oA-MEB" secondAttribute="leading" constant="41" id="oYY-OB-mYH"/>
+                            <constraint firstItem="eQD-yg-ACc" firstAttribute="top" secondItem="5ry-HF-0PW" secondAttribute="bottom" constant="31" id="rSc-Pi-3Ww"/>
+                            <constraint firstItem="IMV-9T-u91" firstAttribute="leading" secondItem="9ov-oA-MEB" secondAttribute="leading" constant="41" id="uMj-q7-4qR"/>
+                            <constraint firstItem="xyv-Mz-6ak" firstAttribute="top" secondItem="IMV-9T-u91" secondAttribute="bottom" constant="8" symbolic="YES" id="xgA-TB-LwY"/>
+                            <constraint firstItem="5ry-HF-0PW" firstAttribute="leading" secondItem="9ov-oA-MEB" secondAttribute="leading" constant="41" id="yeL-V7-7lJ"/>
+                            <constraint firstItem="9ov-oA-MEB" firstAttribute="trailing" secondItem="xyv-Mz-6ak" secondAttribute="trailing" constant="40" id="zZP-6P-L4c"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="eleminateLabel" destination="WiM-9K-C0s" id="zH5-v3-MnN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="85m-ua-LN4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="858" y="793"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Eisenhower_Matrix" width="680" height="606"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

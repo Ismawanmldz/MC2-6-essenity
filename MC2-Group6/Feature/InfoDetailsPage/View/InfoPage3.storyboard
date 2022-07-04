@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MTH-S2-Nh2">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Plan View Controller-->
+        <scene sceneID="jU2-l9-h6F">
+            <objects>
+                <viewController id="MTH-S2-Nh2" customClass="planViewController" customModule="MC2_Group6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8QF-s8-rjG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Plan It" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfY-eg-rW7">
+                                <rect key="frame" x="41" y="90" width="333" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Important and Not Urgent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lKj-4B-QHZ">
+                                <rect key="frame" x="42" y="121" width="332" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Task without a set deadline that don’t require immediate action" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxr-6F-RHA">
+                                <rect key="frame" x="41" y="150" width="333" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Type of tasks:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9k0-da-DGy">
+                                <rect key="frame" x="41" y="199" width="333" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Eisenhower_Matrix" translatesAutoresizingMaskIntoConstraints="NO" id="TwZ-LN-dh3">
+                                <rect key="frame" x="41" y="320" width="333" height="300"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGC-Wo-7I6">
+                                <rect key="frame" x="41" y="228" width="333" height="61"/>
+                                <string key="text">- Planning
+- Long-term goal
+- Self-care</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="GhZ-PJ-e1j"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9k0-da-DGy" firstAttribute="top" secondItem="hxr-6F-RHA" secondAttribute="bottom" constant="8" symbolic="YES" id="0NN-qV-M08"/>
+                            <constraint firstItem="GhZ-PJ-e1j" firstAttribute="trailing" secondItem="yGC-Wo-7I6" secondAttribute="trailing" constant="40" id="0he-kt-Cpe"/>
+                            <constraint firstItem="yGC-Wo-7I6" firstAttribute="top" secondItem="9k0-da-DGy" secondAttribute="bottom" constant="8" symbolic="YES" id="9ph-72-eoJ"/>
+                            <constraint firstItem="TwZ-LN-dh3" firstAttribute="leading" secondItem="GhZ-PJ-e1j" secondAttribute="leading" constant="41" id="FPf-YE-YWL"/>
+                            <constraint firstItem="yGC-Wo-7I6" firstAttribute="leading" secondItem="GhZ-PJ-e1j" secondAttribute="leading" constant="41" id="HRh-IY-RRJ"/>
+                            <constraint firstItem="hxr-6F-RHA" firstAttribute="top" secondItem="lKj-4B-QHZ" secondAttribute="bottom" constant="8" symbolic="YES" id="Jie-sL-apt"/>
+                            <constraint firstItem="lKj-4B-QHZ" firstAttribute="leading" secondItem="GhZ-PJ-e1j" secondAttribute="leading" constant="42" id="Lt7-D8-Ztd"/>
+                            <constraint firstItem="GhZ-PJ-e1j" firstAttribute="trailing" secondItem="vfY-eg-rW7" secondAttribute="trailing" constant="40" id="O3x-Ci-Ch8"/>
+                            <constraint firstItem="GhZ-PJ-e1j" firstAttribute="bottom" secondItem="TwZ-LN-dh3" secondAttribute="bottom" constant="222" id="PKe-Jx-pYZ"/>
+                            <constraint firstItem="hxr-6F-RHA" firstAttribute="leading" secondItem="GhZ-PJ-e1j" secondAttribute="leading" constant="41" id="Qgl-JL-HcU"/>
+                            <constraint firstItem="GhZ-PJ-e1j" firstAttribute="trailing" secondItem="9k0-da-DGy" secondAttribute="trailing" constant="40" id="S29-WU-kiO"/>
+                            <constraint firstItem="9k0-da-DGy" firstAttribute="top" secondItem="hxr-6F-RHA" secondAttribute="bottom" constant="8" symbolic="YES" id="UV9-CN-95o"/>
+                            <constraint firstItem="lKj-4B-QHZ" firstAttribute="top" secondItem="vfY-eg-rW7" secondAttribute="bottom" constant="1" id="V3t-md-BlF"/>
+                            <constraint firstItem="TwZ-LN-dh3" firstAttribute="top" secondItem="yGC-Wo-7I6" secondAttribute="bottom" constant="31" id="anh-Dv-4CK"/>
+                            <constraint firstItem="vfY-eg-rW7" firstAttribute="top" secondItem="GhZ-PJ-e1j" secondAttribute="top" constant="46" id="bza-dt-Rfe"/>
+                            <constraint firstItem="GhZ-PJ-e1j" firstAttribute="trailing" secondItem="hxr-6F-RHA" secondAttribute="trailing" constant="40" id="cy6-gA-qBV"/>
+                            <constraint firstItem="lKj-4B-QHZ" firstAttribute="top" secondItem="vfY-eg-rW7" secondAttribute="bottom" constant="1" id="kaX-fB-DeC"/>
+                            <constraint firstItem="yGC-Wo-7I6" firstAttribute="top" secondItem="9k0-da-DGy" secondAttribute="bottom" constant="8" symbolic="YES" id="nVg-0h-UwG"/>
+                            <constraint firstItem="GhZ-PJ-e1j" firstAttribute="trailing" secondItem="TwZ-LN-dh3" secondAttribute="trailing" constant="40" id="nrU-L9-Mgg"/>
+                            <constraint firstItem="GhZ-PJ-e1j" firstAttribute="trailing" secondItem="lKj-4B-QHZ" secondAttribute="trailing" constant="40" id="omQ-PW-MyG"/>
+                            <constraint firstItem="hxr-6F-RHA" firstAttribute="top" secondItem="lKj-4B-QHZ" secondAttribute="bottom" constant="8" symbolic="YES" id="shf-my-BHN"/>
+                            <constraint firstItem="9k0-da-DGy" firstAttribute="leading" secondItem="GhZ-PJ-e1j" secondAttribute="leading" constant="41" id="urV-W4-mWj"/>
+                            <constraint firstItem="vfY-eg-rW7" firstAttribute="leading" secondItem="GhZ-PJ-e1j" secondAttribute="leading" constant="41" id="zx9-eo-a58"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="planItLabel" destination="vfY-eg-rW7" id="AKL-rC-dJV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ts2-kF-CSz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="859" y="115"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Eisenhower_Matrix" width="680" height="606"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
