@@ -82,6 +82,7 @@ class TimerViewController: UIViewController {
         
         askForPermission()
         
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -94,6 +95,11 @@ class TimerViewController: UIViewController {
         selectedTime = "Focus Time"
         focusTimeList()
         stopBtnAction(stopButton)
+        
+        imageIcon.image = focusIcon
+        timeSubtitle.text = "Focus Time"
+        timeDesc.text = "Do your task now"
+        pomodoroInterval = 0
         
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }

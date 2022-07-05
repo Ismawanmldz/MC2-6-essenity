@@ -72,3 +72,5 @@ let longBreakAfterTextField: UITextField = {
 }()
 
 //let x
+
+let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)

@@ -20,6 +20,7 @@ class SwitchCell: UITableViewCell {
             } else {
                 switchControl.isOn = false
             }
+            
            
             switchControl.onTintColor = .darkBlue
             switchControl.translatesAutoresizingMaskIntoConstraints = false
@@ -43,9 +44,27 @@ class SwitchCell: UITableViewCell {
         if sender.isOn{
             defaultNotifSound = "ON"
             switchControl.isOn = true
+            
+            //MARK: TAMBAHAN USER DEFAULT
+            TimerSettingViewController().defaults.set("ON", forKey: "UDNotifSound")
+            
         }else{
             defaultNotifSound = "OFF"
             switchControl.isOn = false
+            
+            //MARK: TAMBAHAN USER DEFAULT
+            TimerSettingViewController().defaults.set("OFF", forKey: "UDNotifSound")
+        }
+    }
+    
+    //MARK: TAMBAHAN FUNC USER DEFAULT
+    func checkSwitchState(){
+        if( TimerSettingViewController().defaults.string(forKey: "UDNotifSound") == "ON"){
+            switchControl.setOn(true, animated: false)
+        }else{
+            switchControl.setOn(false, animated: false)
         }
     }
 }
+
+

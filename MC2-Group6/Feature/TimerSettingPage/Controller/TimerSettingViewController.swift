@@ -16,7 +16,9 @@ class TimerSettingViewController: UIViewController {
     
     //Variable
     let tableView = UITableView()
-
+    
+    //MARK: USER DEFAULT DEC
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         
@@ -71,14 +73,27 @@ class TimerSettingViewController: UIViewController {
         shortBreakTextField.delegate = self
         longBreakTextField.delegate = self
         longBreakAfterTextField.delegate = self
-    
+        
+        //MARK: TAMBAHAN USER DEFAULT:
+        SwitchCell().checkSwitchState()
+
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        focusPickerView.selectRow(3, inComponent: 0, animated: true)
-        shortBreakPickerView.selectRow(0, inComponent: 0, animated: true)
-        longBreakPickerView.selectRow(0, inComponent: 0, animated: true)
-        longBreakAfterPickerView.selectRow(0, inComponent: 0, animated: true)
+        if defaultFocusTime == 1500 && defaultShortBreakTime == 60 && defaultLongBreakTime == 1200{
+            focusPickerView.selectRow(3, inComponent: 0, animated: true)
+            shortBreakPickerView.selectRow(0, inComponent: 0, animated: true)
+            longBreakPickerView.selectRow(0, inComponent: 0, animated: true)
+            longBreakAfterPickerView.selectRow(0, inComponent: 0, animated: true)
+        }
+            else{
+                focusPickerView.selectRow(defaults.integer(forKey: fPick), inComponent: 0, animated: true)
+                shortBreakPickerView.selectRow(defaults.integer(forKey: sPick), inComponent: 0, animated: true)
+                longBreakPickerView.selectRow(defaults.integer(forKey: lPick), inComponent: 0, animated: true)
+                longBreakAfterPickerView.selectRow(defaults.integer(forKey: laPick), inComponent: 0, animated: true)
+        
+      }
     }
     
     
