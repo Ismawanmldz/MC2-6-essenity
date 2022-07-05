@@ -13,7 +13,7 @@ class AddTagsViewController: UIViewController {
     let identifier = "AddTagsViewController"
     
     
-    var arr : [String] = ["Assignment","Exam","Assignment","Project","String","Apple","Bed","duck"]
+    var arr : [String] = []
     private var tagsContainer = ["String","Apple","Bed","duck"]
     var taskTags : [String] = []
     
@@ -150,7 +150,6 @@ extension AddTagsViewController : UITableViewDelegate, UITableViewDataSource {
             cell.delegate = self
             cell.backgroundColor = .clear
             cell.tintColor = .clear
-            print(self.taskTags)
             cell.configure(with: model,tagsArray: self.taskTags)
             return cell
         default :

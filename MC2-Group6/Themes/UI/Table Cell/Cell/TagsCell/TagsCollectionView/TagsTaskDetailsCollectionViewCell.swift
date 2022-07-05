@@ -23,9 +23,12 @@ class TagsTaskDetailsCollectionViewCell: UICollectionViewCell {
     func setupView() {
         
         self.layer.cornerRadius = 8
-        self.backgroundColor = .systemBlue
+        self.backgroundColor = UIColor.darkBlue
         tagLabel.tintColor = .white
         tagLabel.text = type
+        self.backgroundColor = .darkBlue
+        self.tintColor = .white
+        self.tagLabel.textColor = .white
     }
         
     

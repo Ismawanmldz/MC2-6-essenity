@@ -150,7 +150,6 @@
         <!--Navigation Controller-->
         <scene sceneID="bm2-1d-HHR">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JT3-3u-Poh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sJz-9j-plJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="crN-g7-3Mq">
@@ -165,6 +164,7 @@
                         <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="z7G-HE-FdR"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JT3-3u-Poh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-239" y="78"/>
         </scene>
@@ -255,6 +255,7 @@
             <point key="canvasLocation" x="1680" y="-937"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.023529411764705882" green="0.38823529411764707" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">

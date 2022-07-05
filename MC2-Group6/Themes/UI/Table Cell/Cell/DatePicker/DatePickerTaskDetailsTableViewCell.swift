@@ -100,11 +100,13 @@ class DatePickerTaskDetailsTableViewCell: UITableViewCell {
     public func configure(with model: TaskDatePickerOption){
         label.text = model.title
         iconImageView.image = model.icon
+        iconImageView.tintColor = UIColor.darkBlue
     }
     
     public func configure(with model: TaskDatePickerOption, dateDue : Date){
         label.text = model.title
         iconImageView.image = model.icon
+        iconImageView.tintColor = UIColor.darkBlue
         self.cellDatePicker.date = dateDue
         self.minimumDate = dateDue
         cellDatePicker.reloadInputViews()
@@ -115,6 +117,7 @@ class DatePickerTaskDetailsTableViewCell: UITableViewCell {
     public func configure(with model: TaskDatePickerOption, dateDue : Date, dueDateOn : Bool){
         label.text = model.title
         iconImageView.image = model.icon
+        iconImageView.tintColor = UIColor.darkBlue
         self.cellDatePicker.date = Date()
         self.minimumDate = dateDue
         cellDatePicker.reloadInputViews()
@@ -124,6 +127,7 @@ class DatePickerTaskDetailsTableViewCell: UITableViewCell {
     public func configure(with model: TaskDatePickerOption, task : Task){
         label.text = model.title
         iconImageView.image = model.icon
+        iconImageView.tintColor = UIColor.darkBlue
         self.cellDatePicker.date = task.dueDate ?? Date()
 //        cellDatePicker.reloadInputViews()
         cellDatePicker.minimumDate = cellDatePicker.date

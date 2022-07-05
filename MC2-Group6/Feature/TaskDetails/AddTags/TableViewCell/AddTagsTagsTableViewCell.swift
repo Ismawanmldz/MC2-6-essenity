@@ -105,10 +105,10 @@ extension AddTagsTagsTableViewCell : UICollectionViewDelegate, UICollectionViewD
         cell.type = tempTag[indexPath.row].tagTitle
         
         if(tagsChosen.contains(tempTag[indexPath.row].tagTitle!) ){
-            cell.backgroundColor = .systemBlue
+            cell.backgroundColor = .darkBlue
             cell.tagLabel.textColor = .white
         }else {
-            cell.backgroundColor = .gray
+            cell.backgroundColor = .systemGray2
             cell.tagLabel.textColor = .black
         }
         cell.delegate = self

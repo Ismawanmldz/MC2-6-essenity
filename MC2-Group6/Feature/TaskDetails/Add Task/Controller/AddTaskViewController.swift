@@ -346,7 +346,7 @@ class AddTaskViewController: UIViewController {
         ]))
         
         models.append(Section(title: "Set Priority", options: [
-            .switchCell(model: TaskSwitchOption(title: "Urgent", icon: UIImage(systemName: "exclamationmark.triangle"), handler: {
+            .switchCell(model: TaskSwitchOption(title: "Urgent", icon: UIImage(systemName: "exclamationmark.triangle")?.withRenderingMode(.alwaysTemplate), handler: {
                     
                 }, isOn: true, noTag: 31)),
             .switchCell(model: TaskSwitchOption(title: "Important", icon: UIImage(systemName: "star"), handler: {

@@ -85,6 +85,7 @@ class TaskDetailsTableViewCell: UITableViewCell {
     public func configure(with model: TaskOption, priority : String){
         label.text = model.title
         iconImageView.image = model.icon
+        iconImageView.tintColor = UIColor.darkBlue
         cellLabel.text = priority
     }
     

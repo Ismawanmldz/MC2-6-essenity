@@ -27,6 +27,8 @@ class TextViewTaskDetailsTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        cellTextView.delegate = self
+        
         contentView.addSubview(cellTextView)
         contentView.clipsToBounds = true
         accessoryType = .none
@@ -52,9 +54,14 @@ class TextViewTaskDetailsTableViewCell: UITableViewCell {
     public func configure(with model: TaskTextFieldOption){
         cellTextView.text = ""
         customFunc = model.handler
-    
+        cellTextView.text = "Description Here"
+        cellTextView.textColor = UIColor.placeholderText
+
+
+        cellTextView.selectedTextRange = cellTextView.textRange(from: cellTextView.beginningOfDocument, to: cellTextView.beginningOfDocument)
     
     }
+    
     
     public func configure(with model: TaskTextFieldOption, taskDescription : String){
         cellTextView.text = taskDescription
@@ -67,4 +74,51 @@ class TextViewTaskDetailsTableViewCell: UITableViewCell {
         
     }
     
+}
+
+extension TextViewTaskDetailsTableViewCell : UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+            // Combine the textView text and the replacement text to
+            // create the updated text string
+            let currentText:String = textView.text
+            let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+
+            // If updated text view will be empty, add the placeholder
+            // and set the cursor to the beginning of the text view
+            if updatedText.isEmpty {
+
+                textView.text = "Description Here"
+                textView.textColor = UIColor.placeholderText
+
+                textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+            }
+
+            // Else if the text view's placeholder is showing and the
+            // length of the replacement string is greater than 0, set
+            // the text color to black then set its text to the
+            // replacement string
+             else if textView.textColor == UIColor.placeholderText && !text.isEmpty {
+                textView.textColor = UIColor.black
+                textView.text = text
+            }
+
+            // For every other case, the text should change with the usual
+            // behavior...
+            else {
+                return true
+            }
+
+            // ...otherwise return false since the updates have already
+            // been made
+            return false
+    }
+    
+    
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        if cellTextView.text != nil {
+            if textView.textColor == UIColor.placeholderText {
+                textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+            }
+        }
+    }
 }

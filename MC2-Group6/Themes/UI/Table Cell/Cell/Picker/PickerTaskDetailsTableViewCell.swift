@@ -120,6 +120,7 @@ class PickerTaskDetailsTableViewCell: UITableViewCell {
     public func configure(with model: TaskPickerOption, timeValue : String){
         label.text = model.title
         iconImageView.image = model.icon
+        iconImageView.tintColor = UIColor.darkBlue
         self.pickerOption1 = model.option1
         self.pickerOption2 = model.option2
         self.thisValue = timeValue
@@ -129,6 +130,7 @@ class PickerTaskDetailsTableViewCell: UITableViewCell {
     public func configure(with model: TaskPickerOption, task : Task){
         label.text = model.title
         iconImageView.image = model.icon
+        iconImageView.tintColor = UIColor.darkBlue
         self.pickerOption1 = model.option1
         self.pickerOption2 = model.option2
 //        self.thisValue = task.

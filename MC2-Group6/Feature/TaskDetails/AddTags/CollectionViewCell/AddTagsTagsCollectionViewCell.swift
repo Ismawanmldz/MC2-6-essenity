@@ -62,7 +62,7 @@ class AddTagsTagsCollectionViewCell: UICollectionViewCell {
             xIcon.tintColor = .white
 //            xIcon.backgroundColor = .green
             self.layer.cornerRadius = 8
-            self.backgroundColor = .systemBlue
+            self.backgroundColor = .systemGray2
             tagLabel.tintColor = .white
             tagLabel.text = type
             thisTag = type

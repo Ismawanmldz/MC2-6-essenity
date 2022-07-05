@@ -65,13 +65,14 @@ extension TagsTableViewCell : UICollectionViewDelegate, UICollectionViewDataSour
             for: indexPath) as! TagsTaskDetailsCollectionViewCell
         
         cell.type = tagsChosen[indexPath.row]
-        cell.backgroundColor = .systemBlue
-        cell.tintColor = .white
-        cell.tagLabel.textColor = .white
+      
         
         if(indexPath.row == 0){
-            cell.backgroundColor = .systemGray5
-            cell.tagLabel.textColor = .black
+            cell.backgroundColor = .white
+            cell.tagLabel.textColor = .systemGray2
+            cell.layer.borderWidth = 1
+            cell.layer.borderColor = UIColor.systemGray2.cgColor
+            cell.clipsToBounds = true
         }
         
         

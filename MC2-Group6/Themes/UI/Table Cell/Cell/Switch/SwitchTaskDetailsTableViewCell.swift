@@ -69,6 +69,7 @@ class SwitchTaskDetailsTableViewCell: UITableViewCell {
         contentView.addSubview(iconContainer)
         contentView.addSubview(label)
         contentView.addSubview(cellSwitch)
+        cellSwitch.onTintColor = UIColor.darkBlue
         contentView.clipsToBounds = true
         accessoryType = .none
     }
@@ -112,6 +113,7 @@ class SwitchTaskDetailsTableViewCell: UITableViewCell {
     public func configure(with model: TaskSwitchOption){
         label.text = model.title
         iconImageView.image = model.icon
+        iconImageView.tintColor = UIColor.darkBlue
         self.noTag = model.noTag
         cellSwitch.tag = model.noTag
         cellSwitch.isOn = model.isOn
@@ -120,6 +122,7 @@ class SwitchTaskDetailsTableViewCell: UITableViewCell {
     public func configure(with model: TaskSwitchOption, dueDateOn : Bool){
         label.text = model.title
         iconImageView.image = model.icon
+        iconImageView.tintColor = UIColor.darkBlue
         self.noTag = model.noTag
         cellSwitch.tag = self.noTag
         cellSwitch.isOn = dueDateOn
@@ -142,7 +145,12 @@ class SwitchTaskDetailsTableViewCell: UITableViewCell {
     }
     
     public func configure(with model: TaskSwitchOption, task : Task){
-        iconImageView.image = model.icon
+        let imageView = UIImageView(image: model.icon)
+        imageView.tintColor = .systemPink
+
+//        iconImageView.image = imageView
+        iconImageView.tintColor = .systemRed
+        
         label.text = model.title
         self.noTag = model.noTag
         cellSwitch.tag = model.noTag
