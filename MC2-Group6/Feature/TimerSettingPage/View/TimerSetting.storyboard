@@ -12,7 +12,7 @@
         <!--Timer Settings-->
         <scene sceneID="eEb-sh-QwE">
             <objects>
-                <viewController storyboardIdentifier="TimerSettingSB" modalPresentationStyle="pageSheet" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cEA-ct-gS2" customClass="TimerSettingViewController" customModule="Tiemer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TimerSettingSB" modalPresentationStyle="pageSheet" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cEA-ct-gS2" customClass="TimerSettingViewController" customModule="MC2_Group6" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Sq6-EQ-0wH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,6 +70,7 @@
             <point key="canvasLocation" x="103" y="40"/>
         </scene>
     </scenes>
+    <color key="tintColor" red="0.0039215688589999999" green="0.36078432199999999" blue="0.56862747670000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <systemColor name="tertiarySystemGroupedBackgroundColor">

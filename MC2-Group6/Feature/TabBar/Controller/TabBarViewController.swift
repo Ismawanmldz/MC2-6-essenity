@@ -11,5 +11,6 @@ class TabBarViewController: UITabBarController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.selectedIndex = 1
+        
     }
 }
