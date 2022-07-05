@@ -18,6 +18,7 @@ class FocusSetTextFieldPickerViewCell: UITableViewCell {
          super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(focusTextField)
         let items = [flexibleSpace, focusDoneBtn]
+        focusDoneBtn.tintColor = UIColor.darkBlue
         
         focusToolBar.setItems(items, animated: true)
         focusToolBar.sizeToFit()

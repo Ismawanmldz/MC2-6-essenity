@@ -18,6 +18,8 @@ class SBreakSetTextFieldPickerViewCell: UITableViewCell {
          super.init(style: style, reuseIdentifier: reuseIdentifier)
          contentView.addSubview(shortBreakTextField)
          let items = [flexibleSpace, shortBreakDoneBtn]
+       shortBreakDoneBtn.tintColor = UIColor.darkBlue
+        
         
         shortBreakToolBar.setItems(items, animated: true)
         shortBreakToolBar.sizeToFit()

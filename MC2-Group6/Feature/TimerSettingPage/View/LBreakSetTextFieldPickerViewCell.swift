@@ -19,7 +19,8 @@ class LBreakSetTextFieldPickerViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(longBreakTextField)
         let items = [flexibleSpace, longBreakDoneBtn]
-       
+        longBreakDoneBtn.tintColor = UIColor.darkBlue
+        
        longBreakToolBar.setItems(items, animated: true)
        longBreakToolBar.sizeToFit()
        longBreakTextField.inputAccessoryView = longBreakToolBar

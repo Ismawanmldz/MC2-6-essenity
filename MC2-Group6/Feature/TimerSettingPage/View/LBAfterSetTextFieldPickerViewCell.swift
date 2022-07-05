@@ -18,7 +18,8 @@ class LBAfterSetTextFieldPickerViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(longBreakAfterTextField)
         let items = [flexibleSpace, longBreakAfterDoneBtn]
-       
+        longBreakAfterDoneBtn.tintColor = UIColor.darkBlue
+        
        longBreakAfterToolBar.setItems(items, animated: true)
        longBreakAfterToolBar.sizeToFit()
        longBreakAfterTextField.inputAccessoryView = longBreakAfterToolBar
