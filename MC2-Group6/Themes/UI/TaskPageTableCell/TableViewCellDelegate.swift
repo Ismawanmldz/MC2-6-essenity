@@ -10,4 +10,5 @@ import UIKit
 
 protocol TableViewCellMainDelegate {
     func reloadAll()
+    
 }

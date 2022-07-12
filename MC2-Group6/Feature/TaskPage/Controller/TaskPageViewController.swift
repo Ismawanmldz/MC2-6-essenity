@@ -42,6 +42,17 @@ class TaskPageViewController: UIViewController {
         }
     }
     
+    func fetchData() {
+            do {
+                self.priorityCategories = try taskRepository.context.fetch(Priority.fetchRequest())
+                DispatchQueue.main.async {
+                    self.TaskCell.reloadData()
+                    self.TaskTable.reloadData()
+                }
+            }
+            catch {
+            }
+    }
     
     func fetchPriorites() {
         do {
@@ -63,7 +74,7 @@ class TaskPageViewController: UIViewController {
             let pred = NSPredicate(format: "priorities.title == %@", "Do Now")
             request.predicate = pred
             let tasks = try taskRepository.context.fetch(request)
-            self.taskContainer = tasks
+            self.taskContainer = tasks.filter { $0.status == false }
             self.TaskTable.reloadSections([0], with: .fade)
             self.priorityNow = "Do Now"
             
@@ -84,6 +95,7 @@ class TaskPageViewController: UIViewController {
         dateFormater.dateFormat = "E, dd/MM/yy"
         todaysDate.text = dateFormater.string(from: Date())
         TaskTable.showsVerticalScrollIndicator = false
+//        fetchData()
         fetchDoNow()
         
         
@@ -96,7 +108,6 @@ class TaskPageViewController: UIViewController {
         TaskTable.register(nibCell2, forCellReuseIdentifier: "TaskTableCell")
         
         BackGroundViewWhite.layer.cornerRadius = 30
-        
     }
     
         
@@ -162,7 +173,8 @@ func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPat
         let pred = NSPredicate(format: "priorities.title == %@", taskPriority[indexPath.row])
         request.predicate = pred
         let tasks = try taskRepository.context.fetch(request)
-        self.taskContainer = tasks
+        let filteredTask = tasks.filter { $0.status == false }
+        self.taskContainer = filteredTask
         self.TaskTable.reloadSections([0], with: .fade)
         self.priorityNow = taskPriority[indexPath.row]
         
@@ -179,13 +191,37 @@ func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath:
     cell.delegate = self
     do {
     
-        let request = Priority.fetchRequest() as NSFetchRequest<Priority>
-        let pred = NSPredicate(format: "title == %@", taskPriority[indexPath.row])
-        request.predicate = pred
-        let priority = try taskRepository.context.fetch(request)
-        cell.TaskNumber.text = String(priority[0].tasks!.count)
+//        let request = Priority.fetchRequest() as NSFetchRequest<Priority>
+//        let pred = NSPredicate(format: "title == %@", taskPriority[indexPath.row])
+//        request.predicate = pred
+//        let priority = try taskRepository.context.fetch(request)
+//        self.taskContainer = priority[0].tasks
+//        self.taskContainer = self.taskContainer.filter { $0.status == false }
+//        let filteredCount = taskContainer?.filter { ($0 as AnyObject).status == false }
+//        let count = filteredCount?.count as Int
+//
+//     print(count)
+        
+//        let currentPriority = priorityCategories!.filter { $0.title! == taskPriority[indexPath.row] }
+//        if let container = currentPriority[0].tasks{
+//            taskContainer = container
+//        }
+        
+        
+//        cell.TaskNumber.text = String(count)
+//
+ 
+//
+
+        let requestTask = Task.fetchRequest() as NSFetchRequest<Task>
+        let predTask = NSPredicate(format: "priorities.title == %@", taskPriority[indexPath.row])
+        requestTask.predicate = predTask
+        let tasks = try taskRepository.context.fetch(requestTask)
+        let filteredTask = tasks.filter {$0.status == false}
+        cell.TaskNumber.text = String(filteredTask.count)
         cell.TaskPriority.text = taskPriority[indexPath.row]
-    
+        
+      
     } catch {
         
     }
@@ -225,8 +261,8 @@ extension TaskPageViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return taskContainer.count
+        let filteredTask = taskContainer.filter { $0.status == false }
+        return filteredTask.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -235,6 +271,7 @@ extension TaskPageViewController: UITableViewDelegate, UITableViewDataSource {
             as! TableViewCell
         
 //        let thisTask = filterTask[indexPath.row]
+       
         
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "d MMM"
@@ -245,20 +282,11 @@ extension TaskPageViewController: UITableViewDelegate, UITableViewDataSource {
         cell.TaskDate.text = dateFormater.string(from: taskContainer[indexPath.row].dueDate!)
 //        cell.TaskTag.text = taskContainer[indexPath.row].tags
         
+        cell.configure(thisTask: taskContainer[indexPath.row])
+        
         cell.delegate = self
 //
-        if indexPath.section == 0 {
-            cell.viewTableCell.backgroundColor = UIColor.red1
-        }else if (indexPath.section == 1){
-            cell.viewTableCell.backgroundColor = UIColor.orange2
-        }else if (indexPath.section == 2) {
-            cell.viewTableCell.backgroundColor = UIColor.blue1
-        }else if (indexPath.section == 3){
-            cell.viewTableCell.backgroundColor = UIColor.green2
 
-        }
-        
-        
         
         cell.viewTableCell.layer.cornerRadius = 8
         cell.viewTableCell.layer.masksToBounds = true
@@ -272,30 +300,30 @@ extension TaskPageViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.checkButton.isSelected = taskContainer[indexPath.row].status 
         
-
-        cell.callback = {
-            self.taskContainer[indexPath.row].status = !self.taskContainer[indexPath.row].status
-            cell.checkButton.isSelected = self.taskContainer[indexPath.row].status
-            if(cell.checkButton.isSelected){
-                cell.checkButton.setImage(UIImage(systemName: "circle.fill"), for: .selected)
-                do {
-                    let request = Priority.fetchRequest() as NSFetchRequest<Priority>
-
-                    let pred = NSPredicate(format: "title == %@", "Complete")
-                    request.predicate = pred
-
-                    let priority = try self.taskRepository.context.fetch(request)
-                    self.taskContainer[indexPath.row].priorities   = priority[0]
-                    self.fetchDoNow()
-                    try self.taskRepository.context.save()
-                }
-                catch {
-
-                }
-            } else {
-                cell.checkButton.setImage(UIImage(systemName: "circle"), for: .normal)
-                    }
-        }
+//
+//        cell.callback = {
+//            self.taskContainer[indexPath.row].status = !self.taskContainer[indexPath.row].status
+//            cell.checkButton.isSelected = self.taskContainer[indexPath.row].status
+//            if(cell.checkButton.isSelected){
+//                cell.checkButton.setImage(UIImage(systemName: "circle.fill"), for: .selected)
+//                do {
+//                    let request = Priority.fetchRequest() as NSFetchRequest<Priority>
+//
+//                    let pred = NSPredicate(format: "title == %@", "Complete")
+//                    request.predicate = pred
+//
+//                    let priority = try self.taskRepository.context.fetch(request)
+//                    self.taskContainer[indexPath.row].priorities   = priority[0]
+//                    self.fetchDoNow()
+//                    try self.taskRepository.context.save()
+//                }
+//                catch {
+//
+//                }
+//            } else {
+//                cell.checkButton.setImage(UIImage(systemName: "circle"), for: .normal)
+//                    }
+//        }
 
         
         return cell
@@ -368,9 +396,17 @@ extension TaskPageViewController : AddTaskViewControllerDelegate {
 
 extension TaskPageViewController : TableViewCellMainDelegate {
     func reloadAll() {
-        TaskCell.reloadData()
-        TaskTable.reloadSections([0], with: .fade)
+        
+        taskContainer = taskContainer.filter { $0.status == false }
+
+        self.TaskCell.reloadSections([0])
+        self.TaskTable.reloadSections([0], with: .automatic)
+        
+        
+        print("reload")
+        
     }
+    
 }
 
 extension TaskPageViewController : CollectionViewCellDelegate {
