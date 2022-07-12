@@ -22,8 +22,5 @@ class TagFilterCollectionViewCell: UICollectionViewCell {
     @IBAction func didTag(_ sender: UIButton) {
         callbackTag?()
     }
-    
-    
-    
 }
 

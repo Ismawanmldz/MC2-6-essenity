@@ -45,9 +45,12 @@ class FilterViewController: UIViewController, UICollectionViewDelegateFlowLayout
         
         doneBtn.tintColor = .darkBlue
         backBtn.tintColor = .darkBlue
-        backBtn.titleLabel?.textColor = .black
         
         fetchTags()
+    }
+    
+    func initTags(){
+        
     }
     
     func fetchTags() {
@@ -127,6 +130,15 @@ extension FilterViewController: UICollectionViewDelegate, UICollectionViewDataSo
             taskCollectionViewCell.tagButton.backgroundColor = .darkBlue
             taskCollectionViewCell.tagButton.titleLabel?.textColor = .white
         } else {
+            taskCollectionViewCell.tagButton.backgroundColor = .systemGray4
+            taskCollectionViewCell.tagButton.titleLabel?.textColor = .black
+        }
+        
+        if (taskCollectionViewCell.tagButton.isSelected) {
+            taskCollectionViewCell.tagButton.backgroundColor = .darkBlue
+            taskCollectionViewCell.tagButton.titleLabel?.textColor = .white
+        } else {
+            
             taskCollectionViewCell.tagButton.backgroundColor = .systemGray4
             taskCollectionViewCell.tagButton.titleLabel?.textColor = .black
         }

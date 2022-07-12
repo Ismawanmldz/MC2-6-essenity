@@ -43,15 +43,6 @@ class SearchViewController: UIViewController {
     
     //Receive Array
     var myIncomeArray : [String] = []
-//    var mySeguedArray = [String]() {
-//             didSet{
-//                 myIncomeArray = mySeguedArray //no need to call viewDidLoad
-//                 filterButton.setImage(UIImage(named: "line.3.horizontal.decrease.circle.fill"), for: .normal)
-//                 print(myIncomeArray[0])
-//                 print("Array dari SVC")
-//                 print(myIncomeArray)
-//             }
-//    }
     
     func refreshTable() {
         DispatchQueue.main.async {
@@ -83,41 +74,22 @@ class SearchViewController: UIViewController {
                 }
                 
                 myIncomeArray = senderVC.tagsChosen
-                print("dapat array ")
-                print(myIncomeArray)
+                
+                if  (myIncomeArray.count == 1) {
+                    filterTagTask = taskContainer!.filter { $0.tags!.contains(where: { myIncomeArray.contains($0) }) }
+                    print("dari seg")
+                } else if (myIncomeArray.count >= 1){
+                    filterTagTask = taskContainer!.filter { $0.tags! == myIncomeArray }
+                    print("dari seg1")
+                } else if myIncomeArray.isEmpty == true {
+                    filterTagTask = taskContainer!
+                }
+                updateSearchResults(for: searchBar)
+                
                 taskTableView.reloadData()
             }
         }
     }
-    
-//    func fetchPriorites() {
-//        do {
-//            let request = Priority.fetchRequest() as NSFetchRequest<Priority>
-//            self.priorityCategories = try taskRepository.context.fetch(request)
-//
-//            DispatchQueue.main.async {
-//                self.taskTableView.reloadData()
-//            }
-//        }
-//        catch {
-//        }
-//    }
-//
-//    func fetchDoNow() {
-//        do {
-//            let request = Task.fetchRequest() as NSFetchRequest<Task>
-//            let pred = NSPredicate(format: "priorities.title == %@", "Do Now")
-//            request.predicate = pred
-//            let tasks = try taskRepository.context.fetch(request)
-//            self.taskContainer = tasks
-//            self.TaskTable.reloadSections([0], with: .fade)
-//            self.priorityNow = "Do Now"
-//
-//        } catch {
-//
-//        }
-//
-//    }
     
     override func viewWillAppear(_ animated: Bool) {
         fetchTasks()
@@ -136,16 +108,15 @@ class SearchViewController: UIViewController {
         
         segmentedControl.selectedSegmentIndex = 0
         taskTableView.showsVerticalScrollIndicator = false
-//        print(scopeFilter)
+        
         updateSearchResults(for: searchBar)
+        
         if(searchBar.text == "") {
             updateSearchResults(for: searchBar)
         }
         
         let nibCell2 = UINib(nibName: "TableViewCell", bundle: nil)
         taskTableView.register(nibCell2, forCellReuseIdentifier: "TaskTableCell")
-        
-//        BackGroundViewWhite.layer.cornerRadius = 30
     }
     
     //MARK: SEARCH CONTROLLER
@@ -174,76 +145,56 @@ class SearchViewController: UIViewController {
         let searchBar = searchBar
         let scopeButton = segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex)
         let searchText = searchBar.text
-
-        filteredWithSegmentedControl(searchText: searchText!, scopeButton: scopeButton!)
-//        filteredArrayAndTag()
+        
+        if (myIncomeArray.isEmpty) {
+            filteredWithSegmentedControl(searchText: searchText!, scopeButton: scopeButton!)
+        } else {
+            filteredWithSegmentedControlAndTags(searchText: searchText!, scopeButton: scopeButton!)
+        }
     }
 
     func filteredWithSegmentedControl(searchText: String, scopeButton: String)
     {
+        print(myIncomeArray)
         if scopeButton.lowercased() == "completed" {
             print(scopeButton.lowercased())
             segmentedControlTask = taskContainer!.filter { $0.status == true }
             filteredTask = segmentedControlTask
-            taskTableView.reloadData()
         } else if (scopeButton.lowercased() == "uncomplete"){
             segmentedControlTask = taskContainer!.filter { $0.status == false }
-            if (myIncomeArray.count == 1) {
-                filterTagTask = segmentedControlTask.filter { $0.tags!.contains(where: { myIncomeArray.contains($0) }) }
-                filteredTask = filterTagTask
-                self.taskTableView.reloadData()
-            } else if (myIncomeArray.count >= 1){
-                filterTagTask = segmentedControlTask.filter { $0.tags! == myIncomeArray }
-                filteredTask = filterTagTask
-                self.taskTableView.reloadData()
-            } else {
-                filteredTask = segmentedControlTask
-                taskTableView.reloadData()
-            }
+            filteredTask = segmentedControlTask
         }
+        
+        
+        
         print(scopeButton.lowercased())
-        print(segmentedControlTask)
+        print("dari segmented button")
+        print(filteredTask)
+        taskTableView.reloadData()
     }
     
-    //MARK: ADD FILTER BY TAG
-//    func filteredArrayAndTag() {
-////        let thisTask = segmentedControlTask[indexPath.row]
-//        print("FILTER TAGGG")
-//        if (myIncomeArray.count == 1) {
-//            filterTagTask = segmentedControlTask.filter { $0.tags!.contains(where: { myIncomeArray.contains($0) }) }
-//            filteredTask = filterTagTask
-//            taskTableView.reloadData()
-//        } else if (myIncomeArray.count >= 1){
-//            filterTagTask = segmentedControlTask.filter { $0.tags! == myIncomeArray }
-//            filteredTask = filterTagTask
-//            taskTableView.reloadData()
-//        }
-    
-//    if (myIncomeArray.count == 1) {
-//        filterTagTask = searchedTask.filter { $0.tags!.contains(where: { myIncomeArray.contains($0) }) }
-//        filteredTask = filterTagTask
-////                taskTableView.reloadData()
-//    } else if (myIncomeArray.count >= 1){
-//        filterTagTask = segmentedControlTask.filter { $0.tags! == myIncomeArray }
-//        filteredTask = filterTagTask
-////                taskTableView.reloadData()
-//    }
-    
-//        print("difilter tag")
-//        print(filteredTask)
-//
-//    }
+    func filteredWithSegmentedControlAndTags(searchText: String, scopeButton: String)
+    {
+        if scopeButton.lowercased() == "completed" {
+            print(scopeButton.lowercased())
+            segmentedControlTask = filterTagTask.filter { $0.status == true }
+            filteredTask = segmentedControlTask
+        } else if (scopeButton.lowercased() == "uncomplete"){
+            segmentedControlTask = filterTagTask.filter { $0.status == false }
+            filteredTask = segmentedControlTask
+        }
+        
+        print(scopeButton.lowercased())
+        print("dari segmented button")
+        print(filteredTask)
+        taskTableView.reloadData()
+    }
     
     func viewToEdit() {
         performSegue(withIdentifier: "toEditTask", sender: self)
     }
     
     func valueChanged(segmentedControl: UISegmentedControl) {
-//        if(segmentedControl.selectedSegmentIndex == 0){
-//            updateSearchResults(for: searchBar)
-//        } else if(segmentedControl.selectedSegmentIndex == 1){
-//            updateSearchResults(for: searchBar)
-//        }
         updateSearchResults(for: searchBar)
     }
     
@@ -270,7 +221,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     //MARK: Table View
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-       
         if(searchActive) {
             return filteredTask.count
         }
@@ -297,18 +247,9 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         dateFormater.dateFormat = "d MMM"
         let taskDate = dateFormater.string(from: thisTask!.dueDate!)
         
-//        print(thisTask?.tags!)
         cell.TaskName.text = thisTask!.title
         cell.TaskTag.text = thisTask!.desc
         cell.TaskDate.text = dateFormater.string(from: thisTask!.dueDate!)
-        print("tagsnya")
-        print(thisTask!.tags!)
-        
-        
-//        cell.TaskTag.text = taskContainer![indexPath.row].tags
-
-//        let thisTag : [Priority]!
-//        thisTag = priorityTask
         
         if (thisTask!.priorities!.title == "Do Now") {
             cell.viewTableCell.backgroundColor = UIColor.red1
@@ -325,7 +266,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         cell.viewTableCell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
         
         cell.layer.cornerRadius = 8
-//        cell.viewBackgroundTable.layer.cornerRadius = 8
         
         //To click check button and change the button image
         cell.checkButton.isSelected = thisTask!.status
@@ -342,8 +282,8 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 //                    request.predicate = pred
 //
 //                    let priority = try self.taskRepository.context.fetch(request)
-//                    self.taskContainer[indexPath.row].priorities   = priority[0]
-//                    self.fetchDoNow()
+//                    self.taskContainer![indexPath.row].priorities   = priority[0]
+//                    self.fetchTasks()
 //                    try self.taskRepository.context.save()
 //                }
 //                catch {
@@ -353,39 +293,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
         
-        
-        
-//        taskTableViewCell.taskTags.text = thisTask.tags[0]
-//        taskTableViewCell.taskDueDate.text = thisTask.dueDate
-//
-//        taskTableViewCell.taskPriority.backgroundColor = UIColor(red: 1.00, green: 0, blue: 0, alpha: 1.00)
-//        taskTableViewCell.taskView.layer.cornerRadius = 8
-//
-//        // Make Priority Color in Table View Cell have corner edge
-//        taskTableViewCell.taskPriority.layer.cornerRadius = 8
-//        taskTableViewCell.taskPriority.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
-//
-//
-//        taskTableViewCell.checkButton.setImage(UIImage(systemName: thisTask.check), for: .normal)
-//
-//
-//        if(taskTableViewCell.checkButton.currentImage == UIImage(systemName: "circle.fill")){
-//            taskTableViewCell.checkButton.isSelected = true
-//        }
-//
-//        //To click check button and change the button image
-//        taskTableViewCell.checkButton.isSelected = thisTask.isFavorite
-//        taskTableViewCell.callback = {
-//            thisTask.isFavorite = !thisTask.isFavorite
-//            taskTableViewCell.checkButton.isSelected = thisTask.isFavorite
-//            if(taskTableViewCell.checkButton.isSelected){
-//                taskTableViewCell.checkButton.setImage(UIImage(systemName: "circle.fill"), for: .selected)
-//            } else {
-//                taskTableViewCell.checkButton.setImage(UIImage(systemName: "circle"), for: .normal)
-//            }
-//
-//        }
-
         return cell
     }
     
