@@ -14,9 +14,11 @@
 //
 //    var delegate : AddTaskViewControllerDelegate?
 //
+//    // Repository for data management
 //    let taskRepository = TaskRepository.shared
 //
 //    private var Task : Task?
+//
 //    private var isEdit : Bool?
 //    var taskTags : [String]?
 //
@@ -25,20 +27,20 @@
 //    private var dueDateOn : Bool = true
 //    private var currentTask : Task?
 //
-//
-//
 //    private var priority : String = "Do Now"
+//
 //    private var important : Bool = true
 //    private var urgent : Bool = true
+//
 //    var tags : [String] = []
-//    private var taskDescription : String?
-//    private var taskTitle : String?
-//    private var dueDate : Date? = Date()
+//
+//    private var dueDate : Date = Date()
+//
 //    private var reminder : String = "None                                      "
 //    private var moveTo : String = "None                                    "
+//
 //    private var reminderDate : Date?
 //    private var moveToDate : Date?
-//    var taskTags : [String] = []
 //
 //    private var reminderValue: Int = 0
 //    private var reminderTimeValue : Int = 0
@@ -452,12 +454,12 @@
 //            ) as? DatePickerTaskDetailsTableViewCell else {
 //                return UITableViewCell()
 //            }
-//            
+//
 //            //if editing
-//            
+//
 //            cell.delegate = self
 //            cell.configure(with: model)
-//            
+//
 //            return cell
 //
 //        case .textFieldCell(let model) :
